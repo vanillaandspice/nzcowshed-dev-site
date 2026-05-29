@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 18px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  label.lbl { display: block; font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--deep-purple); margin-bottom: 4px; }
+  input.fld, textarea.fld { display: block; width: 100%; border: 2px solid var(--deep-purple); padding: 10px 12px; font-family: var(--font-body); font-size: 14px; color: var(--text-main); background: #fff; box-sizing: border-box; border-radius: var(--radius); }
+  input.fld:focus, textarea.fld:focus { outline: none; border-color: var(--deep-purple); }
+  .full { grid-column: 1 / -1; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div>
+      <label class="lbl" for="n">Name</label>
+      <input class="fld" id="n" placeholder="Scott Coker">
+      <div class="meta">2px deep-purple border · Bebas Neue caps label</div>
+    </div>
+    <div>
+      <label class="lbl" for="p">Phone</label>
+      <input class="fld" id="p" placeholder="027 474 7775">
+      <div class="meta">No format validation — accepts any input</div>
+    </div>
+    <div class="full">
+      <label class="lbl" for="e">Email</label>
+      <input class="fld" id="e" type="email" placeholder="you@example.co.nz">
+    </div>
+    <div class="full">
+      <label class="lbl" for="a">Address of grooving location</label>
+      <input class="fld" id="a" placeholder="123 Rural Rd, RD2, Patetonga 3473">
+      <div class="meta">Where the work happens — used for travel quote &amp; scheduling</div>
+    </div>
+    <div class="full">
+      <label class="lbl" for="m">What needs grooving?</label>
+      <textarea class="fld" id="m" rows="2" placeholder="Cowshed, yard, race — tell us what you've got."></textarea>
+    </div>
+  </div>
+</div>
+</body>
+</html>

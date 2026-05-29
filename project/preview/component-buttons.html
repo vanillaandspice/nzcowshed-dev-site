@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 18px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .col.dark { background: var(--deep-purple); padding: 16px; }
+  .btn { font-family: var(--font-heading); font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; min-height: 48px; padding: 0 32px; border-radius: 0; display: inline-flex; align-items: center; justify-content: center; border: none; cursor: pointer; }
+  .btn.primary { background: var(--safety-orange); color: var(--concrete-white); box-shadow: inset 0 0 0 2px var(--teal); }
+  .btn.secondary { background: transparent; border: 2px solid var(--teal); color: var(--teal); }
+  .btn.ghost { background: transparent; border: 2px solid var(--concrete-white); color: var(--concrete-white); }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); line-height: 1.5; }
+  .col.dark .meta { color: rgba(255,255,255,0.7); }
+  .label { font-family: var(--font-body); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-main); }
+  .col.dark .label { color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="col">
+      <div class="label">Primary</div>
+      <button class="btn primary">Free Quote</button>
+      <div class="meta">bg safety-orange · 2px inset teal · 0 radius<br>hover: brightness 90%<br>press: scale 0.95</div>
+    </div>
+    <div class="col">
+      <div class="label">Secondary</div>
+      <button class="btn secondary">Request a Callback</button>
+      <div class="meta">2px teal outline · 0 radius<br>transparent fill</div>
+    </div>
+    <div class="col dark">
+      <div class="label">Ghost (on purple)</div>
+      <button class="btn ghost">Call Scott</button>
+      <div class="meta">2px white outline · 0 radius<br>used on dark sections only</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

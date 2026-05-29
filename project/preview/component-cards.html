@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 18px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  .card { background: var(--concrete-white); border-top: 3px solid var(--teal); padding: 20px; border: 1px solid var(--surface-container-highest); border-top: 3px solid var(--teal); }
+  .card h3 { font-family: var(--font-heading); font-size: 22px; letter-spacing: 0.02em; color: var(--deep-purple); margin: 0 0 8px; text-transform: uppercase; }
+  .card p { font-family: var(--font-body); font-size: 13px; line-height: 1.5; color: var(--text-main); margin: 0 0 10px; }
+  .quote { font-family: var(--font-body); font-size: 12px; line-height: 1.5; color: var(--text-main); margin: 0 0 10px; font-style: italic; }
+  .attr-name { font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--deep-purple); line-height: 1.3; margin: 0; }
+  .attr-biz  { font-family: var(--font-body); font-size: 10px; font-weight: 400; color: var(--on-surface-variant); line-height: 1.3; margin: 1px 0 0; letter-spacing: 0.01em; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h3>Cowshed Grooving</h3>
+        <p>Wet-saw diamond blade cutting. No dust, no chip-out. Grooves last 10–12 years with zero maintenance.</p>
+      </div>
+      <div class="meta">Service card — title + short copy</div>
+    </div>
+    <div>
+      <div class="card">
+        <p class="quote">"Water runs off the surface better, no algae build up — we used to have bulls slip every day, but now they don't slip at all."</p>
+        <p class="attr-name">— Lance Pettigrew</p>
+        <p class="attr-biz">Livestock Improvements</p>
+      </div>
+      <div class="meta">Testimonial card — quote + name + business</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

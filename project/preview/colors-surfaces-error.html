@@ -1,0 +1,57 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Surfaces & Error</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); }
+  .wrap { padding: 14px 24px; }
+  h4 { font-family: var(--font-heading); letter-spacing: 0.05em; font-size: 13px; margin: 0 0 8px; color: var(--on-surface-variant); }
+  .grp { margin-bottom: 12px; }
+  .row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .sw { display: flex; flex-direction: column; gap: 3px; }
+  .chip { height: 44px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-end; padding: 4px 6px; }
+  .chip span { font-family: ui-monospace, monospace; font-size: 9px; }
+  .name { font-family: var(--font-body); font-size: 9px; color: var(--on-surface-variant); line-height: 1.2; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grp">
+    <h4>SURFACE TONES (background depth without shadows)</h4>
+    <div class="row">
+      <div class="sw"><div class="chip" style="background:#ffffff; border:1px solid #e1e3e4;"><span>#FFFFFF</span></div><div class="name">container-lowest</div></div>
+      <div class="sw"><div class="chip" style="background:#f8f9fa;"><span>#F8F9FA</span></div><div class="name">surface / bg</div></div>
+      <div class="sw"><div class="chip" style="background:#f3f4f5;"><span>#F3F4F5</span></div><div class="name">container-low</div></div>
+      <div class="sw"><div class="chip" style="background:#edeeef;"><span>#EDEEEF</span></div><div class="name">container</div></div>
+      <div class="sw"><div class="chip" style="background:#e7e8e9;"><span>#E7E8E9</span></div><div class="name">container-high</div></div>
+      <div class="sw"><div class="chip" style="background:#e1e3e4;"><span>#E1E3E4</span></div><div class="name">container-highest</div></div>
+      <div class="sw"><div class="chip" style="background:#d9dadb;"><span>#D9DADB</span></div><div class="name">surface-dim</div></div>
+    </div>
+  </div>
+  <div class="grp">
+    <h4>INVERSE & TEXT</h4>
+    <div class="row">
+      <div class="sw"><div class="chip" style="background:#2e3132;"><span style="color:#fff">#2E3132</span></div><div class="name">inverse-surface</div></div>
+      <div class="sw"><div class="chip" style="background:#191c1d;"><span style="color:#fff">#191C1D</span></div><div class="name">on-surface</div></div>
+      <div class="sw"><div class="chip" style="background:#494550;"><span style="color:#fff">#494550</span></div><div class="name">on-surface-variant</div></div>
+      <div class="sw"><div class="chip" style="background:#7b7581;"><span style="color:#fff">#7B7581</span></div><div class="name">outline</div></div>
+      <div class="sw"><div class="chip" style="background:#cbc4d2;"><span style="color:#1A1A1A">#CBC4D2</span></div><div class="name">outline-variant</div></div>
+      <div class="sw"><div class="chip" style="background:#f0f1f2;"><span style="color:#1A1A1A">#F0F1F2</span></div><div class="name">inverse-on-surface</div></div>
+      <div class="sw"><div class="chip" style="background:#1A1A1A;"><span style="color:#fff">#1A1A1A</span></div><div class="name">text-main</div></div>
+    </div>
+  </div>
+  <div class="grp">
+    <h4>ERROR</h4>
+    <div class="row" style="grid-template-columns: repeat(4, 1fr); max-width: 60%;">
+      <div class="sw"><div class="chip" style="background:#ba1a1a;"><span style="color:#fff">#BA1A1A</span></div><div class="name">error</div></div>
+      <div class="sw"><div class="chip" style="background:#93000a;"><span style="color:#fff">#93000A</span></div><div class="name">on-error-container</div></div>
+      <div class="sw"><div class="chip" style="background:#ffdad6;"><span>#FFDAD6</span></div><div class="name">error-container</div></div>
+      <div class="sw"><div class="chip" style="background:#ffffff; border:1px solid #e1e3e4;"><span>#FFFFFF</span></div><div class="name">on-error</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

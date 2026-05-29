@@ -1,0 +1,36 @@
+<!-- @dsCard group="Type" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Body Type</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 14px 24px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .row { display: grid; grid-template-columns: 130px 1fr; align-items: baseline; gap: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--outline-variant); }
+  .row:last-child { border-bottom: none; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); line-height: 1.4; }
+  .meta b { display: block; font-family: var(--font-body); color: var(--text-main); font-weight: 600; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .body-lg { font-family: var(--font-body); font-size: 20px; line-height: 1.6; }
+  .body-md { font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+  .body-bold { font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <div class="meta"><b>Body LG</b>20 / 1.6<br>Libre Franklin 400</div>
+    <div class="body-lg">We cut grooves into your concrete so cows move safely, milk faster, and you get on with your day.</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Body MD</b>16 / 1.5<br>Libre Franklin 400</div>
+    <div class="body-md">A cow that slips loses condition. A cow that goes down can lose production for weeks. On wet concrete, it's not a matter of if — it's when.</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Body MD Bold</b>16 / 1.5<br>Libre Franklin 700</div>
+    <div class="body-md body-bold">Not a single problem. — Gordon Wright</div>
+  </div>
+</div>
+</body>
+</html>

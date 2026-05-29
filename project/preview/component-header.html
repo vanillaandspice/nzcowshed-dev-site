@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Header & Nav</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); font-family: var(--font-body); }
+  .wrap { padding: 14px 24px 16px; }
+  .header { background: var(--deep-purple); padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; flex-direction: column; line-height: 1; }
+  .logo .l1 { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.06em; color: var(--safety-orange); text-transform: uppercase; }
+  .logo .l2 { font-family: var(--font-heading); font-size: 18px; letter-spacing: 0.06em; color: #fff; text-transform: uppercase; }
+  .nav { display: flex; gap: 26px; align-items: center; }
+  .nav a { font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.06em; color: #fff; text-transform: uppercase; text-decoration: none; }
+  .nav a.has-drop::after { content: " ▾"; }
+  .cta { background: var(--safety-orange); color: #fff; font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 18px; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="logo"><span class="l1">NZ Cowshed</span><span class="l2">Groovers</span></div>
+    <div class="nav">
+      <a class="has-drop" href="#">Services</a>
+      <a href="#">Our Work</a>
+      <a href="#">Testimonials</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="cta">Get a Quote</div>
+  </div>
+  <div class="meta">Sticky deep-purple bar, 64px tall · Orange-on-white "NZ Cowshed" sub-line · Bebas Neue everywhere · Primary CTA pinned right.</div>
+</div>
+</body>
+</html>

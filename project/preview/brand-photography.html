@@ -1,0 +1,29 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Photography</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 12px 24px 16px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .tile { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 5px 8px; background: rgba(37,2,89,0.85); color: #fff; font-family: var(--font-heading); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 10px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="tile"><img src="../assets/photos/yard-grooved.jpg" alt="Grooved cowshed yard"><div class="cap">Cowshed yard</div></div>
+    <div class="tile"><img src="../assets/photos/frankton-sale-yards.jpg" alt="Grooved sale yards"><div class="cap">Sale yards</div></div>
+    <div class="tile"><img src="../assets/photos/boatramp-grooved.jpg" alt="Grooved boat ramp"><div class="cap">Boat ramp</div></div>
+    <div class="tile"><img src="../assets/photos/anti-slip.jpg" alt="Anti-slip detail"><div class="cap">Groove detail</div></div>
+  </div>
+  <div class="meta"><b>Vibe:</b> real NZ jobsites — wet concrete, galvanised gates, overcast skies. Unstyled. Realistic. The rawness is the point. No filters, no model talent, no stock photography.</div>
+</div>
+</body>
+</html>

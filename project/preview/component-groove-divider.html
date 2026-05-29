@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Groove Divider</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 16px 24px; }
+  .above { background: var(--deep-purple); color: #fff; padding: 18px; font-family: var(--font-body); font-size: 13px; }
+  .below { background: var(--concrete-white); padding: 18px; font-family: var(--font-body); font-size: 13px; border: 1px solid var(--surface-container-highest); border-top: none; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 8px; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="above">Section above (purple)</div>
+  <svg width="100%" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <pattern id="groove-crosshatch" x="0" y="0" width="24" height="16" patternUnits="userSpaceOnUse">
+        <rect width="24" height="16" fill="#edeeef"/>
+        <line x1="0" y1="0" x2="24" y2="0" stroke="#cbc4d2" stroke-width="2"/>
+        <line x1="0" y1="0" x2="0" y2="16" stroke="#cbc4d2" stroke-width="2"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="32" fill="url(#groove-crosshatch)"/>
+  </svg>
+  <div class="below">Section below (white)</div>
+  <div class="meta">&lt;GrooveDivider /&gt; · 24×16 crosshatch tile · surface-container fill, outline-variant lines · evokes the cut-groove pattern</div>
+</div>
+</body>
+</html>

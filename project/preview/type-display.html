@@ -1,0 +1,38 @@
+<!-- @dsCard group="Type" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Display & Headlines</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 14px 24px 18px; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 130px 1fr; align-items: baseline; gap: 16px; padding-bottom: 6px; border-bottom: 1px solid var(--outline-variant); }
+  .row:last-child { border-bottom: none; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); line-height: 1.4; }
+  .meta b { display: block; font-family: var(--font-body); color: var(--text-main); font-weight: 600; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .specimen { font-family: var(--font-heading); letter-spacing: 0.02em; line-height: 1.1; color: var(--deep-purple); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <div class="meta"><b>Display</b>72 / 1.1<br>+0.02em</div>
+    <div class="specimen" style="font-size: 56px;">Stop Losing Money</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Headline LG</b>48 / 1.2</div>
+    <div class="specimen" style="font-size: 38px;">Slipping cows cost</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Headline MD</b>32 / 1.2</div>
+    <div class="specimen" style="font-size: 26px;">Grooving fixes it</div>
+  </div>
+  <div class="row">
+    <div class="meta"><b>Label Caps</b>18 / 1.0<br>+0.05em</div>
+    <div class="specimen" style="font-size: 16px; letter-spacing: 0.05em;">GET A QUOTE</div>
+  </div>
+</div>
+</body>
+</html>

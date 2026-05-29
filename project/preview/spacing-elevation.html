@@ -1,0 +1,42 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Elevation Policy</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 16px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .card { height: 78px; background: var(--concrete-white); border-top: 3px solid var(--teal); padding: 10px; font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.05em; color: var(--deep-purple); }
+  .name { font-family: var(--font-body); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-main); }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); line-height: 1.4; }
+  .layer-purple { background: var(--deep-purple); color: #fff; border-top: 3px solid transparent; }
+  .note { font-family: var(--font-body); font-size: 11px; color: var(--on-surface-variant); margin-top: 14px; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="swatch">
+      <div class="card">FLAT CARD</div>
+      <div class="name">No shadow</div>
+      <div class="meta">box-shadow: none;<br>Top: 3px teal border.</div>
+    </div>
+    <div class="swatch">
+      <div class="card layer-purple">PURPLE LAYER</div>
+      <div class="name">Tonal layering</div>
+      <div class="meta">Depth = alternating fills.<br>No elevation needed.</div>
+    </div>
+    <div class="swatch">
+      <div class="card" style="box-shadow: 0 6px 16px rgba(0,0,0,0.12); border-top: 1px solid var(--teal);">DROPDOWN</div>
+      <div class="name">Shadow LG (rare)</div>
+      <div class="meta">Used only on the<br>services dropdown menu.</div>
+    </div>
+  </div>
+  <div class="note"><b>Elevation policy:</b> the brand is deliberately flat. Depth comes from <b>tonal alternation</b> of deep-purple and concrete-white sections. The single permitted shadow is the nav dropdown.</div>
+</div>
+</body>
+</html>

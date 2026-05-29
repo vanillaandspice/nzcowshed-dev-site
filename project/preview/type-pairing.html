@@ -1,0 +1,41 @@
+<!-- @dsCard group="Type" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type Pairing</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 16px 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .col h5 { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-surface-variant); margin: 0 0 10px; }
+  .heading-sample { font-family: var(--font-heading); font-size: 60px; line-height: 0.95; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; }
+  .body-sample { font-family: var(--font-body); font-size: 60px; line-height: 0.95; color: var(--deep-purple); font-weight: 700; }
+  .glyphs { font-family: var(--font-heading); font-size: 18px; letter-spacing: 0.05em; color: var(--text-main); margin-top: 12px; line-height: 1.3; }
+  .glyphs-body { font-family: var(--font-body); font-size: 13px; line-height: 1.45; color: var(--text-main); margin-top: 12px; }
+  .name { font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--text-main); margin-top: 14px; }
+  .role { font-family: var(--font-body); font-size: 11px; color: var(--on-surface-variant); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="col">
+      <h5>Heading</h5>
+      <div class="heading-sample">Aa Bb Gg</div>
+      <div class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789 — &amp; · → ▾ ☰ ✕ ☎</div>
+      <div class="name">Bebas Neue</div>
+      <div class="role">400 · Brand font (uploaded) · All headings, buttons, labels</div>
+    </div>
+    <div class="col">
+      <h5>Body</h5>
+      <div class="body-sample">Aa Bb Gg</div>
+      <div class="glyphs-body">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 — &amp; · → "" ''</div>
+      <div class="name">Libre Franklin</div>
+      <div class="role">300 / 400 / 600 / 700 · Brand font (uploaded) · All body copy</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

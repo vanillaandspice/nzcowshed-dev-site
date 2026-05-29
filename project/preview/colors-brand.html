@@ -1,0 +1,55 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand Colors</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); }
+  .wrap { padding: 20px 24px; }
+  .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .sw { display: flex; flex-direction: column; }
+  .chip { height: 78px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.06); }
+  .name { font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; color: var(--text-main); }
+  .hex { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--on-surface-variant); margin-top: 2px; }
+  .use { font-family: var(--font-body); font-size: 10px; color: var(--on-surface-variant); margin-top: 4px; line-height: 1.35; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <div class="sw">
+      <div class="chip" style="background:#3B1F6E;"></div>
+      <div class="name">Deep Purple</div>
+      <div class="hex">#3B1F6E</div>
+      <div class="use">Primary — hero, header, footer, alternating sections</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#2A9D8F;"></div>
+      <div class="name">Teal</div>
+      <div class="hex">#2A9D8F</div>
+      <div class="use">Secondary — card top border, outlines</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#EC7926;"></div>
+      <div class="name">Safety Orange</div>
+      <div class="hex">#EC7926</div>
+      <div class="use">Primary CTA — use sparingly</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#FFFFFF; border:1px solid #e1e3e4;"></div>
+      <div class="name">Concrete White</div>
+      <div class="hex">#FFFFFF</div>
+      <div class="use">Card bg, inverse text on purple</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#1A1A1A;"></div>
+      <div class="name">Text Main</div>
+      <div class="hex">#1A1A1A</div>
+      <div class="use">Default body text</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

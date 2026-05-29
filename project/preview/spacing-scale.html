@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spacing Scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); }
+  .wrap { padding: 16px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 130px 1fr 100px; align-items: center; gap: 12px; }
+  .name { font-family: var(--font-heading); letter-spacing: 0.05em; font-size: 13px; color: var(--text-main); }
+  .bar { background: var(--teal); height: 18px; border-radius: 1px; }
+  .meta { font-family: ui-monospace, monospace; font-size: 11px; color: var(--on-surface-variant); text-align: right; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row"><div class="name">STACK SM</div><div class="bar" style="width: 8px;"></div><div class="meta">0.5rem · 8px</div></div>
+  <div class="row"><div class="name">STACK MD</div><div class="bar" style="width: 16px;"></div><div class="meta">1rem · 16px</div></div>
+  <div class="row"><div class="name">STACK LG</div><div class="bar" style="width: 32px;"></div><div class="meta">2rem · 32px</div></div>
+  <div class="row"><div class="name">GUTTER</div><div class="bar" style="width: 24px;"></div><div class="meta">1.5rem · 24px</div></div>
+  <div class="row"><div class="name">GRID MARGIN</div><div class="bar" style="width: 32px;"></div><div class="meta">2rem · 32px</div></div>
+  <div class="row"><div class="name">SECTION</div><div class="bar" style="width: 80px;"></div><div class="meta">5rem · 80px</div></div>
+</div>
+</body>
+</html>

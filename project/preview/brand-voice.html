@@ -1,0 +1,45 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Voice & Tone</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); font-family: var(--font-body); }
+  .wrap { padding: 16px 24px 18px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  h4 { font-family: var(--font-heading); font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 8px; }
+  .yes h4 { color: var(--secondary); }
+  .no h4 { color: var(--error); }
+  .item { font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
+  .yes .item::before { content: "✓ "; color: var(--secondary); font-weight: 700; }
+  .no .item::before { content: "✗ "; color: var(--error); font-weight: 700; }
+  .item b { color: var(--deep-purple); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <div class="yes">
+      <h4>Do — farmer-direct</h4>
+      <div class="item"><b>"Stop Losing Money to Slipping Cows."</b></div>
+      <div class="item"><b>"We cut grooves so cows move safely."</b></div>
+      <div class="item">Short clauses. Active voice.</div>
+      <div class="item">Real numbers — 15,000 movements, $16–$48/m².</div>
+      <div class="item">NZ English (colour, organised, GST).</div>
+      <div class="item">"Call Scott: 0274 747 775" — use names.</div>
+    </div>
+    <div class="no">
+      <h4>Don't — marketing speak</h4>
+      <div class="item">"Industry-leading <b>solutions</b>"</div>
+      <div class="item">"<b>Innovative</b> grooving technology"</div>
+      <div class="item">"<b>Transform</b> your operation"</div>
+      <div class="item">Exclamation marks in headlines</div>
+      <div class="item">Emoji 🐄 (anywhere, ever)</div>
+      <div class="item">Invented stats or fluff numbers</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

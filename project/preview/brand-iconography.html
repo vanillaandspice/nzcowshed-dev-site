@@ -1,0 +1,34 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Iconography</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); font-family: var(--font-body); }
+  .wrap { padding: 16px 24px; }
+  .row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin-bottom: 12px; }
+  .gly { background: var(--concrete-white); border-top: 3px solid var(--teal); padding: 10px 4px; text-align: center; }
+  .gly .ch { font-family: var(--font-heading); font-size: 26px; line-height: 1; color: var(--deep-purple); }
+  .gly .nm { font-family: ui-monospace, monospace; font-size: 9px; color: var(--on-surface-variant); margin-top: 6px; }
+  .note { font-family: var(--font-body); font-size: 11px; color: var(--on-surface-variant); line-height: 1.5; }
+  .note b { color: var(--deep-purple); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <div class="gly"><div class="ch">▾</div><div class="nm">dropdown</div></div>
+    <div class="gly"><div class="ch">☰</div><div class="nm">menu open</div></div>
+    <div class="gly"><div class="ch">✕</div><div class="nm">menu close</div></div>
+    <div class="gly"><div class="ch">→</div><div class="nm">inline link</div></div>
+    <div class="gly"><div class="ch">·</div><div class="nm">inline sep</div></div>
+    <div class="gly"><div class="ch">—</div><div class="nm">attribution</div></div>
+    <div class="gly"><div class="ch">☎</div><div class="nm">phone (logo)</div></div>
+    <div class="gly"><div class="ch">™</div><div class="nm">trademark</div></div>
+  </div>
+  <div class="note"><b>Policy:</b> no icon font, no SVG icon library, no emoji. The brand uses a small set of Unicode glyphs only. Where most sites would use a 24×24 icon, NZ Cowshed Groovers uses a <b>real jobsite photo</b>. If we later need inline UI icons, the closest match is <b>Lucide</b> (2px stroke) — flag to Scott/Steve first.</div>
+</div>
+</body>
+</html>

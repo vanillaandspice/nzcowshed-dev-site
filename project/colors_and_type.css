@@ -1,0 +1,218 @@
+/* ============================================================
+   NZ COWSHED GROOVERS — DESIGN TOKENS
+   Source: Stitch Design System "Agri-Industrial Practical"
+   Mirrors src/app/globals.css from the live Next.js site
+   ============================================================ */
+
+/* ── WEBFONTS ───────────────────────────────────────────────
+   Heading: Bebas Neue — bold, condensed, all-caps display
+            Loaded from the uploaded BRAND font file (fonts/).
+   Body:    Libre Franklin (formerly Lato in earlier briefs)
+            Variable weight 300–700 — uploaded BRAND font files. */
+
+@font-face {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/LibreFranklin-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Libre Franklin";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/LibreFranklin-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  /* ── NAMED BRAND COLORS ─────────────────────────────────── */
+  --deep-purple:    #3B1F6E;  /* Primary brand, hero bg, headers, footer */
+  --teal:           #2A9D8F;  /* Secondary, CTA outline, card top accent */
+  --safety-orange:  #EC7926;  /* Primary CTA, accent — use SPARINGLY     */
+  --concrete-white: #FFFFFF;  /* Card bg, inverse text                   */
+  --text-main:      #1A1A1A;  /* Default body text                       */
+
+  /* ── MD3 PRIMARY (purple ramp) ──────────────────────────── */
+  --primary:                  #250259;
+  --primary-container:        #3B1F6E;
+  --on-primary:               #ffffff;
+  --on-primary-container:     #a68adf;
+  --inverse-primary:          #d3bbff;
+  --primary-fixed:            #eaddff;
+  --primary-fixed-dim:        #d3bbff;
+  --on-primary-fixed:         #250158;
+  --on-primary-fixed-variant: #523786;
+
+  /* ── MD3 SECONDARY (teal ramp) ──────────────────────────── */
+  --secondary:                  #006a60;
+  --secondary-container:        #8cf5e4;
+  --on-secondary:               #ffffff;
+  --on-secondary-container:     #007166;
+  --secondary-fixed:            #8cf5e4;
+  --secondary-fixed-dim:        #6fd8c8;
+  --on-secondary-fixed:         #00201c;
+  --on-secondary-fixed-variant: #005048;
+
+  /* ── MD3 TERTIARY (orange ramp) ─────────────────────────── */
+  --tertiary:                  #331300;
+  --tertiary-container:        #532300;
+  --on-tertiary:               #ffffff;
+  --on-tertiary-container:     #ec7926;
+  --tertiary-fixed:            #ffdbc9;
+  --tertiary-fixed-dim:        #ffb68c;
+  --on-tertiary-fixed:         #321200;
+  --on-tertiary-fixed-variant: #753400;
+
+  /* ── MD3 ERROR ──────────────────────────────────────────── */
+  --error:              #ba1a1a;
+  --on-error:           #ffffff;
+  --error-container:    #ffdad6;
+  --on-error-container: #93000a;
+
+  /* ── MD3 SURFACE ────────────────────────────────────────── */
+  --surface:                  #f8f9fa;
+  --surface-dim:              #d9dadb;
+  --surface-bright:           #f8f9fa;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low:    #f3f4f5;
+  --surface-container:        #edeeef;
+  --surface-container-high:   #e7e8e9;
+  --surface-container-highest:#e1e3e4;
+  --on-surface:               #191c1d;
+  --on-surface-variant:       #494550;
+  --inverse-surface:          #2e3132;
+  --inverse-on-surface:       #f0f1f2;
+  --surface-tint:             #6a4f9f;
+  --surface-variant:          #e1e3e4;
+
+  /* ── MD3 BACKGROUND & OUTLINE ───────────────────────────── */
+  --background:      #f8f9fa;
+  --on-background:   #191c1d;
+  --outline:         #7b7581;
+  --outline-variant: #cbc4d2;
+
+  /* ── FONT STACKS ────────────────────────────────────────── */
+  --font-heading: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --font-body:    "Libre Franklin", Arial, Helvetica, sans-serif;
+
+  /* ── TYPE SCALE (desktop) ───────────────────────────────── */
+  --text-display:           4.5rem;   /* 72px — homepage hero */
+  --text-headline-lg:       3rem;     /* 48px — section H1    */
+  --text-headline-lg-mobile:2.25rem;  /* 36px                 */
+  --text-headline-md:       2rem;     /* 32px — section H2    */
+  --text-body-lg:           1.25rem;  /* 20px — lead          */
+  --text-body-md:           1rem;     /* 16px — default       */
+  --text-label-caps:        1.125rem; /* 18px — uppercase     */
+
+  /* ── LINE HEIGHTS ───────────────────────────────────────── */
+  --leading-display:  1.1;
+  --leading-headline: 1.2;
+  --leading-body-lg:  1.6;
+  --leading-body-md:  1.5;
+  --leading-label:    1.0;
+
+  /* ── LETTER SPACING ─────────────────────────────────────── */
+  --tracking-display:    0.02em;
+  --tracking-label-caps: 0.05em;
+
+  /* ── SPACING ────────────────────────────────────────────── */
+  --space-grid-margin: 2rem;    /* page horizontal gutter      */
+  --space-gutter:      1.5rem;  /* between cards/columns       */
+  --space-section:     5rem;    /* vertical section padding    */
+  --space-stack-sm:    0.5rem;
+  --space-stack-md:    1rem;
+  --space-stack-lg:    2rem;
+
+  /* ── BORDER RADIUS ──────────────────────────────────────── */
+  --radius-sm:   0.125rem;
+  --radius:      0.25rem;   /* default — soft */
+  --radius-md:   0.375rem;
+  --radius-lg:   0.5rem;
+  --radius-xl:   0.75rem;
+  --radius-full: 9999px;
+  /* Industrial / groove elements use 0 — sharp, no rounding.  */
+
+  /* ── BORDERS ────────────────────────────────────────────── */
+  --border-card-top:  3px solid var(--teal);          /* card top accent */
+  --border-input:     2px solid var(--deep-purple);   /* form fields     */
+  --border-secondary: 2px solid var(--teal);          /* secondary btn   */
+
+  /* ── ELEVATION ──────────────────────────────────────────── */
+  /* Deliberately flat — depth comes from TONAL LAYERING
+     (alternating purple / white sections), not shadows.       */
+  --shadow-none: none;
+
+  /* ── MOTION ─────────────────────────────────────────────── */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY (drop-in element styles)
+   ============================================================ */
+
+body {
+  background: var(--surface-container-lowest);
+  color:      var(--text-main);
+  font-family: var(--font-body);
+  font-size:   var(--text-body-md);
+  line-height: var(--leading-body-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;          /* Bebas Neue ships at one weight */
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-headline);
+  text-transform: uppercase; /* All Bebas headlines are caps   */
+  color: inherit;
+  margin: 0;
+}
+
+h1 { font-size: var(--text-display);     line-height: var(--leading-display); }
+h2 { font-size: var(--text-headline-lg); }
+h3 { font-size: var(--text-headline-md); }
+h4 { font-size: var(--text-label-caps);  letter-spacing: var(--tracking-label-caps); }
+
+p, li {
+  font-family: var(--font-body);
+  font-size:   var(--text-body-md);
+  line-height: var(--leading-body-md);
+}
+
+.lead {
+  font-size:   var(--text-body-lg);
+  line-height: var(--leading-body-lg);
+}
+
+.label-caps {
+  font-family: var(--font-heading);
+  font-size:   var(--text-label-caps);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label-caps);
+  text-transform: uppercase;
+}
+
+code, pre, kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size:   0.9em;
+}
+
+/* Responsive: mobile down-scale for the hero display.        */
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-headline-lg-mobile); }
+  h2 { font-size: var(--text-headline-lg-mobile); }
+}

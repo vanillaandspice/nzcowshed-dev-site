@@ -1,0 +1,33 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Section Alternation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; background: var(--surface-container-lowest); color: var(--text-main); font-family: var(--font-body); }
+  .wrap { padding: 12px 24px 16px; }
+  .stack { display: grid; grid-template-columns: 1fr; }
+  .sec { padding: 14px 18px; font-family: var(--font-heading); letter-spacing: 0.05em; text-transform: uppercase; font-size: 16px; }
+  .sec.purple { background: var(--deep-purple); color: #fff; }
+  .sec.white { background: var(--concrete-white); color: var(--deep-purple); border: 1px solid var(--surface-container-highest); border-left: 0; border-right: 0;}
+  .sec.orange { background: var(--safety-orange); color: #fff; }
+  .meta { font-family: ui-monospace, monospace; font-size: 10px; color: var(--on-surface-variant); margin-top: 10px; line-height: 1.5; }
+  .meta b { color: var(--deep-purple); font-family: var(--font-body); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stack">
+    <div class="sec purple">Hero — Stop losing money to slipping cows</div>
+    <div class="sec white">Problem — slipping cows cost you more than you think</div>
+    <div class="sec purple">Solution — grooving fixes it</div>
+    <div class="sec orange">15,000 cattle movements. Not one problem.</div>
+    <div class="sec white">Testimonials</div>
+    <div class="sec purple">Final CTA</div>
+  </div>
+  <div class="meta"><b>Tonal layering:</b> sections alternate <b>deep-purple</b> (white text) and <b>concrete-white</b> (dark text). One <b>safety-orange</b> stat bar per page max. Depth comes from this rhythm — never from shadows.</div>
+</div>
+</body>
+</html>
