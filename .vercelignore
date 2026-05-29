@@ -1,0 +1,5 @@
+node_modules/
+*.md
+project/ui_kits/
+project/preview/
+project/pages/
