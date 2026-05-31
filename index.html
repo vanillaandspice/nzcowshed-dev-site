@@ -872,7 +872,12 @@ function Header({
 }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
-  const isMobile = window.innerWidth < 768;
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+  React.useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
   const go = href => e => {
     e.preventDefault();
     setMenuOpen(false);
@@ -1550,6 +1555,8 @@ const selectLabelStyle = {
 function EnquiryForm() {
   const [state, setState] = React.useState(EMPTY);
   const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [formError, setFormError] = React.useState(null);
   const onChange = e => {
     const {
       name,
@@ -1562,10 +1569,24 @@ function EnquiryForm() {
       [name]: type === 'checkbox' ? checked : value
     }));
   };
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    console.log('Enquiry (mock):', state);
-    setSubmitted(true);
+    setSubmitting(true);
+    setFormError(null);
+    try {
+      // Sign up at formspree.io, create a form, then replace REPLACE_WITH_YOUR_FORM_ID
+      const res = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(state),
+      });
+      if (!res.ok) throw new Error('submit failed');
+      setSubmitted(true);
+    } catch {
+      setFormError('Sorry, there was a problem sending your enquiry. Please call Scott directly on 0274 747 775.');
+    } finally {
+      setSubmitting(false);
+    }
   };
   if (submitted) {
     return /*#__PURE__*/React.createElement("div", {
@@ -1743,11 +1764,23 @@ function EnquiryForm() {
     style: {
       color: 'var(--safety-orange)'
     }
-  }, " *"))), /*#__PURE__*/React.createElement(Button, {
+  }, " *"))), formError && /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'var(--font-body)',
+      fontSize: '0.9375rem',
+      color: 'var(--safety-orange)',
+      margin: '0 0 1rem',
+      padding: '0.75rem 1rem',
+      background: 'rgba(236,121,38,0.08)',
+      border: '1px solid var(--safety-orange)',
+      borderRadius: 4
+    }
+  }, formError), /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     type: "submit",
-    fullWidth: true
-  }, "Send enquiry"));
+    fullWidth: true,
+    disabled: submitting
+  }, submitting ? "Sending…" : "Send enquiry"));
 }
 Object.assign(window, {
   EnquiryForm
