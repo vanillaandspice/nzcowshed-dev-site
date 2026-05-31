@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/assets/brand/banner-logo.webp',
+} = Astro.props;
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+const canonicalUrl = canonical ?? siteUrl + Astro.url.pathname;
+const fullTitle = title.includes('NZ Cowshed Groovers') ? title : `${title} | NZ Cowshed Groovers`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'NZ Cowshed Groovers',
+  url: siteUrl,
+  telephone: '+6427474775',
+  email: 'info@cowshedgroovers.co.nz',
+  areaServed: { '@type': 'Country', name: 'New Zealand' },
+  description: 'Concrete grooving for cowsheds, yards, car parks and boat ramps across New Zealand. 100% lifetime guarantee.',
+  priceRange: '$16–$48 per m²',
+  founder: { '@type': 'Person', name: 'Neil Taylor' },
+};
+---
+
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#3B1F6E" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="NZ Cowshed Groovers" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={siteUrl + ogImage} />
+  <meta property="og:locale" content="en_NZ" />
+  <meta property="og:site_name" content="NZ Cowshed Groovers" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={siteUrl + ogImage} />
+
+  <link rel="preload" href="/fonts/BebasNeue-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/fonts/LibreFranklin-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <!-- Google Search Console verification — replace with your verification code -->
+  <meta name="google-site-verification" content="REPLACE_WITH_GSC_VERIFICATION_CODE" />
+
+  <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

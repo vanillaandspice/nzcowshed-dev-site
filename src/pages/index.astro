@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import GrooveDivider from '../components/GrooveDivider.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
+import StatCallout from '../components/StatCallout.astro';
+import ServiceTile from '../components/ServiceTile.astro';
+import Slideshow from '../components/Slideshow.astro';
+
+const services = [
+  { title: 'Cowshed Grooving', blurb: 'The job we do day-in, day-out. Cowshed floors, races, and yards grooved for cows that move confidently every morning.', href: '/services/cowshed-grooving', photo: '/assets/photos/cowshed-grooving-hero.webp' },
+  { title: 'Yards', blurb: 'Drafting yards, loading ramps, sale yards. Stock that slips costs you time and injury. Grooved yards fix that permanently.', href: '/yards', photo: '/assets/photos/yard-grooved.webp' },
+  { title: 'Car Parks', blurb: "Slippery concrete is a liability. We groove car parks, loading bays, and commercial floors so staff and vehicles grip in any condition.", href: '/car-parks', photo: '/assets/photos/cowshed-2b.webp' },
+  { title: 'Boat Ramps & Marine Docks', blurb: 'Crosshatch grooves stop algae build-up and slipping at the waterline.', href: '/boat-ramps-marine-docks', photo: '/assets/photos/boatramp-grooved.webp' },
+];
+
+const homeSlides = [
+  { photo: '/assets/photos/cowshed-grooving-hero.webp', line1: 'Crosshatch grooves cut into existing concrete', line2: 'No new surface — done in a single day', name: 'Trevor', location: 'Patetonga, Waikato' },
+  { photo: '/assets/photos/yard-grooved.webp', line1: '15,000 cattle through this yard since grooving', line2: 'Not a single problem reported', name: 'Gordon Wright', location: 'Waikato' },
+  { photo: '/assets/photos/frankton-sale-yards.webp', line1: '186 m² of sale yard grooved end to end', line2: 'Drafting drift eliminated completely', name: 'John', location: 'Frankton Sale Yards, Otorohanga' },
+  { photo: '/assets/photos/livestock-improvements.webp', line1: "Bulls that slipped every day — now they don't", line2: 'Water runs off the surface, no algae build-up', name: 'Lance Pettigrew', location: 'Livestock Improvements, Waikato' },
+  { photo: '/assets/photos/boatramp-grooved.webp', line1: 'Boat ramp grooved at the waterline', line2: 'Grip when wet, grip when dry', name: 'Council Project', location: 'Bay of Plenty' },
+];
+---
+
+<Layout
+  title="Concrete Grooving NZ — Cowsheds, Yards, Car Parks & Boat Ramps | NZ Cowshed Groovers"
+  description="NZ Cowshed Groovers cut crosshatch grooves into existing concrete — cowsheds, yards, car parks, and boat ramps across New Zealand. 100% lifetime guarantee. Call Scott: 0274 747 775."
+>
+  <HeroSection />
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 1.5rem; text-align: center; letter-spacing: 0.02em;">
+      Slipping cows cost you<br />more than you think
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; margin: 0 0 1rem; text-align: center;">
+      A cow that slips loses condition. A cow that goes down can lose production for weeks. On wet concrete, it's not a matter of if — it's when.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; margin: 0; text-align: center;">
+      Most farmers put up with it. The ones who don't call us.
+    </p>
+  </Section>
+
+  <GrooveDivider />
+
+  <Section bg="deep-purple">
+    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-stack-lg); align-items: center;">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
+          Grooving your concrete fixes it
+        </h2>
+        <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem;">
+          We grind grooves directly into your existing concrete — cowsheds, yards, races, car parks, boat ramps. No new surface. No major downtime. Just concrete that grips.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          {['Cows move with confidence. Fewer injuries, less stress, better production.', 'Your shed runs faster. Cows that walk well get in and out quicker. Every morning.', "One job, done once. Grooves don't wear off."].map(line => (
+            <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; color: var(--concrete-white); padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+            </li>
+          ))}
+        </ul>
+        <Button variant="ghost" href="/contact">Get a Quote</Button>
+      </div>
+      <figure style="margin: 0;">
+        <div style="background: #000 center/cover url('/assets/photos/cowshed-grooves-closeup.webp'); aspect-ratio: 4/3; border-radius: var(--radius); border-top: 3px solid var(--teal);"></div>
+        <figcaption style="font-family: var(--font-body); font-size: 0.875rem; color: rgba(255,255,255,0.7); margin: 0.75rem 0 0; font-style: italic;">Crosshatch grooves cut straight into the existing cowshed floor.</figcaption>
+      </figure>
+    </div>
+  </Section>
+
+  <Section bg="concrete-white" narrow>
+    <TestimonialBlock
+      quote="We considered many other options before finding your website. No other option compared. Vast improvement — no slipping, stable footing, cattle settled, easy to handle."
+      attribution="Gordon Wright"
+    />
+  </Section>
+
+  <StatCallout
+    showCow
+    number="15,000"
+    label="cattle movements through one yard since we grooved it."
+    sublabel="Not a single problem."
+    attribution="— Gordon Wright"
+  />
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 2rem; text-align: center; letter-spacing: 0.02em;">
+      More farmer feedback on concrete grooving
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-gutter);">
+      <Card>
+        <TestimonialBlock quote="Completely different herd to milk. Cows are flowing through the shed much better. No more slips and faster milking times." attribution="Trevor" business="Patetonga" />
+      </Card>
+      <Card>
+        <TestimonialBlock quote="It instantly showed in the stock. They felt secure and were 100% more settled." attribution="Kelly & Tina Woollier" />
+      </Card>
+      <Card>
+        <TestimonialBlock quote="Fitted in with our milking times. Good communication. Cows no longer slip on the yard — much easier to draft and handle." attribution="Graham & Odele Wells" />
+      </Card>
+    </div>
+  </Section>
+
+  <Section bg="deep-purple" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
+      Still thinking about it?
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.5rem; line-height: 1.5; color: var(--concrete-white); margin: 0 0 0.5rem; font-style: italic;">
+      "I should have done the whole yard first off."
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1rem; color: var(--teal); margin: 0 0 1.5rem;">— Kelly &amp; Tina Woollier</p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 2rem;">
+      The farmers who wait longest are usually the ones who say that. One grooved section and they see the results, then wish they'd done the rest sooner.
+    </p>
+    <Button variant="primary" href="/contact">Request a callback</Button>
+  </Section>
+
+  <Section bg="concrete-white">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 2rem; text-align: center; letter-spacing: 0.02em;">
+      Straightforward
+    </h2>
+    <ol style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter);">
+      {[
+        { n: '1', t: 'Get a quote', d: "Tell us what you've got — cowshed, yard, race, whatever needs doing." },
+        { n: '2', t: 'We come to you', d: 'We bring the gear and get it done.' },
+        { n: '3', t: 'Your concrete grips', d: 'From the day we leave, it works.' },
+      ].map(s => (
+        <li style="border-top: 3px solid var(--teal); padding-top: 1rem;">
+          <div style="font-family: var(--font-heading); font-size: 3rem; color: var(--safety-orange); line-height: 1; letter-spacing: 0.02em;">{s.n}</div>
+          <h4 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--deep-purple); margin: 0.5rem 0; letter-spacing: 0.02em;">{s.t}</h4>
+          <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 0.5rem; text-align: center; letter-spacing: 0.02em;">
+      We groove it all
+    </h2>
+    <p style="text-align: center; font-family: var(--font-body); font-size: 1.125rem; color: var(--on-surface-variant); margin: 0 0 2rem;">One method — wet-saw diamond blade. Every surface.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter);">
+      {services.map(s => <ServiceTile {...s} />)}
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 1.5rem; text-align: center; letter-spacing: 0.02em;">
+      Jobs we've done
+    </h2>
+    <Slideshow slides={homeSlides} />
+  </Section>
+
+  <Section bg="safety-orange" narrow>
+    <div style="text-align: center;">
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1rem; letter-spacing: 0.02em;">
+        Ready to stop the slipping?
+      </h2>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: var(--concrete-white); margin: 0 0 1.5rem;">
+        Call Scott on <a href="tel:+6427474775" style="color: var(--deep-purple); font-weight: 700; text-decoration: none;">0274 747 775</a> or send us a message.
+      </p>
+      <Button variant="ghost" href="/contact">Get a Free Quote</Button>
+    </div>
+  </Section>
+</Layout>

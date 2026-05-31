@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import EnquiryForm from '../components/EnquiryForm';
+---
+
+<Layout
+  title="Get a Quote — Contact NZ Cowshed Groovers"
+  description="Contact NZ Cowshed Groovers for a concrete grooving quote. Call Scott on 0274 747 775 or fill in the form. North Island specialists, nationwide capability."
+>
+  <Section bg="deep-purple" narrow>
+    <div style="text-align: center;">
+      <img
+        src="/assets/brand/cow.webp"
+        alt=""
+        aria-hidden="true"
+        style="display: block; width: clamp(130px, 15vw, 190px); height: auto; margin: 0 auto 1.25rem; filter: drop-shadow(0 6px 10px rgba(37,2,89,0.4));"
+      />
+      <h1 style="color: var(--concrete-white); margin: 0 0 1rem;">Get in touch</h1>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0;">
+        Fill in the form below, or call Scott direct: <strong style="color: var(--safety-orange);">0274 747 775</strong>
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-stack-lg); align-items: start;">
+      <EnquiryForm client:load />
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">Or call</h3>
+        <a href="tel:+6427474775" style="font-family: var(--font-heading); font-size: 2rem; color: var(--safety-orange); text-decoration: none; letter-spacing: 0.02em; display: block; margin: 0 0 1.5rem;">0274 747 775</a>
+
+        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Email</h4>
+        <a href="mailto:info@cowshedgroovers.co.nz" style="font-family: var(--font-body); font-size: 1rem; color: var(--text-main); text-decoration: underline; display: block; margin: 0 0 1.5rem;">info@cowshedgroovers.co.nz</a>
+
+        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Service area</h4>
+        <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0 0 1.5rem;">North Island, New Zealand — nationwide capability. We come to your farm.</p>
+
+        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Pricing</h4>
+        <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">
+          <span style="color: var(--safety-orange);">Setup fee</span> plus per m² rate depending on access &amp; condition.<br /><br />
+          <strong>100% lifetime guarantee included.</strong>
+        </p>
+      </div>
+    </div>
+  </Section>
+</Layout>

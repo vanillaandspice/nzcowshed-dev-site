@@ -1,0 +1,139 @@
+---
+interface Slide {
+  photo: string;
+  line1: string;
+  line2: string;
+  name: string;
+  location: string;
+}
+interface Props {
+  slides: Slide[];
+}
+const { slides } = Astro.props;
+---
+
+<div class="slideshow">
+  <div class="slideshow__track">
+    {slides.map((slide, i) => (
+      <div
+        class:list={['slideshow__slide', { 'is-active': i === 0 }]}
+        style={`background-image: url(${slide.photo})`}
+        aria-hidden={i !== 0 ? 'true' : undefined}
+      >
+        <div class="slideshow__caption">
+          <p class="slideshow__line1">{slide.line1}</p>
+          <p class="slideshow__line2">{slide.line2}</p>
+          <p class="slideshow__attribution"><strong>{slide.name}</strong> — {slide.location}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  <button class="slideshow__btn slideshow__btn--prev" aria-label="Previous slide">&#8249;</button>
+  <button class="slideshow__btn slideshow__btn--next" aria-label="Next slide">&#8250;</button>
+  <div class="slideshow__dots" aria-hidden="true">
+    {slides.map((_, i) => (
+      <button class:list={['slideshow__dot', { 'is-active': i === 0 }]} data-index={i} tabindex="-1"></button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .slideshow { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--deep-purple); }
+  .slideshow__slide {
+    display: none;
+    aspect-ratio: 16/7;
+    background: #000 center/cover no-repeat;
+    position: relative;
+  }
+  .slideshow__slide.is-active { display: block; }
+  .slideshow__caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(37,2,89,0.92));
+    padding: 3rem 1.5rem 1.5rem;
+  }
+  .slideshow__line1 {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.375rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--concrete-white);
+    margin: 0 0 0.25rem;
+  }
+  .slideshow__line2 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 0.75rem;
+  }
+  .slideshow__attribution {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--teal);
+    margin: 0;
+  }
+  .slideshow__btn {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(37,2,89,0.75);
+    color: var(--concrete-white);
+    border: none;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.75rem;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background var(--duration-fast);
+    z-index: 2;
+  }
+  .slideshow__btn:hover { background: rgba(37,2,89,0.95); }
+  .slideshow__btn--prev { left: 0.75rem; }
+  .slideshow__btn--next { right: 0.75rem; }
+  .slideshow__dots {
+    position: absolute;
+    bottom: 1rem; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 0.5rem;
+    z-index: 2;
+  }
+  .slideshow__dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.4); border: none; cursor: pointer;
+    padding: 0;
+    transition: background var(--duration-fast);
+  }
+  .slideshow__dot.is-active { background: var(--teal); }
+  @media (max-width: 480px) {
+    .slideshow__slide { aspect-ratio: 4/3; }
+    .slideshow__btn { width: 36px; height: 36px; font-size: 1.25rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.slideshow').forEach(container => {
+    const slides = container.querySelectorAll<HTMLElement>('.slideshow__slide');
+    const dots = container.querySelectorAll<HTMLElement>('.slideshow__dot');
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function go(n: number) {
+      slides[current].classList.remove('is-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      dots[current].classList.remove('is-active');
+      current = ((n % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      slides[current].removeAttribute('aria-hidden');
+      dots[current].classList.add('is-active');
+    }
+
+    function start() { timer = setInterval(() => go(current + 1), 5000); }
+    function stop() { clearInterval(timer); }
+
+    container.querySelector('.slideshow__btn--next')?.addEventListener('click', () => { stop(); go(current + 1); start(); });
+    container.querySelector('.slideshow__btn--prev')?.addEventListener('click', () => { stop(); go(current - 1); start(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { stop(); go(i); start(); }));
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+    if (slides.length > 1) start();
+  });
+</script>

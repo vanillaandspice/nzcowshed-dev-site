@@ -1,0 +1,77 @@
+---
+interface Props {
+  breadcrumb: string;
+  headline: string;
+  lead: string;
+  photo: string;
+  photoAlt: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+const { breadcrumb, headline, lead, photo, photoAlt, ctaLabel = 'Get a Quote', ctaHref = '/contact' } = Astro.props;
+---
+<section class="service-hero">
+  <div class="service-hero__inner">
+    <div class="service-hero__text">
+      <p class="service-hero__breadcrumb">{breadcrumb}</p>
+      <h1>{headline}</h1>
+      <p class="service-hero__lead">{lead}</p>
+      <a href={ctaHref} class="service-hero__btn">{ctaLabel}</a>
+    </div>
+    <div class="service-hero__img" style={`background-image: url(${photo})`} role="img" aria-label={photoAlt}></div>
+  </div>
+</section>
+
+<style>
+  .service-hero {
+    background: var(--deep-purple);
+    padding: var(--space-section) var(--space-grid-margin);
+  }
+  .service-hero__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-stack-lg);
+    align-items: center;
+  }
+  .service-hero__breadcrumb {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    letter-spacing: 0.05em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+  .service-hero h1 {
+    color: var(--concrete-white);
+    margin: 0 0 1rem;
+  }
+  .service-hero__lead {
+    font-size: 1.25rem;
+    line-height: var(--leading-body-lg);
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 1.5rem;
+  }
+  .service-hero__btn {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--safety-orange);
+    color: var(--concrete-white);
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius);
+  }
+  .service-hero__img {
+    aspect-ratio: 4/3;
+    background: #000 center/cover no-repeat;
+    border-radius: var(--radius);
+  }
+  @media (max-width: 768px) {
+    .service-hero__inner { grid-template-columns: 1fr; }
+    .service-hero__img { order: -1; }
+  }
+</style>

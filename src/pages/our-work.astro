@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+
+const jobs = [
+  { photo: '/assets/photos/yard-grooved.webp', title: 'Cowshed yard', caption: 'Wet morning — grooves visible across the full pad.' },
+  { photo: '/assets/photos/frankton-sale-yards.webp', title: 'Frankton Sale Yards', caption: '186 m² of grooved sale yard, drafting drift gone.' },
+  { photo: '/assets/photos/livestock-improvements.webp', title: 'Livestock Improvements yard', caption: 'Bulls now stand instead of slipping. Water runs off.' },
+  { photo: '/assets/photos/cowshed-2b.webp', title: 'Car Park', caption: 'Residential driveway grooved end-to-end for all-weather grip.' },
+  { photo: '/assets/photos/boatramp-grooved.webp', title: 'Boat ramp', caption: 'Crosshatch grooves, waterline grip.' },
+];
+---
+
+<Layout
+  title="Our Work — NZ Cowshed Groovers"
+  description="Real concrete grooving jobs on real NZ farms and businesses. Cowsheds, yards, car parks and boat ramps grooved by NZ Cowshed Groovers."
+>
+  <Section bg="deep-purple" narrow>
+    <div style="text-align: center;">
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+        Our work
+      </h1>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0;">
+        Real jobs on real farms.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-gutter);">
+      {jobs.map(j => (
+        <div style="background: var(--concrete-white); border-top: 3px solid var(--teal);">
+          <div style={`aspect-ratio: 4/3; background: #000 center/cover url(${j.photo});`}></div>
+          <div style="padding: 1rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--deep-purple); margin: 0 0 0.5rem; letter-spacing: 0.02em;">{j.title}</h3>
+            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--on-surface-variant); margin: 0;">{j.caption}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+</Layout>

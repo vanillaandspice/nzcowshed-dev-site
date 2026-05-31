@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Card from '../../components/Card.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import Slideshow from '../../components/Slideshow.astro';
+
+const slides = [
+  { photo: '/assets/photos/cowshed-grooving-hero.webp', line1: 'Crosshatch grooves cut into existing concrete', line2: 'No new surface needed — done in a day', name: 'Trevor', location: 'Patetonga, Waikato' },
+  { photo: '/assets/photos/cowshed-grooves-closeup.webp', line1: 'Grooves last 10–12 years with zero maintenance', line2: '100% lifetime guarantee on every groove', name: 'Gordon Wright', location: 'Waikato' },
+  { photo: '/assets/photos/cowshed-milking-yard.webp', line1: 'Cows flow through the shed much better', line2: 'Faster milking times from day one', name: 'Kelly & Tina Woollier', location: 'Dairy Farmers' },
+  { photo: '/assets/photos/cowshed-2b.webp', line1: 'Water runs off, no algae build-up', line2: "Bulls that slipped every day — now they don't", name: 'Lance Pettigrew', location: 'Livestock Improvements' },
+];
+---
+
+<Layout
+  title="Cowshed Floor Grooving NZ — Non-Slip Concrete for Dairy Farms"
+  description="Cowshed floor grooving by NZ Cowshed Groovers. Wet-saw diamond blade crosshatch grooves — no dust, no chip-out, 20–30 minutes faster milking. 100% lifetime guarantee."
+>
+  <ServiceHero
+    breadcrumb="Services / Cowshed Grooving"
+    headline="Cowsheds that don't lose cows"
+    lead="The job we do day-in, day-out. Cowshed floors, races, and yards grooved so cows walk in confidently and out faster."
+    photo="/assets/photos/cowshed-grooving-hero.webp"
+    photoAlt="Grooved cowshed floor"
+    ctaLabel="Request a quote"
+  />
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      What you get
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      {[
+        'Wet-saw diamond blade cutting — no dust, no chip-out, no chemicals.',
+        'Crosshatch grooves: traction in every direction, drains water off the surface.',
+        '20–30 minutes faster milking per session (up to 1 hour/day for a 3-person team).',
+        'Grooves last 10–12 years. Zero maintenance.',
+        '100% lifetime guarantee. No competitor matches this.',
+      ].map(line => (
+        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section bg="surface" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem;">
+      What farmers say
+    </h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-gutter);">
+      <Card>
+        <TestimonialBlock
+          quote="Completely different herd to milk. Cows are flowing through the shed much better. Grooving our yard meant no more slips and faster milking times."
+          attribution="Trevor"
+          business="Patetonga"
+        />
+      </Card>
+      <Card>
+        <TestimonialBlock
+          quote="Water runs off the surface better, no algae build up. We used to have bulls slip every day, but now they don't slip at all."
+          attribution="Lance Pettigrew"
+          business="Livestock Improvements"
+        />
+      </Card>
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem; text-align: center;">
+      Jobs we've done
+    </h2>
+    <Slideshow slides={slides} />
+  </Section>
+
+  <Section bg="safety-orange" narrow>
+    <div style="text-align: center;">
+      <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+        Get a number for your shed
+      </h2>
+      <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; color: var(--concrete-white); margin: 0 0 1.5rem;">
+        Grooving runs $16–$48 per m² depending on access and condition. Send us a rough size and we'll come back with a real number.
+      </p>
+      <Button variant="ghost" href="/contact">Get a Quote</Button>
+    </div>
+  </Section>
+</Layout>

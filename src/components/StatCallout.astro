@@ -1,0 +1,63 @@
+---
+interface Props {
+  number: string;
+  label: string;
+  sublabel?: string;
+  attribution?: string;
+  showCow?: boolean;
+}
+const { number, label, sublabel, attribution, showCow = false } = Astro.props;
+---
+<div class="stat-callout">
+  {showCow && (
+    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="stat-callout__cow" />
+  )}
+  <div class="stat-callout__number">{number}</div>
+  <p class="stat-callout__label">{label}</p>
+  {sublabel && <p class="stat-callout__sublabel">{sublabel}</p>}
+  {attribution && <p class="stat-callout__attribution">{attribution}</p>}
+</div>
+
+<style>
+  .stat-callout {
+    background: var(--deep-purple);
+    color: var(--concrete-white);
+    padding: var(--space-section) var(--space-grid-margin);
+    text-align: center;
+  }
+  .stat-callout__cow {
+    width: clamp(130px, 15vw, 190px);
+    height: auto;
+    margin: 0 auto 1.25rem;
+    filter: drop-shadow(0 6px 10px rgba(37,2,89,0.4));
+  }
+  .stat-callout__number {
+    font-family: var(--font-heading);
+    font-size: clamp(4rem, 10vw, 7rem);
+    letter-spacing: var(--tracking-display);
+    color: var(--safety-orange);
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+  .stat-callout__label {
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-body-lg);
+    color: var(--concrete-white);
+    max-width: 40ch;
+    margin: 0 auto 0.5rem;
+  }
+  .stat-callout__sublabel {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+    color: var(--teal);
+    margin: 0 auto 0.5rem;
+  }
+  .stat-callout__attribution {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+  }
+</style>

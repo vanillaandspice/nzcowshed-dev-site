@@ -1,0 +1,29 @@
+---
+interface Props {
+  bg?: 'deep-purple' | 'concrete-white' | 'surface' | 'safety-orange';
+  narrow?: boolean;
+}
+const { bg = 'surface', narrow = false } = Astro.props;
+---
+<section class:list={['section', `section--${bg}`, { 'section--narrow': narrow }]}>
+  <div class="section__inner">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: var(--space-section) var(--space-grid-margin);
+  }
+  .section--deep-purple { background: var(--deep-purple); color: var(--concrete-white); }
+  .section--concrete-white { background: var(--concrete-white); color: var(--text-main); }
+  .section--surface { background: var(--surface); color: var(--text-main); }
+  .section--safety-orange { background: var(--safety-orange); color: var(--concrete-white); }
+  .section__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section--narrow .section__inner {
+    max-width: 720px;
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ZoomModal from '../components/ZoomModal';
+---
+
+<Layout
+  title="About NZ Cowshed Groovers — Neil Taylor, Founder"
+  description="NZ Cowshed Groovers was founded by Neil Taylor, who developed the concrete grooving technique. Now operated by Scott Coker. 100% lifetime guarantee on every groove."
+>
+  <section style="background: var(--deep-purple); padding: var(--space-section) var(--space-grid-margin);">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-stack-lg); align-items: center;">
+      <div>
+        <p style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--teal); text-transform: uppercase; margin: 0 0 0.75rem;">About</p>
+        <h1 style="color: var(--concrete-white); margin: 0 0 1rem;">The original NZ groover</h1>
+        <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
+          Neil Taylor developed the technique. The machines were built for the job. We've been on NZ farms for decades.
+        </p>
+      </div>
+      <div style="background: #000 center/cover url('/assets/brand/truck-scott.webp'); aspect-ratio: 4/3; border-radius: var(--radius);"></div>
+    </div>
+  </section>
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">The history</h2>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      NZ Cowshed Groovers was founded by <strong>Neil Taylor</strong>, who developed the grooving technique and built the custom machinery still in use today. Neil's work is recognised across the North Island dairy community — the technique itself is a barrier to entry for competitors.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      <strong>Scott Coker</strong> is the incoming owner-operator. Scott is married to Neil's daughter Sarsha — the business continues with family lineage. Scott brings two decades' experience running fabrication and franchise businesses, and is committed to keeping every part of the technique exactly as Neil developed it.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0;">
+      You'll still get the same wet-saw method, the same lifetime guarantee, and a 027 number that rings the operator. The voice on the other end is just Scott now.
+    </p>
+  </Section>
+
+  <Section bg="surface">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-stack-lg); align-items: start;">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">How we work</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+          {[
+            'Wet-saw diamond blade — proprietary technique developed by Neil Taylor',
+            'Ride-on machinery — built for NZ farm conditions',
+            '100% lifetime guarantee on every groove',
+            'North Island focus — nationwide capability',
+            'Single-operator + casual crew — direct line to Scott on every job',
+          ].map(line => (
+            <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <figure style="margin: 0;">
+        <ZoomModal
+          client:load
+          src="/assets/brand/neil-clipping.webp"
+          alt="Neil Taylor working on the Waikato Student Union, long before he set up NZ Cowshed Groovers."
+        />
+        <figcaption style="font-family: var(--font-body); font-size: 0.875rem; line-height: 1.4; color: var(--on-surface-variant); margin: 0.75rem 0 0; font-style: italic;">
+          Neil Taylor working on the Waikato Student Union, long before he set up NZ Cowshed Groovers.
+        </figcaption>
+      </figure>
+    </div>
+  </Section>
+</Layout>

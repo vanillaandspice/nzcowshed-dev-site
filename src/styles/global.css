@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/LibreFranklin-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Libre Franklin";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/LibreFranklin-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  --deep-purple:    #3B1F6E;
+  --teal:           #2A9D8F;
+  --safety-orange:  #EC7926;
+  --concrete-white: #FFFFFF;
+  --text-main:      #1A1A1A;
+  --primary:                  #250259;
+  --primary-container:        #3B1F6E;
+  --on-primary:               #ffffff;
+  --on-primary-container:     #a68adf;
+  --inverse-primary:          #d3bbff;
+  --secondary:                  #006a60;
+  --secondary-container:        #8cf5e4;
+  --on-secondary:               #ffffff;
+  --on-secondary-container:     #007166;
+  --tertiary:                  #331300;
+  --tertiary-container:        #532300;
+  --on-tertiary:               #ffffff;
+  --on-tertiary-container:     #ec7926;
+  --error:              #ba1a1a;
+  --on-error:           #ffffff;
+  --error-container:    #ffdad6;
+  --on-error-container: #93000a;
+  --surface:                  #f8f9fa;
+  --surface-dim:              #d9dadb;
+  --surface-bright:           #f8f9fa;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low:    #f3f4f5;
+  --surface-container:        #edeeef;
+  --surface-container-high:   #e7e8e9;
+  --surface-container-highest:#e1e3e4;
+  --on-surface:               #191c1d;
+  --on-surface-variant:       #494550;
+  --inverse-surface:          #2e3132;
+  --inverse-on-surface:       #f0f1f2;
+  --surface-tint:             #6a4f9f;
+  --surface-variant:          #e1e3e4;
+  --background:      #f8f9fa;
+  --on-background:   #191c1d;
+  --outline:         #7b7581;
+  --outline-variant: #cbc4d2;
+  --font-heading: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  --font-body:    "Libre Franklin", Arial, Helvetica, sans-serif;
+  --text-display:           4.5rem;
+  --text-headline-lg:       3rem;
+  --text-headline-lg-mobile:2.25rem;
+  --text-headline-md:       2rem;
+  --text-body-lg:           1.25rem;
+  --text-body-md:           1rem;
+  --text-label-caps:        1.125rem;
+  --leading-display:  1.1;
+  --leading-headline: 1.2;
+  --leading-body-lg:  1.6;
+  --leading-body-md:  1.5;
+  --leading-label:    1.0;
+  --tracking-display:    0.02em;
+  --tracking-label-caps: 0.05em;
+  --space-grid-margin: 2rem;
+  --space-gutter:      1.5rem;
+  --space-section:     5rem;
+  --space-stack-sm:    0.5rem;
+  --space-stack-md:    1rem;
+  --space-stack-lg:    2rem;
+  --radius-sm:   0.125rem;
+  --radius:      0.25rem;
+  --radius-md:   0.375rem;
+  --radius-lg:   0.5rem;
+  --radius-xl:   0.75rem;
+  --radius-full: 9999px;
+  --border-card-top:  3px solid var(--teal);
+  --border-input:     2px solid var(--deep-purple);
+  --border-secondary: 2px solid var(--teal);
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+body {
+  background: var(--surface-container-lowest);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--leading-body-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-headline);
+  text-transform: uppercase;
+  color: inherit;
+  margin: 0;
+}
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: var(--leading-display); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: var(--text-headline-md); }
+h4 { font-size: var(--text-label-caps); letter-spacing: var(--tracking-label-caps); }
+p, li { font-family: var(--font-body); line-height: var(--leading-body-md); margin: 0; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
