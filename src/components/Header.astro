@@ -26,7 +26,8 @@ const isServicesActive =
 <header class="site-header">
   <div class="site-header__inner">
     <a href="/" class="site-header__logo" aria-label="NZ Cowshed Groovers — Home">
-      <img src="/assets/brand/logo-header.png" alt="NZ Cowshed Groovers" height="52" />
+      <span class="site-header__logo-line1">NZ Cowshed</span>
+      <span class="site-header__logo-line2">Groovers</span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <ul class="site-nav__list">
@@ -112,10 +113,26 @@ const isServicesActive =
     align-items: center;
     gap: 2rem;
   }
-  .site-header__logo img {
-    height: 52px;
-    width: auto;
-    display: block;
+  .site-header__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .site-header__logo-line1 {
+    font-family: var(--font-heading);
+    color: var(--safety-orange);
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .site-header__logo-line2 {
+    font-family: var(--font-heading);
+    color: var(--concrete-white);
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
   .site-nav { flex: 1; }
   .site-nav__list {
