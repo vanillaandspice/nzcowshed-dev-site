@@ -48,7 +48,7 @@ const homeSlides = [
 
   <Section bg="deep-purple">
     <!-- Top: heading + description left, image right -->
-    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-stack-lg); align-items: center; margin-bottom: 3rem;">
+    <div class="grooving-grid">
       <div>
         <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
           Grooving your concrete fixes it
@@ -156,6 +156,24 @@ const homeSlides = [
     </h2>
     <Slideshow slides={homeSlides} />
   </Section>
+
+  <style>
+    .grooving-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-stack-lg);
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 768px) {
+      .grooving-grid {
+        grid-template-columns: 1fr;
+      }
+      .grooving-grid figure {
+        order: 1;
+      }
+    }
+  </style>
 
   <Section bg="safety-orange" narrow>
     <div style="text-align: center;">
