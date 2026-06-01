@@ -24,7 +24,7 @@ import EnquiryForm from '../components/EnquiryForm';
   </Section>
 
   <Section bg="surface">
-    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-stack-lg); align-items: start;">
+    <div class="contact-grid">
       <EnquiryForm client:load />
       <div>
         <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">Or call</h3>
@@ -45,3 +45,19 @@ import EnquiryForm from '../components/EnquiryForm';
     </div>
   </Section>
 </Layout>
+
+<style>
+  .contact-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-stack-lg);
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
