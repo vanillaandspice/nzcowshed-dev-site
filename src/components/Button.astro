@@ -11,26 +11,52 @@ const { variant = 'primary', href } = Astro.props;
 
 <style>
   .btn {
+    position: relative;
     display: inline-block;
     font-family: var(--font-heading);
     font-size: 1.25rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 2.75rem 0.75rem 2rem;
     border-radius: var(--radius);
-    transition: opacity var(--duration-fast) var(--easing-standard);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
     cursor: pointer;
   }
-  .btn:hover { opacity: 0.85; }
+  .btn::after {
+    content: '→';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
   .btn--primary {
     background: var(--safety-orange);
     color: var(--concrete-white);
     border: none;
   }
+  .btn--primary:hover {
+    background: #f08030;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(236,121,38,0.5);
+  }
+  .btn--primary:hover::after {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
   .btn--ghost {
     background: transparent;
     color: var(--concrete-white);
-    border: 2px solid var(--concrete-white);
+    border: 2px solid rgba(255,255,255,0.6);
+    padding: 0.75rem 2rem;
+  }
+  .btn--ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--concrete-white);
+    transform: translateY(-2px);
   }
 </style>

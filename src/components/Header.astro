@@ -23,7 +23,7 @@ const isServicesActive =
   currentPath === '/boat-ramps-marine-docks';
 ---
 
-<header class="site-header">
+<header class="site-header" data-services-active={isServicesActive ? 'true' : 'false'}>
   <div class="site-header__inner">
     <a href="/" class="site-header__logo" aria-label="NZ Cowshed Groovers — Home">
       <span class="site-header__logo-line1">NZ Cowshed</span>
@@ -71,25 +71,34 @@ const isServicesActive =
 </header>
 
 <script>
+  const header = document.querySelector('.site-header') as HTMLElement | null;
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('site-nav');
   const subnav = document.getElementById('services-subnav');
+
+  // Whether the server rendered the subnav open (i.e. we're on a services page)
+  const servicesPageActive = header?.dataset.servicesActive === 'true';
 
   toggle?.addEventListener('click', () => {
     const open = nav?.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', String(open));
   });
 
-  // Services trigger opens submenu; other links collapse it
   document.querySelectorAll('[data-submenu-trigger="services"]').forEach(el => {
     el.addEventListener('click', (e) => {
       if (window.innerWidth >= 769) {
+        if (servicesPageActive) {
+          // On a services page — let the link navigate normally, subnav stays open
+          return;
+        }
+        // Not on a services page — toggle the subnav preview
         e.preventDefault();
         subnav?.classList.toggle('services-subnav--open');
       }
     });
   });
 
+  // Other main nav links collapse the subnav (only relevant when not on a services page)
   document.querySelectorAll('.site-nav__link:not([data-submenu-trigger])').forEach(el => {
     el.addEventListener('click', () => {
       subnav?.classList.remove('services-subnav--open');
@@ -187,7 +196,9 @@ const isServicesActive =
   .services-subnav__link:hover { color: var(--concrete-white); background: rgba(255,255,255,0.08); }
   .services-subnav__link--active { color: var(--teal); }
 
+  /* Get a Quote CTA — header */
   .site-header__cta {
+    position: relative;
     font-family: var(--font-heading);
     font-size: 1.125rem;
     letter-spacing: 0.05em;
@@ -195,11 +206,33 @@ const isServicesActive =
     text-decoration: none;
     background: var(--safety-orange);
     color: var(--concrete-white);
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 2.25rem 0.5rem 1.25rem;
     border-radius: var(--radius);
     white-space: nowrap;
     flex-shrink: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
+  .site-header__cta::after {
+    content: '→';
+    position: absolute;
+    right: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+  .site-header__cta:hover {
+    background: #f08030;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(236,121,38,0.5);
+  }
+  .site-header__cta:hover::after {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+
   .site-header__toggle {
     display: none;
     flex-direction: column;

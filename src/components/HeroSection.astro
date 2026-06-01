@@ -76,16 +76,51 @@
     margin-bottom: 1.25rem;
   }
   .hero__btn {
+    position: relative;
     font-family: var(--font-heading);
     font-size: 1.25rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0.875rem 2.25rem;
     border-radius: var(--radius);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
-  .hero__btn--primary { background: var(--safety-orange); color: var(--concrete-white); }
-  .hero__btn--ghost { background: transparent; color: var(--concrete-white); border: 2px solid rgba(255,255,255,0.6); }
+  .hero__btn--primary {
+    background: var(--safety-orange);
+    color: var(--concrete-white);
+    padding: 0.875rem 2.75rem 0.875rem 2.25rem;
+  }
+  .hero__btn--primary::after {
+    content: '→';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+  .hero__btn--primary:hover {
+    background: #f08030;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(236,121,38,0.55);
+  }
+  .hero__btn--primary:hover::after {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+  .hero__btn--ghost {
+    background: transparent;
+    color: var(--concrete-white);
+    border: 2px solid rgba(255,255,255,0.6);
+    padding: 0.875rem 2.25rem;
+  }
+  .hero__btn--ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--concrete-white);
+    transform: translateY(-2px);
+  }
   .hero__trust {
     display: flex;
     gap: 1.5rem;
