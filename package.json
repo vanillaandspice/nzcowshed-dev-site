@@ -6,6 +6,7 @@
     "check": "astro check"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@babel/core": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
     "@types/react": "^19.2.15",
@@ -17,6 +18,7 @@
     "@astrojs/react": "^5.0.6",
     "@astrojs/sitemap": "^3.7.3",
     "@formspree/react": "^3.0.0",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "^6.4.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
