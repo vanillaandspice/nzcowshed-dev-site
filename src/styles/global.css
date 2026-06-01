@@ -122,6 +122,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+/* clip (not hidden) so we don't create a scroll container — sticky header stays intact */
+html { overflow-x: clip; }
+body { overflow-x: clip; }
 a { color: inherit; }
 img { max-width: 100%; height: auto; display: block; }
 

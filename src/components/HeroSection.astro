@@ -32,7 +32,8 @@
     display: flex;
     align-items: flex-start;
     background: var(--deep-purple);
-    overflow: visible;
+    overflow-x: clip;   /* contain ticker track & shimmer bleeds */
+    overflow-y: visible; /* let cow image hang below */
   }
   .hero__bg {
     position: absolute;
@@ -135,6 +136,7 @@
     justify-content: center;
     margin-bottom: 0;
     overflow: hidden;
+    max-width: 100%;
     /* fade edges */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);

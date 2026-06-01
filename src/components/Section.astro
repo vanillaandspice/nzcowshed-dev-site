@@ -14,6 +14,7 @@ const { bg = 'surface', narrow = false } = Astro.props;
 <style>
   .section {
     padding: var(--space-section) var(--space-grid-margin);
+    overflow-x: clip;
   }
   .section--deep-purple { background: var(--deep-purple); color: var(--concrete-white); }
   .section--concrete-white { background: var(--concrete-white); color: var(--text-main); }
