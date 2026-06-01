@@ -2,9 +2,13 @@
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
+  <div class="site-footer__banner">
+    <a href="/">
+      <img src="/assets/brand/banner-logo.webp" alt="NZ Cowshed Groovers" />
+    </a>
+  </div>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <img src="/assets/brand/banner-logo.webp" alt="NZ Cowshed Groovers" width="180" height="44" />
       <p>Concrete grooving across New Zealand.<br />100% lifetime guarantee on every groove.</p>
     </div>
     <nav class="site-footer__nav" aria-label="Footer navigation">
@@ -41,7 +45,22 @@ const year = new Date().getFullYear();
   .site-footer {
     background: var(--primary);
     color: rgba(255,255,255,0.85);
-    padding: 4rem var(--space-grid-margin) 0;
+    padding: 0 0 0;
+  }
+  .site-footer__banner {
+    background: var(--deep-purple);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 2.5rem var(--space-grid-margin);
+    text-align: center;
+  }
+  .site-footer__banner img {
+    max-width: min(700px, 90vw);
+    width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+  .site-footer__inner {
+    padding-top: 3rem;
   }
   .site-footer__inner {
     max-width: 1200px;
@@ -49,9 +68,8 @@ const year = new Date().getFullYear();
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: var(--space-stack-lg);
-    padding-bottom: 3rem;
+    padding: 0 var(--space-grid-margin) 3rem;
   }
-  .site-footer__brand img { height: 44px; width: auto; margin-bottom: 1rem; }
   .site-footer__brand p { font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.65); }
   .site-footer__nav h4, .site-footer__contact h4 {
     font-family: var(--font-heading);

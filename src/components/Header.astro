@@ -1,26 +1,44 @@
 ---
 const navLinks = [
-  { label: 'Services', href: '/services' },
+  { label: 'Services', href: '/services', hasSubmenu: true },
   { label: 'Our Work', href: '/our-work' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
+
+const serviceLinks = [
+  { label: 'Cowshed Grooving', href: '/services/cowshed-grooving' },
+  { label: 'Yards', href: '/yards' },
+  { label: 'Car Parks', href: '/car-parks' },
+  { label: 'Boat Ramps', href: '/boat-ramps-marine-docks' },
+];
+
 const currentPath = Astro.url.pathname;
+
+const isServicesActive =
+  currentPath.startsWith('/services') ||
+  currentPath === '/yards' ||
+  currentPath === '/car-parks' ||
+  currentPath === '/boat-ramps-marine-docks';
 ---
 
 <header class="site-header">
   <div class="site-header__inner">
     <a href="/" class="site-header__logo" aria-label="NZ Cowshed Groovers — Home">
-      <img src="/assets/brand/banner-logo.webp" alt="NZ Cowshed Groovers" width="200" height="48" />
+      <img src="/assets/brand/logo-header.png" alt="NZ Cowshed Groovers" height="52" />
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <ul class="site-nav__list">
         {navLinks.map(link => (
-          <li>
+          <li class={link.hasSubmenu ? 'has-submenu' : ''}>
             <a
               href={link.href}
-              class:list={['site-nav__link', { 'site-nav__link--active': currentPath === link.href || currentPath.startsWith(link.href + '/') }]}
+              class:list={[
+                'site-nav__link',
+                { 'site-nav__link--active': currentPath === link.href || (link.hasSubmenu && isServicesActive) },
+              ]}
+              data-submenu-trigger={link.hasSubmenu ? 'services' : undefined}
             >
               {link.label}
             </a>
@@ -33,14 +51,48 @@ const currentPath = Astro.url.pathname;
       <span></span><span></span><span></span>
     </button>
   </div>
+
+  <div class="services-subnav" id="services-subnav" class:list={{ 'services-subnav--open': isServicesActive }}>
+    <div class="services-subnav__inner">
+      {serviceLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'services-subnav__link',
+            { 'services-subnav__link--active': currentPath === link.href || currentPath.startsWith(link.href + '/') },
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
 </header>
 
 <script>
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('site-nav');
+  const subnav = document.getElementById('services-subnav');
+
   toggle?.addEventListener('click', () => {
     const open = nav?.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Services trigger opens submenu; other links collapse it
+  document.querySelectorAll('[data-submenu-trigger="services"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (window.innerWidth >= 769) {
+        e.preventDefault();
+        subnav?.classList.toggle('services-subnav--open');
+      }
+    });
+  });
+
+  document.querySelectorAll('.site-nav__link:not([data-submenu-trigger])').forEach(el => {
+    el.addEventListener('click', () => {
+      subnav?.classList.remove('services-subnav--open');
+    });
   });
 </script>
 
@@ -55,13 +107,13 @@ const currentPath = Astro.url.pathname;
   .site-header__inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem var(--space-grid-margin);
+    padding: 0.5rem var(--space-grid-margin);
     display: flex;
     align-items: center;
     gap: 2rem;
   }
   .site-header__logo img {
-    height: 48px;
+    height: 52px;
     width: auto;
     display: block;
   }
@@ -84,9 +136,40 @@ const currentPath = Astro.url.pathname;
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius);
     transition: color var(--duration-fast);
+    display: block;
   }
   .site-nav__link:hover,
   .site-nav__link--active { color: var(--teal); }
+
+  /* Services submenu */
+  .services-subnav {
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: none;
+  }
+  .services-subnav--open { display: block; }
+  .services-subnav__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem var(--space-grid-margin);
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+  .services-subnav__link {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius);
+    transition: color var(--duration-fast), background var(--duration-fast);
+  }
+  .services-subnav__link:hover { color: var(--concrete-white); background: rgba(255,255,255,0.08); }
+  .services-subnav__link--active { color: var(--teal); }
+
   .site-header__cta {
     font-family: var(--font-heading);
     font-size: 1.125rem;
@@ -116,6 +199,7 @@ const currentPath = Astro.url.pathname;
     height: 2px;
     background: var(--concrete-white);
   }
+
   @media (max-width: 768px) {
     .site-header__toggle { display: flex; }
     .site-header__cta { display: none; }
@@ -125,11 +209,13 @@ const currentPath = Astro.url.pathname;
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--primary);
+      background: var(--deep-purple);
       padding: 1rem var(--space-grid-margin);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .site-nav.is-open { display: block; }
     .site-nav__list { flex-direction: column; gap: 0; }
     .site-nav__link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .services-subnav { display: none !important; }
   }
 </style>

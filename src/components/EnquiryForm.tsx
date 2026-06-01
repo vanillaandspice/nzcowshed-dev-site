@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
-const FORMSPREE_ID = 'REPLACE_WITH_FORMSPREE_ID';
+const FORMSPREE_ID = 'xgoqjaov';
 
 const services = [
   'Cowshed Grooving',
@@ -10,36 +10,12 @@ const services = [
   'Other / Not sure',
 ];
 
-type FormState = 'idle' | 'submitting' | 'success' | 'error';
-
 export default function EnquiryForm() {
-  const [state, setState] = useState<FormState>('idle');
-  const [fields, setFields] = useState({
-    name: '', phone: '', email: '', service: '', message: '',
-  });
+  const [state, handleSubmit] = useForm(FORMSPREE_ID);
 
-  function update(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    setFields(f => ({ ...f, [e.target.name]: e.target.value }));
-  }
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setState('submitting');
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(fields),
-      });
-      setState(res.ok ? 'success' : 'error');
-    } catch {
-      setState('error');
-    }
-  }
-
-  if (state === 'success') {
+  if (state.succeeded) {
     return (
-      <div style={{ padding: '2rem', background: 'var(--secondary-container)', borderRadius: 'var(--radius-lg)', textAlign: 'center' }}>
+      <div style={{ padding: '2rem', background: 'var(--surface)', borderRadius: 'var(--radius)', textAlign: 'center', border: '2px solid var(--teal)' }}>
         <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', color: 'var(--deep-purple)', letterSpacing: '0.02em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
           Message received
         </p>
@@ -63,60 +39,75 @@ export default function EnquiryForm() {
     letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--deep-purple)',
     display: 'block',
   };
+  const errorStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-body)', color: 'var(--error)', fontSize: '0.85rem',
+    marginTop: '0.25rem', display: 'block',
+  };
 
   return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-        <label style={labelStyle}>
-          Name *
-          <input name="name" type="text" required value={fields.name} onChange={update} style={inputStyle} placeholder="Your name" />
-        </label>
-        <label style={labelStyle}>
-          Phone
-          <input name="phone" type="tel" value={fields.phone} onChange={update} style={inputStyle} placeholder="027 000 0000" />
-        </label>
+        <div>
+          <label style={labelStyle}>
+            Name *
+            <input id="name" name="name" type="text" required style={inputStyle} placeholder="Your name" />
+          </label>
+          <ValidationError field="name" errors={state.errors} style={errorStyle} />
+        </div>
+        <div>
+          <label style={labelStyle}>
+            Phone
+            <input id="phone" name="phone" type="tel" style={inputStyle} placeholder="027 000 0000" />
+          </label>
+        </div>
       </div>
-      <label style={labelStyle}>
-        Email *
-        <input name="email" type="email" required value={fields.email} onChange={update} style={inputStyle} placeholder="you@example.com" />
-      </label>
+
+      <div>
+        <label style={labelStyle}>
+          Email *
+          <input id="email" name="email" type="email" required style={inputStyle} placeholder="you@example.com" />
+        </label>
+        <ValidationError field="email" errors={state.errors} style={errorStyle} />
+      </div>
+
       <label style={labelStyle}>
         Service
-        <select name="service" value={fields.service} onChange={update} style={inputStyle}>
+        <select id="service" name="service" style={inputStyle}>
           <option value="">Select a service...</option>
           {services.map(s => <option key={s} value={s}>{s}</option>)}
         </select>
       </label>
-      <label style={labelStyle}>
-        Message
-        <textarea
-          name="message"
-          rows={5}
-          value={fields.message}
-          onChange={update}
-          style={{ ...inputStyle, resize: 'vertical' }}
-          placeholder="Tell us about your job — size, surface type, location..."
-        />
-      </label>
-      {state === 'error' && (
-        <p style={{ fontFamily: 'var(--font-body)', color: 'var(--error)', fontSize: '0.9rem', margin: 0 }}>
-          Something went wrong. Please try again or call 0274 747 775.
-        </p>
-      )}
+
+      <div>
+        <label style={labelStyle}>
+          Message
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            style={{ ...inputStyle, resize: 'vertical' }}
+            placeholder="Tell us about your job — size, surface type, location..."
+          />
+        </label>
+        <ValidationError field="message" errors={state.errors} style={errorStyle} />
+      </div>
+
+      <ValidationError errors={state.errors} style={{ ...errorStyle, fontSize: '0.9rem' }} />
+
       <button
         type="submit"
-        disabled={state === 'submitting'}
+        disabled={state.submitting}
         style={{
           fontFamily: 'var(--font-heading)', fontSize: '1.25rem',
           letterSpacing: '0.05em', textTransform: 'uppercase',
-          background: state === 'submitting' ? 'var(--outline)' : 'var(--safety-orange)',
+          background: state.submitting ? 'var(--outline)' : 'var(--safety-orange)',
           color: 'var(--concrete-white)', border: 'none',
           padding: '0.875rem 2rem', borderRadius: 'var(--radius)',
-          cursor: state === 'submitting' ? 'not-allowed' : 'pointer',
+          cursor: state.submitting ? 'not-allowed' : 'pointer',
           alignSelf: 'flex-start',
         }}
       >
-        {state === 'submitting' ? 'Sending...' : 'Send enquiry'}
+        {state.submitting ? 'Sending...' : 'Send enquiry'}
       </button>
     </form>
   );
