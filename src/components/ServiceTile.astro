@@ -7,7 +7,7 @@ interface Props {
 }
 const { title, blurb, href, photo } = Astro.props;
 ---
-<a href={href} class="service-tile">
+<a href={href} class="service-tile reveal">
   <div class="service-tile__img" style={`background-image: url(${photo})`}></div>
   <div class="service-tile__body">
     <h3 class="service-tile__title">{title}</h3>
@@ -24,12 +24,23 @@ const { title, blurb, href, photo } = Astro.props;
     border-top: var(--border-card-top);
     text-decoration: none;
     color: inherit;
-    transition: opacity var(--duration-fast) var(--easing-standard);
+    overflow: hidden;
+    transition: transform 0.3s var(--easing-standard),
+                box-shadow 0.3s var(--easing-standard);
+    will-change: transform;
   }
-  .service-tile:hover { opacity: 0.85; }
+  .service-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 36px rgba(59, 31, 110, 0.16);
+  }
   .service-tile__img {
     aspect-ratio: 4/3;
     background: #000 center/cover no-repeat;
+    overflow: hidden;
+    transition: transform 0.45s var(--easing-standard);
+  }
+  .service-tile:hover .service-tile__img {
+    transform: scale(1.06);
   }
   .service-tile__body {
     padding: 1.25rem;

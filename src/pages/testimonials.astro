@@ -22,18 +22,33 @@ const testimonials = [
   description="Real feedback from NZ farmers on concrete grooving. Cowsheds, yards, car parks and boat ramps. 100% lifetime guarantee from NZ Cowshed Groovers."
 >
   <Section bg="deep-purple" narrow>
-    <div style="text-align: center;">
+    <div class="testimonials-hero">
       <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem;">
         What farmers say
       </h1>
       <blockquote style="margin: 0;">
-        <p style="font-family: var(--font-body); font-size: clamp(1.25rem,2.5vw,1.75rem); line-height: 1.5; font-style: italic; color: var(--concrete-white); margin: 0 0 1rem;">
+        <p class="feature-quote">
           "We considered many other options before finding your website. No other option compared. Vast improvement — no slipping, stable footing, cattle settled, easy to handle."
         </p>
         <cite style="font-family: var(--font-body); font-size: 1rem; color: var(--teal); font-style: normal; display: block;">— Gordon Wright</cite>
       </blockquote>
     </div>
   </Section>
+
+  <style>
+    .testimonials-hero { text-align: center; }
+    .feature-quote {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--concrete-white);
+      margin: 0 0 1rem;
+    }
+    @media (max-width: 600px) {
+      .testimonials-hero { text-align: left; }
+    }
+  </style>
 
   <Section bg="surface">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-gutter);">
