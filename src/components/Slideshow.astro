@@ -103,7 +103,12 @@ const { slides } = Astro.props;
     transition: background var(--duration-fast);
   }
   .slideshow__dot.is-active { background: var(--teal); }
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    .slideshow {
+      border-radius: 0;
+      margin-left: calc(-1 * var(--space-grid-margin));
+      margin-right: calc(-1 * var(--space-grid-margin));
+    }
     .slideshow__slide { aspect-ratio: 4/3; }
     .slideshow__btn { width: 36px; height: 36px; font-size: 1.25rem; }
   }
