@@ -47,27 +47,31 @@ const homeSlides = [
   <GrooveDivider />
 
   <Section bg="deep-purple">
-    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-stack-lg); align-items: center;">
+    <!-- Top: heading + description left, image right -->
+    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-stack-lg); align-items: center; margin-bottom: 3rem;">
       <div>
         <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
           Grooving your concrete fixes it
         </h2>
-        <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem;">
+        <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
           We grind grooves directly into your existing concrete — cowsheds, yards, races, car parks, boat ramps. No new surface. No major downtime. Just concrete that grips.
         </p>
-        <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          {['Cows move with confidence. Fewer injuries, less stress, better production.', 'Your shed runs faster. Cows that walk well get in and out quicker. Every morning.', "One job, done once. Grooves don't wear off."].map(line => (
-            <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; color: var(--concrete-white); padding-left: 1.5rem; position: relative;">
-              <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
-            </li>
-          ))}
-        </ul>
-        <Button variant="ghost" href="/contact">Get a Quote</Button>
       </div>
       <figure style="margin: 0;">
         <div style="background: #000 center/cover url('/assets/photos/cowshed-grooves-closeup.webp'); aspect-ratio: 4/3; border-radius: var(--radius); border-top: 3px solid var(--teal);"></div>
         <figcaption style="font-family: var(--font-body); font-size: 0.875rem; color: rgba(255,255,255,0.7); margin: 0.75rem 0 0; font-style: italic;">Crosshatch grooves cut straight into the existing cowshed floor.</figcaption>
       </figure>
+    </div>
+    <!-- Bottom: full-width bullet points + CTA -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 2.5rem;">
+      <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+        {['Cows move with confidence. Fewer injuries, less stress, better production.', 'Your shed runs faster. Cows that walk well get in and out quicker. Every morning.', "One job, done once. Grooves don't wear off."].map(line => (
+          <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; color: var(--concrete-white); padding: 0 0 0 1.25rem; border-left: 3px solid var(--teal);">
+            {line}
+          </li>
+        ))}
+      </ul>
+      <Button variant="ghost" href="/contact">Get a Quote</Button>
     </div>
   </Section>
 
