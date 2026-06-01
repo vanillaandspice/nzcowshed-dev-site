@@ -4,7 +4,6 @@
   <div class="hero__bg" style="background-image: url('/assets/brand/landscape.webp')"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="hero__cow" />
     <h1 class="hero__headline">Concrete that grips.<br />Cows that move.</h1>
     <p class="hero__sub">We grind grooves into your existing concrete — cowsheds, yards, car parks, boat ramps. Done in a day. Guaranteed for life.</p>
     <div class="hero__actions">
@@ -16,6 +15,7 @@
       <span>✓ North Island specialists</span>
       <span>✓ Same-week quotes</span>
     </div>
+    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="hero__cow" />
   </div>
 </section>
 
@@ -24,9 +24,9 @@
     position: relative;
     min-height: 42vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background: var(--deep-purple);
-    overflow: hidden;
+    overflow: visible;
   }
   .hero__bg {
     position: absolute;
@@ -42,16 +42,14 @@
   .hero__content {
     position: relative;
     z-index: 1;
+    width: 100%;
     max-width: 800px;
-    padding: 4rem var(--space-grid-margin);
+    padding: 2rem var(--space-grid-margin) 0;
     margin: 0 auto;
     text-align: center;
-  }
-  .hero__cow {
-    width: clamp(100px, 12vw, 160px);
-    height: auto;
-    margin: 0 auto 1.5rem;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hero__headline {
     font-family: var(--font-heading);
@@ -60,7 +58,7 @@
     color: var(--concrete-white);
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1rem;
   }
   .hero__sub {
     font-family: var(--font-body);
@@ -68,14 +66,14 @@
     line-height: 1.6;
     color: rgba(255,255,255,0.9);
     max-width: 55ch;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
   }
   .hero__actions {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
   .hero__btn {
     font-family: var(--font-heading);
@@ -93,11 +91,19 @@
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
   }
   .hero__trust span {
     font-family: var(--font-body);
     font-size: 0.875rem;
     color: var(--teal);
     font-weight: 600;
+  }
+  .hero__cow {
+    width: clamp(140px, 18vw, 220px);
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: -2rem;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.5));
   }
 </style>
