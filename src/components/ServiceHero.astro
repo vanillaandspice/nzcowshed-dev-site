@@ -5,10 +5,11 @@ interface Props {
   lead: string;
   photo: string;
   photoAlt: string;
+  photoCaption?: string;
   ctaLabel?: string;
   ctaHref?: string;
 }
-const { breadcrumb, headline, lead, photo, photoAlt, ctaLabel = 'Get a Quote', ctaHref = '/contact' } = Astro.props;
+const { breadcrumb, headline, lead, photo, photoAlt, photoCaption, ctaLabel = 'Get a Quote', ctaHref = '/contact' } = Astro.props;
 ---
 <section class="service-hero">
   <div class="service-hero__inner">
@@ -18,7 +19,10 @@ const { breadcrumb, headline, lead, photo, photoAlt, ctaLabel = 'Get a Quote', c
       <p class="service-hero__lead">{lead}</p>
       <a href={ctaHref} class="service-hero__btn">{ctaLabel}</a>
     </div>
-    <div class="service-hero__img" style={`background-image: url(${photo})`} role="img" aria-label={photoAlt}></div>
+    <figure class="service-hero__figure">
+      <div class="service-hero__img" style={`background-image: url(${photo})`} role="img" aria-label={photoAlt}></div>
+      {photoCaption && <figcaption class="service-hero__caption">{photoCaption}</figcaption>}
+    </figure>
   </div>
 </section>
 
@@ -65,10 +69,18 @@ const { breadcrumb, headline, lead, photo, photoAlt, ctaLabel = 'Get a Quote', c
     padding: 0.75rem 2rem;
     border-radius: var(--radius);
   }
+  .service-hero__figure { margin: 0; }
   .service-hero__img {
     aspect-ratio: 4/3;
     background: #000 center/cover no-repeat;
     border-radius: var(--radius);
+  }
+  .service-hero__caption {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin: 0.6rem 0 0;
   }
   @media (max-width: 768px) {
     .service-hero__inner { grid-template-columns: 1fr; }
