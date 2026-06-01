@@ -9,17 +9,36 @@ import ZoomModal from '../components/ZoomModal';
   description="NZ Cowshed Groovers was founded by Neil Taylor, who developed the concrete grooving technique. Now operated by Scott Coker. 100% lifetime guarantee on every groove."
 >
   <section style="background: var(--deep-purple); padding: var(--space-section) var(--space-grid-margin);">
-    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-stack-lg); align-items: center;">
-      <div>
+    <div class="about-hero">
+      <div class="about-hero__img" style="background: #000 center/cover url('/assets/brand/truck-scott.webp'); aspect-ratio: 4/3; border-radius: var(--radius);"></div>
+      <div class="about-hero__text">
         <p style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--teal); text-transform: uppercase; margin: 0 0 0.75rem;">About</p>
         <h1 style="color: var(--concrete-white); margin: 0 0 1rem;">The original NZ groover</h1>
         <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
           Neil Taylor developed the technique. The machines were built for the job. We've been on NZ farms for decades.
         </p>
       </div>
-      <div style="background: #000 center/cover url('/assets/brand/truck-scott.webp'); aspect-ratio: 4/3; border-radius: var(--radius);"></div>
     </div>
   </section>
+
+  <style>
+    .about-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-stack-lg);
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+      }
+      .about-hero__img {
+        order: -1;
+      }
+    }
+  </style>
 
   <Section bg="concrete-white" narrow>
     <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">The history</h2>
