@@ -34,7 +34,7 @@ const homeSlides = [
 
   <Section bg="concrete-white" narrow>
     <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 1.5rem; text-align: center; letter-spacing: 0.02em;">
-      Slipping cows cost you<br />more than you think
+      Slipping cows cost you more than you think
     </h2>
     <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; margin: 0 0 1rem; text-align: center;">
       A cow that slips loses condition. A cow that goes down can lose production for weeks. On wet concrete, it's not a matter of if — it's when.
@@ -127,11 +127,11 @@ const homeSlides = [
     </h2>
     <ol style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter);">
       {[
-        { n: '1', t: 'Get a quote', d: "Tell us what you've got — cowshed, yard, race, whatever needs doing." },
-        { n: '2', t: 'We come to you', d: 'We bring the gear and get it done.' },
-        { n: '3', t: 'Your concrete grips', d: 'From the day we leave, it works.' },
+        { n: '1', t: 'Get a quote', d: "Tell us what you've got — cowshed, yard, race, whatever needs doing.", delay: '0ms' },
+        { n: '2', t: 'We come to you', d: 'We bring the gear and get it done.', delay: '100ms' },
+        { n: '3', t: 'Your concrete grips', d: 'From the day we leave, it works.', delay: '200ms' },
       ].map(s => (
-        <li style="border-top: 3px solid var(--teal); padding-top: 1rem;">
+        <li class="reveal" style={`border-top: 3px solid var(--teal); padding-top: 1rem; transition-delay: ${s.delay};`}>
           <div style="font-family: var(--font-heading); font-size: 3rem; color: var(--safety-orange); line-height: 1; letter-spacing: 0.02em;">{s.n}</div>
           <h4 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--deep-purple); margin: 0.5rem 0; letter-spacing: 0.02em;">{s.t}</h4>
           <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">{s.d}</p>

@@ -104,6 +104,18 @@ const isServicesActive =
       subnav?.classList.remove('services-subnav--open');
     });
   });
+
+  // Scroll shadow
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        header?.classList.toggle('is-scrolled', window.scrollY > 60);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 </script>
 
 <style>
@@ -113,6 +125,10 @@ const isServicesActive =
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  .site-header.is-scrolled {
+    box-shadow: 0 4px 28px rgba(0,0,0,0.55);
   }
   .site-header__inner {
     max-width: 1200px;
@@ -248,22 +264,40 @@ const isServicesActive =
     width: 24px;
     height: 2px;
     background: var(--concrete-white);
+    transition: transform 0.25s var(--easing-standard), opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .site-header__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .site-header__toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .site-header__toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   @media (max-width: 768px) {
     .site-header__toggle { display: flex; }
     .site-header__cta { display: none; }
     .site-nav {
-      display: none;
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
       background: var(--deep-purple);
-      padding: 1rem var(--space-grid-margin);
+      padding: 0 var(--space-grid-margin);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s var(--easing-standard),
+                  padding 0.35s var(--easing-standard);
     }
-    .site-nav.is-open { display: block; }
+    .site-nav.is-open {
+      max-height: 480px;
+      padding: 1rem var(--space-grid-margin);
+    }
     .site-nav__list { flex-direction: column; gap: 0; }
     .site-nav__link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .services-subnav { display: none !important; }

@@ -10,13 +10,38 @@ const { number, label, sublabel, attribution, showCow = false } = Astro.props;
 ---
 <div class="stat-callout">
   {showCow && (
-    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="stat-callout__cow" />
+    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="stat-callout__cow reveal" />
   )}
-  <div class="stat-callout__number">{number}</div>
-  <p class="stat-callout__label">{label}</p>
-  {sublabel && <p class="stat-callout__sublabel">{sublabel}</p>}
-  {attribution && <p class="stat-callout__attribution">{attribution}</p>}
+  <div class="stat-callout__number reveal" data-count-target={number}>{number}</div>
+  <p class="stat-callout__label reveal">{label}</p>
+  {sublabel && <p class="stat-callout__sublabel reveal">{sublabel}</p>}
+  {attribution && <p class="stat-callout__attribution reveal">{attribution}</p>}
 </div>
+
+<script>
+  const statEl = document.querySelector<HTMLElement>('.stat-callout__number[data-count-target]');
+  if (statEl) {
+    const raw = statEl.dataset.countTarget ?? '';
+    const target = parseInt(raw.replace(/,/g, ''), 10);
+    if (!isNaN(target) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const fmt = (n: number) => n.toLocaleString('en-NZ');
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        const duration = 1800;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          statEl.textContent = fmt(Math.round(target * ease));
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, { threshold: 0.5 });
+      observer.observe(statEl);
+    }
+  }
+</script>
 
 <style>
   .stat-callout {

@@ -4,16 +4,22 @@
   <div class="hero__bg" style="background-image: url('/assets/brand/landscape.webp')"></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    <h1 class="hero__headline">Concrete that grips.<br />Cows that move.</h1>
+    <h1 class="hero__headline">Concrete that grips. Cows that move.</h1>
     <p class="hero__sub">We grind grooves into your existing concrete — cowsheds, yards, car parks, boat ramps. Done in a day. Guaranteed for life.</p>
     <div class="hero__actions">
       <a href="/contact" class="hero__btn hero__btn--primary">Get a Quote</a>
       <a href="/services" class="hero__btn hero__btn--ghost">See Services</a>
     </div>
-    <div class="hero__trust">
-      <span>✓ 100% lifetime guarantee</span>
-      <span>✓ North Island specialists</span>
-      <span>✓ Same-week quotes</span>
+    <div class="hero__trust" aria-label="Key facts">
+      <div class="hero__trust-track">
+        <span>✓ 100% lifetime guarantee</span>
+        <span>✓ North Island specialists</span>
+        <span>✓ Same-week quotes</span>
+        <!-- duplicated for seamless loop on mobile -->
+        <span aria-hidden="true">✓ 100% lifetime guarantee</span>
+        <span aria-hidden="true">✓ North Island specialists</span>
+        <span aria-hidden="true">✓ Same-week quotes</span>
+      </div>
     </div>
     <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="hero__cow" />
   </div>
@@ -83,7 +89,9 @@
     text-transform: uppercase;
     text-decoration: none;
     border-radius: var(--radius);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: transform var(--duration-base) var(--easing-standard),
+                box-shadow var(--duration-base) var(--easing-standard),
+                background var(--duration-base) var(--easing-standard);
   }
   .hero__btn--primary {
     background: var(--safety-orange);
@@ -97,7 +105,8 @@
     top: 50%;
     transform: translateY(-50%) translateX(6px);
     opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform var(--duration-base) var(--easing-standard),
+                opacity var(--duration-base) var(--easing-standard);
     font-family: var(--font-body);
     font-weight: 700;
   }
@@ -123,16 +132,45 @@
   }
   .hero__trust {
     display: flex;
-    gap: 1.5rem;
     justify-content: center;
-    flex-wrap: wrap;
     margin-bottom: 0;
+    overflow: hidden;
+    /* fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   }
-  .hero__trust span {
+  .hero__trust-track {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero__trust-track span {
     font-family: var(--font-body);
     font-size: 0.875rem;
     color: var(--teal);
     font-weight: 600;
+    white-space: nowrap;
+  }
+  /* Hide duplicate spans on desktop */
+  .hero__trust-track span:nth-child(n+4) { display: none; }
+
+  @media (max-width: 600px) {
+    .hero__trust-track {
+      flex-wrap: nowrap;
+      animation: trustTicker 14s linear infinite;
+    }
+    /* Show duplicates for seamless loop on mobile */
+    .hero__trust-track span:nth-child(n+4) { display: inline; }
+    @keyframes trustTicker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+  }
+  @media (max-width: 600px) and (prefers-reduced-motion: reduce) {
+    .hero__trust-track { animation: none; flex-wrap: wrap; }
+    .hero__trust-track span:nth-child(n+4) { display: none; }
+    .hero__trust { mask-image: none; -webkit-mask-image: none; }
   }
   .hero__cow {
     width: clamp(140px, 18vw, 220px);

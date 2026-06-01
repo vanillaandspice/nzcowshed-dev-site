@@ -20,6 +20,21 @@
   src: url("/fonts/LibreFranklin-Italic-VariableFont_wght.ttf") format("truetype");
 }
 
+/* ─── Scroll-reveal base (JS adds .is-visible) ───────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--easing-standard, cubic-bezier(0.2, 0, 0, 1)),
+              transform 0.55s var(--easing-standard, cubic-bezier(0.2, 0, 0, 1));
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 :root {
   --deep-purple:    #3B1F6E;
   --teal:           #2A9D8F;
@@ -97,6 +112,14 @@
   --duration-base:   200ms;
 }
 
+/* ─── Mobile spacing ─────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --space-grid-margin: 1.25rem;
+    --space-section:     3.5rem;
+  }
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 a { color: inherit; }
@@ -120,12 +143,18 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: inherit;
   margin: 0;
+  text-wrap: balance;
 }
 h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: var(--leading-display); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: var(--text-headline-md); }
+h3 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
 h4 { font-size: var(--text-label-caps); letter-spacing: var(--tracking-label-caps); }
-p, li { font-family: var(--font-body); line-height: var(--leading-body-md); margin: 0; }
+p, li {
+  font-family: var(--font-body);
+  line-height: var(--leading-body-md);
+  margin: 0;
+  text-wrap: pretty;
+}
 
 .visually-hidden {
   position: absolute;
