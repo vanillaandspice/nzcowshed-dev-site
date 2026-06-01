@@ -45,9 +45,15 @@ const isServicesActive =
             </a>
           </li>
         ))}
+        {/* Mobile-only CTA inside the nav drawer */}
+        <li class="site-nav__cta-item">
+          <a href="/contact" class="site-nav__cta-btn">Get a Free Quote →</a>
+        </li>
       </ul>
     </nav>
-    <a href="/contact" class="site-header__cta">Get a Quote</a>
+    <a href="/contact" class="site-header__cta" aria-label="Get a free quote">
+      <span class="site-header__cta-text">Get a Quote</span>
+    </a>
     <button class="site-header__toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
       <span></span><span></span><span></span>
     </button>
@@ -76,7 +82,6 @@ const isServicesActive =
   const nav = document.getElementById('site-nav');
   const subnav = document.getElementById('services-subnav');
 
-  // Whether the server rendered the subnav open (i.e. we're on a services page)
   const servicesPageActive = header?.dataset.servicesActive === 'true';
 
   toggle?.addEventListener('click', () => {
@@ -87,18 +92,13 @@ const isServicesActive =
   document.querySelectorAll('[data-submenu-trigger="services"]').forEach(el => {
     el.addEventListener('click', (e) => {
       if (window.innerWidth >= 769) {
-        if (servicesPageActive) {
-          // On a services page — let the link navigate normally, subnav stays open
-          return;
-        }
-        // Not on a services page — toggle the subnav preview
+        if (servicesPageActive) return;
         e.preventDefault();
         subnav?.classList.toggle('services-subnav--open');
       }
     });
   });
 
-  // Other main nav links collapse the subnav (only relevant when not on a services page)
   document.querySelectorAll('.site-nav__link:not([data-submenu-trigger])').forEach(el => {
     el.addEventListener('click', () => {
       subnav?.classList.remove('services-subnav--open');
@@ -119,6 +119,32 @@ const isServicesActive =
 </script>
 
 <style>
+  /* ── Keyframes ──────────────────────────────────────────────────────────── */
+  @keyframes ctaShimmer {
+    0%   { transform: translateX(-150%) skewX(-20deg); opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+  }
+
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(236,121,38,0),
+                            0 4px 14px rgba(236,121,38,0.35); }
+    50%       { box-shadow: 0 0 0 7px rgba(236,121,38,0),
+                            0 6px 22px rgba(236,121,38,0.6); }
+  }
+
+  @keyframes ctaEntrance {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes navCTAEntrance {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Header shell ───────────────────────────────────────────────────────── */
   .site-header {
     background: var(--deep-purple);
     position: sticky;
@@ -138,6 +164,8 @@ const isServicesActive =
     align-items: center;
     gap: 2rem;
   }
+
+  /* ── Logo ───────────────────────────────────────────────────────────────── */
   .site-header__logo {
     display: flex;
     flex-direction: column;
@@ -159,6 +187,8 @@ const isServicesActive =
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
+
+  /* ── Nav ────────────────────────────────────────────────────────────────── */
   .site-nav { flex: 1; }
   .site-nav__list {
     list-style: none;
@@ -167,6 +197,7 @@ const isServicesActive =
     display: flex;
     gap: 0.25rem;
     flex-wrap: wrap;
+    align-items: center;
   }
   .site-nav__link {
     font-family: var(--font-heading);
@@ -183,7 +214,10 @@ const isServicesActive =
   .site-nav__link:hover,
   .site-nav__link--active { color: var(--teal); }
 
-  /* Services submenu */
+  /* Mobile CTA inside nav drawer — hidden on desktop */
+  .site-nav__cta-item { display: none; }
+
+  /* ── Services subnav ────────────────────────────────────────────────────── */
   .services-subnav {
     background: rgba(0,0,0,0.25);
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -212,43 +246,62 @@ const isServicesActive =
   .services-subnav__link:hover { color: var(--concrete-white); background: rgba(255,255,255,0.08); }
   .services-subnav__link--active { color: var(--teal); }
 
-  /* Get a Quote CTA — header */
+  /* ── Get a Quote CTA ────────────────────────────────────────────────────── */
   .site-header__cta {
     position: relative;
     font-family: var(--font-heading);
     font-size: 1.125rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     text-decoration: none;
     background: var(--safety-orange);
     color: var(--concrete-white);
-    padding: 0.5rem 2.25rem 0.5rem 1.25rem;
+    padding: 0.55rem 1.5rem;
     border-radius: var(--radius);
     white-space: nowrap;
     flex-shrink: 0;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+    /* entrance */
+    animation: ctaEntrance 0.5s var(--easing-standard) 0.3s both,
+               ctaPulse 3.5s ease-in-out 2s infinite;
+    transition: transform var(--duration-base) var(--easing-standard),
+                box-shadow var(--duration-base) var(--easing-standard),
+                background var(--duration-base) var(--easing-standard);
   }
-  .site-header__cta::after {
-    content: '→';
+  /* Shimmer sweep via ::before */
+  .site-header__cta::before {
+    content: '';
     position: absolute;
-    right: 0.85rem;
-    top: 50%;
-    transform: translateY(-50%) translateX(6px);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    font-family: var(--font-body);
-    font-weight: 700;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255,255,255,0.45) 50%,
+      transparent 70%
+    );
+    transform: translateX(-150%) skewX(-20deg);
+    animation: ctaShimmer 3.5s ease-in-out 1.2s infinite;
+    pointer-events: none;
+  }
+  .site-header__cta-text {
+    position: relative;
+    z-index: 1;
   }
   .site-header__cta:hover {
     background: #f08030;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(236,121,38,0.5);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(236,121,38,0.65);
+    animation: none; /* stop pulse on hover — hover state is emphatic enough */
   }
-  .site-header__cta:hover::after {
-    transform: translateY(-50%) translateX(0);
-    opacity: 1;
+  .site-header__cta:hover::before {
+    animation: ctaShimmer 0.7s ease-in-out; /* one fast sweep on hover */
+  }
+  .site-header__cta:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(236,121,38,0.4);
   }
 
+  /* ── Hamburger toggle ───────────────────────────────────────────────────── */
   .site-header__toggle {
     display: none;
     flex-direction: column;
@@ -278,9 +331,17 @@ const isServicesActive =
     transform: translateY(-7px) rotate(-45deg);
   }
 
+  /* ── Mobile ─────────────────────────────────────────────────────────────── */
   @media (max-width: 768px) {
     .site-header__toggle { display: flex; }
-    .site-header__cta { display: none; }
+
+    /* Compact CTA stays visible in the bar on mobile */
+    .site-header__cta {
+      font-size: 0.95rem;
+      padding: 0.45rem 1rem;
+      letter-spacing: 0.04em;
+    }
+
     .site-nav {
       position: absolute;
       top: 100%;
@@ -288,18 +349,78 @@ const isServicesActive =
       right: 0;
       background: var(--deep-purple);
       padding: 0 var(--space-grid-margin);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.35s var(--easing-standard),
                   padding 0.35s var(--easing-standard);
     }
     .site-nav.is-open {
-      max-height: 480px;
-      padding: 1rem var(--space-grid-margin);
+      max-height: 520px;
+      padding: 1rem var(--space-grid-margin) 1.5rem;
     }
     .site-nav__list { flex-direction: column; gap: 0; }
-    .site-nav__link { display: block; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .site-nav__link {
+      display: block;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
     .services-subnav { display: none !important; }
+
+    /* CTA at bottom of mobile nav drawer */
+    .site-nav__cta-item {
+      display: block;
+      padding-top: 1.25rem;
+      margin-top: 0.25rem;
+    }
+    .site-nav__cta-btn {
+      display: block;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: var(--safety-orange);
+      color: var(--concrete-white);
+      padding: 0.875rem 1.5rem;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      animation: ctaPulse 3.5s ease-in-out 0.5s infinite;
+    }
+    .site-nav__cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255,255,255,0.4) 50%,
+        transparent 70%
+      );
+      transform: translateX(-150%) skewX(-20deg);
+      animation: ctaShimmer 3.5s ease-in-out 1.5s infinite;
+      pointer-events: none;
+    }
+    .site-nav__cta-btn:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(236,121,38,0.4);
+    }
+
+    /* Entrance animation for mobile drawer CTA */
+    .site-nav.is-open .site-nav__cta-item {
+      animation: navCTAEntrance 0.3s var(--easing-standard) 0.2s both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header__cta,
+    .site-header__cta::before,
+    .site-nav__cta-btn,
+    .site-nav__cta-btn::before {
+      animation: none;
+    }
   }
 </style>
