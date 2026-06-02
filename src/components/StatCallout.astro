@@ -10,7 +10,7 @@ const { number, label, sublabel, attribution, showCow = false } = Astro.props;
 ---
 <div class="stat-callout">
   {showCow && (
-    <img src="/assets/brand/cow.webp" alt="" aria-hidden="true" class="stat-callout__cow reveal" />
+    <img src="/assets/brand/cow-character.webp" alt="" aria-hidden="true" class="stat-callout__cow reveal" />
   )}
   <div class="stat-callout__number reveal" data-count-target={number}>{number}</div>
   <p class="stat-callout__label reveal">{label}</p>

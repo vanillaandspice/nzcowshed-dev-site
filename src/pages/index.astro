@@ -47,7 +47,7 @@ const homeSlides = [
       </div>
       <a href="/contact" class="costs-grid__art reveal" aria-label="Find out what slipping cows cost you — get a free quote">
         <img
-          src="/assets/brand/slipping-cows-cost.jpg"
+          src="/assets/brand/slipping-cows-cost.webp"
           alt="Do you know what slipping cows cost you? — illustrated dairy cow carrying money bags on grooved concrete"
           loading="lazy"
           decoding="async"
@@ -153,36 +153,59 @@ const homeSlides = [
   </Section>
 
   <Section bg="deep-purple" narrow>
-    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
-      Still thinking about it?
-    </h2>
-    <p style="font-family: var(--font-body); font-size: 1.5rem; line-height: 1.5; color: var(--concrete-white); margin: 0 0 0.5rem; font-style: italic;">
-      "I should have done the whole yard first off."
-    </p>
-    <p style="font-family: var(--font-body); font-size: 1rem; color: var(--teal); margin: 0 0 1.5rem;">— Kelly &amp; Tina Woollier</p>
-    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 2rem;">
-      The farmers who wait longest are usually the ones who say that. One grooved section and they see the results, then wish they'd done the rest sooner.
-    </p>
-    <Button variant="primary" href="/contact">Request a callback</Button>
+    <div class="thinking-layout">
+      <div class="thinking-layout__text">
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--concrete-white); margin: 0 0 1.5rem; letter-spacing: 0.02em;">
+          Still thinking about it?
+        </h2>
+        <p style="font-family: var(--font-body); font-size: 1.5rem; line-height: 1.5; color: var(--concrete-white); margin: 0 0 0.5rem; font-style: italic;">
+          "I should have done the whole yard first off."
+        </p>
+        <p style="font-family: var(--font-body); font-size: 1rem; color: var(--teal); margin: 0 0 1.5rem;">— Kelly &amp; Tina Woollier</p>
+        <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 2rem;">
+          The farmers who wait longest are usually the ones who say that. One grooved section and they see the results, then wish they'd done the rest sooner.
+        </p>
+        <Button variant="primary" href="/contact">Request a callback</Button>
+      </div>
+      <div class="thinking-layout__cow" aria-hidden="true">
+        <img
+          src="/assets/brand/cow-character.webp"
+          alt=""
+          class="thinking-cow"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
   </Section>
 
   <Section bg="concrete-white">
-    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 2rem; text-align: center; letter-spacing: 0.02em;">
-      Straightforward
-    </h2>
-    <ol style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter);">
-      {[
-        { n: '1', t: 'Get a quote', d: "Tell us what you've got — cowshed, yard, race, whatever needs doing.", delay: '0ms' },
-        { n: '2', t: 'We come to you', d: 'We bring the gear and get it done.', delay: '100ms' },
-        { n: '3', t: 'Your concrete grips', d: 'From the day we leave, it works.', delay: '200ms' },
-      ].map(s => (
-        <li class="reveal" style={`border-top: 3px solid var(--teal); padding-top: 1rem; transition-delay: ${s.delay};`}>
-          <div style="font-family: var(--font-heading); font-size: 3rem; color: var(--safety-orange); line-height: 1; letter-spacing: 0.02em;">{s.n}</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--deep-purple); margin: 0.5rem 0; letter-spacing: 0.02em;">{s.t}</h4>
-          <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">{s.d}</p>
-        </li>
-      ))}
-    </ol>
+    <div class="steps-outer">
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 2rem; text-align: center; letter-spacing: 0.02em; position: relative; z-index: 1;">
+        Straightforward
+      </h2>
+      <ol style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter); position: relative; z-index: 1;">
+        {[
+          { n: '1', t: 'Get a quote', d: "Tell us what you've got — cowshed, yard, race, whatever needs doing.", delay: '0ms' },
+          { n: '2', t: 'We come to you', d: 'We bring the gear and get it done.', delay: '100ms' },
+          { n: '3', t: 'Your concrete grips', d: 'From the day we leave, it works.', delay: '200ms' },
+        ].map(s => (
+          <li class="reveal" style={`border-top: 3px solid var(--teal); padding-top: 1rem; transition-delay: ${s.delay};`}>
+            <div style="font-family: var(--font-heading); font-size: 3rem; color: var(--safety-orange); line-height: 1; letter-spacing: 0.02em;">{s.n}</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; color: var(--deep-purple); margin: 0.5rem 0; letter-spacing: 0.02em;">{s.t}</h4>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+      <img
+        src="/assets/brand/grooved-concrete-cartoon.webp"
+        alt=""
+        aria-hidden="true"
+        class="steps-cartoon"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
   </Section>
 
   <Section bg="surface">
@@ -203,6 +226,7 @@ const homeSlides = [
   </Section>
 
   <style>
+    /* Grooving feature grid */
     .grooving-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -211,12 +235,45 @@ const homeSlides = [
       margin-bottom: 3rem;
     }
     @media (max-width: 768px) {
-      .grooving-grid {
-        grid-template-columns: 1fr;
-      }
-      .grooving-grid figure {
-        order: 1;
-      }
+      .grooving-grid { grid-template-columns: 1fr; }
+      .grooving-grid figure { order: 1; }
+    }
+
+    /* "Still thinking about it?" CTA with cow */
+    .thinking-layout {
+      display: flex;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+    .thinking-layout__text { flex: 1; }
+    .thinking-layout__cow { flex-shrink: 0; }
+    .thinking-cow {
+      width: clamp(130px, 18vw, 210px);
+      height: auto;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.32));
+    }
+    @media (max-width: 540px) {
+      .thinking-layout__cow { display: none; }
+    }
+
+    /* "Straightforward" steps with background cartoon */
+    .steps-outer {
+      position: relative;
+      overflow: hidden;
+    }
+    .steps-cartoon {
+      position: absolute;
+      right: -4%;
+      bottom: -12%;
+      width: 38%;
+      max-width: 420px;
+      opacity: 0.07;
+      pointer-events: none;
+      user-select: none;
+      mix-blend-mode: multiply;
+    }
+    @media (max-width: 600px) {
+      .steps-cartoon { display: none; }
     }
   </style>
 

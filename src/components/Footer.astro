@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
   <!-- Illustrated scene — Scott Pearson illustrations -->
   <div class="site-footer__scene" role="img" aria-label="NZ Cowshed Groovers — grooved concrete landscape">
     <img
-      src="/assets/brand/illustrated-landscape.png"
+      src="/assets/brand/illustrated-landscape.webp"
       alt=""
       aria-hidden="true"
       class="site-footer__landscape"
@@ -14,17 +14,9 @@ const year = new Date().getFullYear();
       decoding="async"
     />
     <img
-      src="/assets/brand/ribbon-banner.png"
+      src="/assets/brand/ribbon-banner.webp"
       alt="NZ Cowshed Groovers"
       class="site-footer__ribbon"
-      loading="lazy"
-      decoding="async"
-    />
-    <img
-      src="/assets/brand/cow-character.png"
-      alt=""
-      aria-hidden="true"
-      class="site-footer__cow"
       loading="lazy"
       decoding="async"
     />
@@ -107,29 +99,9 @@ const year = new Date().getFullYear();
     filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
     pointer-events: none;
   }
-  .site-footer__cow {
-    position: absolute;
-    right: 7%;
-    bottom: 0;
-    height: 88%;
-    max-height: 230px;
-    width: auto;
-    mix-blend-mode: multiply;
-    pointer-events: none;
-    /* subtle entrance on page load */
-    animation: cowEntrance 0.6s 0.2s both ease-out;
-  }
-  @keyframes cowEntrance {
-    from { opacity: 0; transform: translateX(20px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .site-footer__cow { animation: none; }
-  }
   @media (max-width: 480px) {
     .site-footer__landscape { max-height: 180px; object-position: center 60%; }
     .site-footer__ribbon { width: min(240px, 70vw); }
-    .site-footer__cow { height: 75%; max-height: 140px; right: 3%; }
   }
 
   /* ── Inner nav grid ─────────────────────────────────── */

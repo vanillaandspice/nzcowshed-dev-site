@@ -28,23 +28,56 @@ const slides = [
     ctaLabel="Free Quote"
   />
 
-  <Section bg="concrete-white" narrow>
-    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
-      What we groove
-    </h2>
-    <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
-      {[
-        'Drafting yards — easier handling, less stress on stock',
-        'Loading yards — cows stay on their feet up the ramp',
-        'Sale yards — proven in commercial multi-truck environments',
-        'Feedpads, underpasses, races — anywhere concrete gets wet',
-      ].map(line => (
-        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
-        </li>
-      ))}
-    </ul>
+  <Section bg="concrete-white">
+    <div class="yards-intro">
+      <div class="yards-intro__text">
+        <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+          What we groove
+        </h2>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+          {[
+            'Drafting yards — easier handling, less stress on stock',
+            'Loading yards — cows stay on their feet up the ramp',
+            'Sale yards — proven in commercial multi-truck environments',
+            'Feedpads, underpasses, races — anywhere concrete gets wet',
+          ].map(line => (
+            <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="yards-intro__art" aria-hidden="true">
+        <img
+          src="/assets/brand/cow-character.webp"
+          alt=""
+          class="yards-cow"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
   </Section>
+
+  <style>
+    .yards-intro {
+      display: flex;
+      align-items: flex-end;
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .yards-intro__text { flex: 1; }
+    .yards-intro__art { flex-shrink: 0; }
+    .yards-cow {
+      width: clamp(140px, 18vw, 220px);
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(59,31,110,0.14));
+    }
+    @media (max-width: 560px) {
+      .yards-intro__art { display: none; }
+    }
+  </style>
 
   <Section bg="surface" narrow>
     <Card>
