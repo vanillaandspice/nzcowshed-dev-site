@@ -106,11 +106,14 @@ export default function EnquiryForm() {
         Request received
       </p>
       <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'rgba(255,255,255,0.8)', margin: '0 0 1.25rem', lineHeight: 1.6 }}>
-        We'll be in touch shortly. For urgent jobs call Scott directly:
+        We'll be in touch shortly. Or call Scott directly:
       </p>
-      <a href="tel:+6427474775" style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', color: 'var(--safety-orange)', textDecoration: 'none', letterSpacing: '0.02em' }}>
+      <a href="tel:+6427474775" style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', color: 'var(--safety-orange)', textDecoration: 'none', letterSpacing: '0.02em', display: 'block', marginBottom: '0.5rem' }}>
         0274 747 775
       </a>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', fontStyle: 'italic', margin: 0 }}>
+        Mon–Fri, during farming hours. He'll pick up.
+      </p>
     </div>
   );
 

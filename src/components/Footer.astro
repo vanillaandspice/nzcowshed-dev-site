@@ -37,6 +37,7 @@ const year = new Date().getFullYear();
     <div class="site-footer__contact">
       <h4>Get in touch</h4>
       <a href="tel:+6427474775" class="site-footer__phone">0274 747 775</a>
+      <p class="site-footer__hours">Mon–Fri, during farming hours. He'll pick up.</p>
       <a href="mailto:info@cowshedgroovers.co.nz" class="site-footer__email">info@cowshedgroovers.co.nz</a>
       <p class="site-footer__area">North Island, New Zealand<br />Nationwide capability</p>
     </div>
@@ -162,6 +163,13 @@ const year = new Date().getFullYear();
     transition: color 0.18s ease;
   }
   .site-footer__phone:hover { color: #f87d3a; }
+  .site-footer__hours {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    margin: 0;
+  }
   .site-footer__email {
     font-family: var(--font-body);
     font-size: 0.85rem;

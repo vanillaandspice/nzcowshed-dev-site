@@ -24,6 +24,7 @@ import EnquiryForm from '../components/EnquiryForm';
         or call Scott on:<br />
         <strong><a href="tel:+6427474775" style="color: var(--safety-orange); text-decoration: none;">0274 747 775</a></strong>
       </p>
+      <p style="font-family: var(--font-body); font-size: 0.95rem; color: rgba(255,255,255,0.55); font-style: italic; margin: 0.75rem 0 0;">Mon–Fri, during farming hours. He'll pick up.</p>
     </div>
   </Section>
 
@@ -32,6 +33,7 @@ import EnquiryForm from '../components/EnquiryForm';
       <div class="contact-sidebar">
         <p class="contact-sidebar__label">or call Scott on:</p>
         <a href="tel:+6427474775" class="contact-sidebar__phone">0274 747 775</a>
+        <p class="contact-sidebar__hours">Mon–Fri, during farming hours. He'll pick up.</p>
 
         <h4 class="contact-sidebar__heading">Email</h4>
         <a href="mailto:info@cowshedgroovers.co.nz" class="contact-sidebar__email">info@cowshedgroovers.co.nz</a>
@@ -100,6 +102,13 @@ import EnquiryForm from '../components/EnquiryForm';
     transition: color 0.18s ease;
   }
   .contact-sidebar__email:hover { color: var(--teal); }
+  .contact-sidebar__hours {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--on-surface-variant);
+    font-style: italic;
+    margin: 0 0 1.5rem;
+  }
   .contact-sidebar__body {
     font-family: var(--font-body);
     font-size: 0.95rem;
