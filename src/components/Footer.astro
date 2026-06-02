@@ -3,22 +3,16 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
 
-  <!-- Illustrated scene — Scott Pearson illustrations -->
-  <div class="site-footer__scene" role="img" aria-label="NZ Cowshed Groovers — grooved concrete landscape">
+  <!-- Orange banner with transparent ribbon -->
+  <div class="site-footer__banner">
     <img
-      src="/assets/brand/illustrated-landscape.webp"
-      alt=""
-      aria-hidden="true"
-      class="site-footer__landscape"
-      loading="lazy"
-      decoding="async"
-    />
-    <img
-      src="/assets/brand/ribbon-banner.webp"
+      src="/assets/brand/ribbon-banner-transparent.webp"
       alt="NZ Cowshed Groovers"
       class="site-footer__ribbon"
       loading="lazy"
       decoding="async"
+      width="600"
+      height="263"
     />
   </div>
 
@@ -52,6 +46,18 @@ const year = new Date().getFullYear();
       <a href="mailto:info@cowshedgroovers.co.nz" class="site-footer__email">info@cowshedgroovers.co.nz</a>
       <p class="site-footer__area">North Island, New Zealand<br />Nationwide capability</p>
     </div>
+    <!-- Cow mascot — visible on mobile only, sits right of nav columns -->
+    <div class="site-footer__cow-wrap" aria-hidden="true">
+      <img
+        src="/assets/brand/cow-character.webp"
+        alt=""
+        class="site-footer__cow"
+        loading="lazy"
+        decoding="async"
+        width="200"
+        height="176"
+      />
+    </div>
   </div>
 
   <!-- Credits & copyright -->
@@ -75,33 +81,18 @@ const year = new Date().getFullYear();
     color: rgba(255,255,255,0.85);
   }
 
-  /* ── Illustrated scene ──────────────────────────────── */
-  .site-footer__scene {
-    position: relative;
-    background: #1e3a2e; /* deep NZ green fallback while image loads */
-    overflow: hidden;
-    border-top: 3px solid var(--teal);
-  }
-  .site-footer__landscape {
-    width: 100%;
-    display: block;
-    max-height: 280px;
-    object-fit: cover;
-    object-position: center 55%;
+  /* ── Orange banner ──────────────────────────────────── */
+  .site-footer__banner {
+    background: var(--safety-orange);
+    padding: 2.25rem var(--space-grid-margin);
+    text-align: center;
+    border-top: 3px solid rgba(255,255,255,0.18);
   }
   .site-footer__ribbon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(400px, 55vw);
+    width: min(500px, 72vw);
     height: auto;
-    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
-    pointer-events: none;
-  }
-  @media (max-width: 480px) {
-    .site-footer__landscape { max-height: 180px; object-position: center 60%; }
-    .site-footer__ribbon { width: min(240px, 70vw); }
+    display: inline-block;
+    filter: drop-shadow(0 3px 12px rgba(59,31,110,0.35));
   }
 
   /* ── Inner nav grid ─────────────────────────────────── */
@@ -152,7 +143,6 @@ const year = new Date().getFullYear();
     transition: color 0.18s ease;
   }
   .site-footer__nav a:hover { color: var(--concrete-white); }
-
   .site-footer__contact {
     display: flex;
     flex-direction: column;
@@ -182,6 +172,17 @@ const year = new Date().getFullYear();
     color: rgba(255,255,255,0.4);
     line-height: 1.5;
     margin: 0.25rem 0 0;
+  }
+
+  /* Cow — hidden on desktop, shown on mobile beside nav columns */
+  .site-footer__cow-wrap {
+    display: none;
+  }
+  .site-footer__cow {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
   }
 
   /* ── Base/credits bar ───────────────────────────────── */
@@ -215,11 +216,21 @@ const year = new Date().getFullYear();
 
   /* ── Responsive ─────────────────────────────────────── */
   @media (max-width: 768px) {
+    /* 3-column grid: brand full-width, then [services | company | cow], contact full-width */
     .site-footer__inner {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr auto;
+      align-items: end;
     }
     .site-footer__brand { grid-column: 1 / -1; }
-    .site-footer__contact { grid-column: 1 / -1; }
+    .site-footer__contact { grid-column: 1 / 3; }
+    .site-footer__cow-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      grid-column: 3;
+      grid-row: 2; /* same row as the two nav columns */
+      padding-bottom: 0.25rem;
+    }
     .site-footer__base {
       flex-direction: column;
       align-items: flex-start;
@@ -227,6 +238,13 @@ const year = new Date().getFullYear();
     }
   }
   @media (max-width: 480px) {
-    .site-footer__inner { grid-template-columns: 1fr; }
+    .site-footer__ribbon { width: min(280px, 80vw); }
+    .site-footer__banner { padding: 1.75rem var(--space-grid-margin); }
+    /* Keep 3-col at 480 but tighten */
+    .site-footer__cow { max-width: 100px; }
+  }
+  @media (max-width: 360px) {
+    .site-footer__inner { grid-template-columns: 1fr 1fr; }
+    .site-footer__cow-wrap { display: none; }
   }
 </style>
