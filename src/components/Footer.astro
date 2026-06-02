@@ -221,19 +221,19 @@ const year = new Date().getFullYear();
 
   /* ── Responsive ─────────────────────────────────────── */
   @media (max-width: 768px) {
-    /* 3-column grid: brand full-width, then [services | company | cow], contact full-width */
+    /* 2-column grid: nav row, then contact | cow */
     .site-footer__inner {
-      grid-template-columns: 1fr 1fr auto;
+      grid-template-columns: 1fr 1fr;
       align-items: end;
     }
     .site-footer__brand { grid-column: 1 / -1; }
-    .site-footer__contact { grid-column: 1 / 3; }
+    .site-footer__contact { grid-column: 1; }
     .site-footer__cow-wrap {
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      grid-column: 3;
-      grid-row: 3; /* same row as the two nav columns */
+      grid-column: 2;
+      grid-row: 4;
       padding-bottom: 0.25rem;
     }
     .site-footer__base {
