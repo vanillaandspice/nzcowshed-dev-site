@@ -2,16 +2,41 @@
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="site-footer__banner">
-    <a href="/">
-      <img src="/assets/brand/banner-logo.webp" alt="NZ Cowshed Groovers" />
-    </a>
+
+  <!-- Illustrated scene — Scott Pearson illustrations -->
+  <div class="site-footer__scene" role="img" aria-label="NZ Cowshed Groovers — grooved concrete landscape">
+    <img
+      src="/assets/brand/illustrated-landscape.png"
+      alt=""
+      aria-hidden="true"
+      class="site-footer__landscape"
+      loading="lazy"
+      decoding="async"
+    />
+    <img
+      src="/assets/brand/ribbon-banner.png"
+      alt="NZ Cowshed Groovers"
+      class="site-footer__ribbon"
+      loading="lazy"
+      decoding="async"
+    />
+    <img
+      src="/assets/brand/cow-character.png"
+      alt=""
+      aria-hidden="true"
+      class="site-footer__cow"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
+
+  <!-- Navigation & contact -->
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <p>Concrete grooving across New Zealand. 100% lifetime guarantee on every groove.</p>
+      <p>Concrete grooving across New Zealand.</p>
+      <p class="site-footer__guarantee">100% lifetime guarantee on every groove.</p>
     </div>
-    <nav class="site-footer__nav" aria-label="Footer navigation">
+    <nav class="site-footer__nav" aria-label="Services">
       <h4>Services</h4>
       <ul>
         <li><a href="/services/cowshed-grooving">Cowshed Grooving</a></li>
@@ -20,7 +45,7 @@ const year = new Date().getFullYear();
         <li><a href="/boat-ramps-marine-docks">Boat Ramps</a></li>
       </ul>
     </nav>
-    <nav class="site-footer__nav" aria-label="Company navigation">
+    <nav class="site-footer__nav" aria-label="Company">
       <h4>Company</h4>
       <ul>
         <li><a href="/our-work">Our Work</a></li>
@@ -32,70 +57,202 @@ const year = new Date().getFullYear();
     <div class="site-footer__contact">
       <h4>Get in touch</h4>
       <a href="tel:+6427474775" class="site-footer__phone">0274 747 775</a>
-      <a href="mailto:info@cowshedgroovers.co.nz">info@cowshedgroovers.co.nz</a>
+      <a href="mailto:info@cowshedgroovers.co.nz" class="site-footer__email">info@cowshedgroovers.co.nz</a>
       <p class="site-footer__area">North Island, New Zealand<br />Nationwide capability</p>
     </div>
   </div>
+
+  <!-- Credits & copyright -->
   <div class="site-footer__base">
-    <p>© {year} NZ Cowshed Groovers. All rights reserved.</p>
+    <p class="site-footer__copyright">© {year} NZ Cowshed Groovers</p>
+    <p class="site-footer__credits">
+      Illustrations: <span>Scott Pearson</span>, Hamilton
+      &thinsp;·&thinsp;
+      Web: <span>Fast Web Guru</span>
+      &thinsp;·&thinsp;
+      Brand: <span>Vanilla &amp; Spice</span>
+    </p>
   </div>
+
 </footer>
 
 <style>
+  /* ── Structure ─────────────────────────────────────── */
   .site-footer {
-    background: var(--primary);
+    background: var(--primary, #1a0a2e);
     color: rgba(255,255,255,0.85);
-    padding: 0 0 0;
   }
-  .site-footer__banner {
-    background: var(--deep-purple);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 2.5rem var(--space-grid-margin);
-    text-align: center;
+
+  /* ── Illustrated scene ──────────────────────────────── */
+  .site-footer__scene {
+    position: relative;
+    background: #1e3a2e; /* deep NZ green fallback while image loads */
+    overflow: hidden;
+    border-top: 3px solid var(--teal);
   }
-  .site-footer__banner img {
-    max-width: min(700px, 90vw);
+  .site-footer__landscape {
     width: 100%;
+    display: block;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center 55%;
+  }
+  .site-footer__ribbon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(400px, 55vw);
     height: auto;
-    display: inline-block;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+    pointer-events: none;
   }
-  .site-footer__inner {
-    padding-top: 3rem;
+  .site-footer__cow {
+    position: absolute;
+    right: 7%;
+    bottom: 0;
+    height: 88%;
+    max-height: 230px;
+    width: auto;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    /* subtle entrance on page load */
+    animation: cowEntrance 0.6s 0.2s both ease-out;
   }
+  @keyframes cowEntrance {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer__cow { animation: none; }
+  }
+  @media (max-width: 480px) {
+    .site-footer__landscape { max-height: 180px; object-position: center 60%; }
+    .site-footer__ribbon { width: min(240px, 70vw); }
+    .site-footer__cow { height: 75%; max-height: 140px; right: 3%; }
+  }
+
+  /* ── Inner nav grid ─────────────────────────────────── */
   .site-footer__inner {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: var(--space-stack-lg);
-    padding: 0 var(--space-grid-margin) 3rem;
+    padding: 3rem var(--space-grid-margin) 3rem;
   }
-  .site-footer__brand p { font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.65); }
-  .site-footer__nav h4, .site-footer__contact h4 {
+  .site-footer__brand p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    margin: 0 0 0.35rem;
+  }
+  .site-footer__guarantee {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    letter-spacing: var(--tracking-label-caps);
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--teal) !important;
+  }
+  .site-footer__nav h4,
+  .site-footer__contact h4 {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--teal);
     margin: 0 0 0.75rem;
   }
-  .site-footer__nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-  .site-footer__nav a { font-size: 0.9rem; text-decoration: none; color: rgba(255,255,255,0.7); }
+  .site-footer__nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .site-footer__nav a {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.65);
+    transition: color 0.18s ease;
+  }
   .site-footer__nav a:hover { color: var(--concrete-white); }
-  .site-footer__contact { display: flex; flex-direction: column; gap: 0.5rem; }
-  .site-footer__phone { font-family: var(--font-heading); font-size: 1.5rem; color: var(--safety-orange); text-decoration: none; letter-spacing: 0.02em; }
-  .site-footer__contact a { font-size: 0.9rem; color: rgba(255,255,255,0.7); text-decoration: underline; }
-  .site-footer__area { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 0.5rem; }
+
+  .site-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .site-footer__phone {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--safety-orange);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.18s ease;
+  }
+  .site-footer__phone:hover { color: #f87d3a; }
+  .site-footer__email {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.18s ease;
+  }
+  .site-footer__email:hover { color: rgba(255,255,255,0.9); }
+  .site-footer__area {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+    margin: 0.25rem 0 0;
+  }
+
+  /* ── Base/credits bar ───────────────────────────────── */
   .site-footer__base {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 1.5rem var(--space-grid-margin);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.25rem var(--space-grid-margin);
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
-  .site-footer__base p { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin: 0; }
+  .site-footer__copyright {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+  }
+  .site-footer__credits {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+  .site-footer__credits span {
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── Responsive ─────────────────────────────────────── */
   @media (max-width: 768px) {
-    .site-footer__inner { grid-template-columns: 1fr 1fr; }
+    .site-footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
     .site-footer__brand { grid-column: 1 / -1; }
     .site-footer__contact { grid-column: 1 / -1; }
+    .site-footer__base {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
   }
   @media (max-width: 480px) {
     .site-footer__inner { grid-template-columns: 1fr; }
