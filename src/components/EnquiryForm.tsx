@@ -114,54 +114,16 @@ export default function EnquiryForm() {
     </div>
   );
 
-  // ── Step indicators ───────────────────────────────────────────────────────
-  const stepLabels = ['Your details', 'About the job', 'Final details'];
-
-  const StepDot = ({ n }: { n: Step }) => {
-    const active    = step === n;
-    const completed = step > n;
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem', flex: 1 }}>
-        <div style={{
-          width: 36, height: 36, borderRadius: '50%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: 'var(--font-heading)', fontSize: '1.1rem', letterSpacing: '0.02em',
-          background: completed ? 'var(--teal)' : active ? 'var(--safety-orange)' : 'transparent',
-          color: (completed || active) ? '#fff' : 'var(--outline)',
-          border: (completed || active) ? 'none' : '2px solid var(--outline)',
-          transition: 'all 0.25s ease',
-        }}>
-          {completed ? '✓' : n}
-        </div>
-        <span style={{
-          fontFamily: 'var(--font-body)', fontSize: '0.72rem',
-          color: active ? 'var(--deep-purple)' : completed ? 'var(--teal)' : 'var(--outline)',
-          textAlign: 'center', fontWeight: active ? 600 : 400,
-          letterSpacing: '0.02em',
-        }}>
-          {stepLabels[n - 1]}
-        </span>
-      </div>
-    );
-  };
-
+  // ── Step indicator — three subtle dashes ─────────────────────────────────
   const StepBar = () => (
-    <div style={{ marginBottom: '2rem' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
-        <StepDot n={1} />
-        <div style={{
-          flex: 1, height: 2, alignSelf: 'flex-start', marginTop: 17,
-          background: step > 1 ? 'var(--teal)' : 'var(--surface-container-high)',
+    <div style={{ display: 'flex', gap: 5, marginBottom: '1.75rem' }}>
+      {([1, 2, 3] as Step[]).map(n => (
+        <div key={n} style={{
+          flex: 1, height: 3, borderRadius: 2,
+          background: step > n ? 'var(--teal)' : step === n ? 'var(--safety-orange)' : 'rgba(59,31,110,0.15)',
           transition: 'background 0.3s ease',
         }} />
-        <StepDot n={2} />
-        <div style={{
-          flex: 1, height: 2, alignSelf: 'flex-start', marginTop: 17,
-          background: step > 2 ? 'var(--teal)' : 'var(--surface-container-high)',
-          transition: 'background 0.3s ease',
-        }} />
-        <StepDot n={3} />
-      </div>
+      ))}
     </div>
   );
 
@@ -268,7 +230,7 @@ export default function EnquiryForm() {
         <form onSubmit={handleStep1} className="eq-step" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Heading
             title="Let's get started"
-            sub="Just your name and number — that's all we need to get back to you."
+            sub="Let me know your name and number — so I can get back to you."
           />
 
           <div style={row}>
