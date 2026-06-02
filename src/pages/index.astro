@@ -139,7 +139,7 @@ const homeSlides = [
     <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); text-transform: uppercase; color: var(--deep-purple); margin: 0 0 2rem; text-align: center; letter-spacing: 0.02em;">
       More farmer feedback on concrete grooving
     </h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-gutter);">
+    <div class="testimonials-grid">
       <Card>
         <TestimonialBlock quote="Completely different herd to milk. Cows are flowing through the shed much better. No more slips and faster milking times." attribution="Trevor" business="Patetonga" />
       </Card>
@@ -226,6 +226,16 @@ const homeSlides = [
   </Section>
 
   <style>
+    /* Testimonials grid — single column on mobile */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-gutter);
+    }
+    @media (max-width: 640px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
     /* Grooving feature grid */
     .grooving-grid {
       display: grid;

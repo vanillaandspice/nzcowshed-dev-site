@@ -52,7 +52,7 @@ const slides = [
     <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem;">
       What farmers say
     </h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-gutter);">
+    <div class="cowshed-testimonials">
       <Card>
         <TestimonialBlock
           quote="Completely different herd to milk. Cows are flowing through the shed much better. Grooving our yard meant no more slips and faster milking times."
@@ -79,3 +79,14 @@ const slides = [
 
   <ContactPanel />
 </Layout>
+
+<style>
+  .cowshed-testimonials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-gutter);
+  }
+  @media (max-width: 640px) {
+    .cowshed-testimonials { grid-template-columns: 1fr; }
+  }
+</style>
