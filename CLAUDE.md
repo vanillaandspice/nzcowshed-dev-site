@@ -213,7 +213,29 @@ Also triggerable manually via GitHub Actions → "Check Astro Updates" → Run w
 
 ---
 
-## Deployment
+## Before Going Live — Remove Dev Indexing Block
+
+The dev site is currently blocked from all search engine indexing. Two things must be reversed before launch:
+
+**1. `public/robots.txt`** — replace the dev block with the production version:
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://www.nzcowshedgroovers.co.nz/sitemap-index.xml
+```
+
+**2. `src/layouts/Layout.astro`** — remove the noindex meta tag (look for the comment "Development site — prevent indexing"):
+```html
+<!-- DELETE THIS BLOCK BEFORE LAUNCH -->
+<meta name="robots" content="noindex, nofollow" />
+```
+
+After removing both, commit and push. Verify with Google's [Rich Results Test](https://search.google.com/test/rich-results) or inspect `robots.txt` live to confirm the block is gone before submitting the sitemap to Google Search Console.
+
+---
+
+
 
 Push to `main` → Vercel auto-builds → live in ~30 seconds.
 
