@@ -51,7 +51,7 @@ const testimonials = [
   </style>
 
   <Section bg="surface">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-gutter);">
+    <div class="testimonials-grid">
       {testimonials.map(t => (
         <Card>
           <TestimonialBlock quote={t.quote} attribution={t.name} business={t.biz} />
@@ -59,4 +59,17 @@ const testimonials = [
       ))}
     </div>
   </Section>
+
+  <style>
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-gutter);
+    }
+    @media (max-width: 640px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </Layout>
