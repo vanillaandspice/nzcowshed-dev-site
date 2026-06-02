@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Button from '../components/Button.astro';
+import ContactPanel from '../components/ContactPanel.astro';
 import Card from '../components/Card.astro';
 import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ServiceHero from '../components/ServiceHero.astro';
@@ -62,9 +63,5 @@ const slides = [
     <Slideshow slides={slides} />
   </Section>
 
-  <Section bg="safety-orange" narrow>
-    <div style="text-align: center;">
-      <Button variant="ghost" href="/contact">Free Quote</Button>
-    </div>
-  </Section>
+  <ContactPanel />
 </Layout>

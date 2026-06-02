@@ -6,6 +6,7 @@ import Card from '../components/Card.astro';
 import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ServiceHero from '../components/ServiceHero.astro';
 import Slideshow from '../components/Slideshow.astro';
+import ContactPanel from '../components/ContactPanel.astro';
 
 const slides = [
   { photo: '/assets/photos/cowshed-2b.webp', line1: 'Car park grooved and re-opened within 48 hours', line2: 'No disruption to business — solved permanently', name: 'Airways NZ', location: 'Christchurch Airport' },
@@ -62,9 +63,5 @@ const slides = [
     <Slideshow slides={slides} />
   </Section>
 
-  <Section bg="safety-orange" narrow>
-    <div style="text-align: center;">
-      <Button variant="ghost" href="/contact">Free Quote</Button>
-    </div>
-  </Section>
+  <ContactPanel />
 </Layout>

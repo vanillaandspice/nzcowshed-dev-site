@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import ContactPanel from '../components/ContactPanel.astro';
 
 const jobs = [
   { photo: '/assets/photos/yard-grooved.webp', title: 'Cowshed yard', caption: 'Wet morning — grooves visible across the full pad.' },
@@ -39,4 +40,6 @@ const jobs = [
       ))}
     </div>
   </Section>
+
+  <ContactPanel />
 </Layout>
