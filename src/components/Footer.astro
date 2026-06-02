@@ -6,17 +6,10 @@ const year = new Date().getFullYear();
   <!-- Navigation & contact -->
   <div class="site-footer__inner">
 
-    <!-- Logo centred full-width above the nav columns -->
+    <!-- Text logo centred full-width above the nav columns -->
     <div class="site-footer__logo">
-      <img
-        src="/assets/brand/logo-header.webp"
-        alt="NZ Cowshed Groovers"
-        class="site-footer__logo-img"
-        loading="lazy"
-        decoding="async"
-        width="1536"
-        height="672"
-      />
+      <span class="site-footer__logo-line1">NZ Cowshed</span>
+      <span class="site-footer__logo-line2">Groovers</span>
     </div>
 
     <div class="site-footer__brand">
@@ -85,15 +78,25 @@ const year = new Date().getFullYear();
   /* ── Logo ───────────────────────────────────────────── */
   .site-footer__logo {
     grid-column: 1 / -1;
-    text-align: center;
-    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    padding-bottom: 1rem;
   }
-  .site-footer__logo-img {
-    width: min(580px, 86vw);
-    height: auto;
-    display: inline-block;
-    border-radius: 10px;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.45);
+  .site-footer__logo-line1 {
+    font-family: var(--font-heading);
+    color: var(--safety-orange);
+    font-size: clamp(1.4rem, 3.5vw, 2.25rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .site-footer__logo-line2 {
+    font-family: var(--font-heading);
+    color: var(--concrete-white);
+    font-size: clamp(1.85rem, 4.5vw, 3rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   /* ── Inner nav grid ─────────────────────────────────── */
@@ -230,7 +233,7 @@ const year = new Date().getFullYear();
       align-items: flex-end;
       justify-content: center;
       grid-column: 3;
-      grid-row: 2; /* same row as the two nav columns */
+      grid-row: 3; /* same row as the two nav columns */
       padding-bottom: 0.25rem;
     }
     .site-footer__base {

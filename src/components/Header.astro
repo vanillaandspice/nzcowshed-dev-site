@@ -26,8 +26,20 @@ const isServicesActive =
 <header class="site-header" data-services-active={isServicesActive ? 'true' : 'false'}>
   <div class="site-header__inner">
     <a href="/" class="site-header__logo" aria-label="NZ Cowshed Groovers — Home">
-      <span class="site-header__logo-line1">NZ Cowshed</span>
-      <span class="site-header__logo-line2">Groovers</span>
+      <div class="site-header__logo-text">
+        <span class="site-header__logo-line1">NZ Cowshed</span>
+        <span class="site-header__logo-line2">Groovers</span>
+      </div>
+      <img
+        src="/assets/brand/cow-character.webp"
+        alt=""
+        aria-hidden="true"
+        class="site-header__logo-cow"
+        loading="eager"
+        decoding="async"
+        width="55"
+        height="48"
+      />
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <ul class="site-nav__list">
@@ -171,10 +183,16 @@ const isServicesActive =
   .site-header__logo {
     grid-area: logo;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.875rem;
     line-height: 1;
     text-decoration: none;
     flex-shrink: 0;
+  }
+  .site-header__logo-text {
+    display: flex;
+    flex-direction: column;
   }
   .site-header__logo-line1 {
     font-family: var(--font-heading);
@@ -189,6 +207,11 @@ const isServicesActive =
     font-size: 1.5rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+  .site-header__logo-cow {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(0 3px 8px rgba(59,31,110,0.3));
   }
 
   /* ── Nav ────────────────────────────────────────────────────────────────── */
@@ -346,6 +369,7 @@ const isServicesActive =
       gap: 0.75rem;
     }
     .site-header__toggle { display: flex; }
+    .site-header__logo-cow { display: none; }
 
     /* Compact CTA stays visible in the bar on mobile */
     .site-header__cta {
