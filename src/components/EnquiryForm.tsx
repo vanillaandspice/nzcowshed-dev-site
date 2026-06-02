@@ -52,6 +52,7 @@ export default function EnquiryForm() {
         firstName: form.firstName,
         lastName:  form.lastName,
         phone:     form.phone,
+        email:     form.email,
         _subject:  `Quick enquiry — ${form.firstName} ${form.lastName} (phone captured)`,
         _formStage: 'Step 1 only — no further details yet',
       });
@@ -229,7 +230,7 @@ export default function EnquiryForm() {
           <StepBar />
           <Heading
             title="Let's get started"
-            sub="Let me know your name and number — so I can get back to you."
+            sub="Your name, number and email — so we can get back to you."
           />
 
           <div style={row}>
@@ -261,6 +262,15 @@ export default function EnquiryForm() {
             </label>
           </div>
 
+          <div>
+            <label style={lbl}>
+              Email address *
+              <input className="eq-input" name="email" type="email" required autoComplete="email"
+                value={form.email} onChange={set('email')}
+                style={inp} placeholder="you@example.com" />
+            </label>
+          </div>
+
           <div style={{ marginTop: '0.5rem' }}>
             <button type="submit" disabled={busy} className="eq-btn-primary" style={btnPrimary}>
               {busy ? 'Saving…' : 'Continue →'}
@@ -284,10 +294,10 @@ export default function EnquiryForm() {
 
           <div>
             <label style={lbl}>
-              Email address
-              <input className="eq-input" name="email" type="email" autoComplete="email"
-                value={form.email} onChange={set('email')}
-                style={inp} placeholder="you@example.com" />
+              Company or farm name
+              <input className="eq-input" name="company" type="text"
+                value={form.company} onChange={set('company')}
+                style={inp} placeholder="Your farm or business name" />
             </label>
           </div>
 
@@ -336,15 +346,6 @@ export default function EnquiryForm() {
             title="Tell us about the job"
             sub="All optional — but the more you tell us, the better quote we can prepare."
           />
-
-          <div>
-            <label style={lbl}>
-              Company or farm name
-              <input className="eq-input" name="company" type="text"
-                value={form.company} onChange={set('company')}
-                style={inp} placeholder="Your farm or business name" />
-            </label>
-          </div>
 
           <div>
             <p style={{ ...lbl, marginBottom: '0.6rem' }}>Approximate area</p>
