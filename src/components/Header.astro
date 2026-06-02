@@ -1,6 +1,6 @@
 ---
 const navLinks = [
-  { label: 'Services', href: '/services', hasSubmenu: true },
+  { label: 'Grooving Services', href: '/concrete-grooving-services', hasSubmenu: true },
   { label: 'Our Work', href: '/our-work' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'About', href: '/about' },
@@ -17,7 +17,8 @@ const serviceLinks = [
 const currentPath = Astro.url.pathname;
 
 const isServicesActive =
-  currentPath.startsWith('/services') ||
+  currentPath === '/concrete-grooving-services' ||
+  currentPath.startsWith('/services/') ||
   currentPath === '/yards' ||
   currentPath === '/car-parks' ||
   currentPath === '/boat-ramps-marine-docks';
