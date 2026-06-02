@@ -51,8 +51,8 @@ src/
     ZoomModal.tsx         ← React island, About page clipping
   pages/
     index.astro
+    concrete-grooving-services.astro
     services/
-      index.astro
       cowshed-grooving.astro
     yards.astro
     car-parks.astro
@@ -94,7 +94,7 @@ public/
 | Page | URL | File |
 |------|-----|------|
 | Home | `/` | `src/pages/index.astro` |
-| Services hub | `/services` | `src/pages/services/index.astro` |
+| Services hub | `/concrete-grooving-services` | `src/pages/concrete-grooving-services.astro` |
 | Cowshed Grooving | `/services/cowshed-grooving` | `src/pages/services/cowshed-grooving.astro` |
 | Yards | `/yards` | `src/pages/yards.astro` |
 | Car Parks | `/car-parks` | `src/pages/car-parks.astro` |
@@ -126,6 +126,7 @@ Both appear in `src/components/Footer.astro` and `src/pages/contact.astro`. Sear
 
 ### Update pricing
 Mentioned in `src/pages/services/cowshed-grooving.astro` (CTA section) and `src/pages/contact.astro` (sidebar). Also in `src/layouts/Layout.astro` (JSON-LD `priceRange`).
+- Note: the services hub page is now `src/pages/concrete-grooving-services.astro` (URL: `/concrete-grooving-services`).
 
 ### Add a new page
 1. Create `src/pages/new-page.astro`
@@ -137,14 +138,16 @@ Mentioned in `src/pages/services/cowshed-grooving.astro` (CTA section) and `src/
 ## SEO Setup
 
 ### Completed (built-in)
-- Unique `<title>` and `<meta description>` per page
-- Canonical URL tag
+- Unique `<title>` and `<meta description>` per page (all 10 pages)
+- Canonical URL tag (auto-generated from `siteUrl + Astro.url.pathname`)
 - Open Graph + Twitter Card tags
-- JSON-LD LocalBusiness schema (every page)
-- `sitemap-index.xml` auto-generated at build → `https://www.nzcowshedgroovers.co.nz/sitemap-index.xml`
-- `robots.txt` with sitemap URL
+- JSON-LD LocalBusiness schema on every page — name, phone, email, logo, image, description, priceRange, address, openingHours, areaServed, founder
+- `sitemap-index.xml` auto-generated at build via `@astrojs/sitemap` → `https://www.nzcowshedgroovers.co.nz/sitemap-index.xml`
+- `robots.txt` blocks all bots (dev — see go-live section to reverse)
+- `noindex, nofollow` meta on all pages (dev — see go-live section to reverse)
 - `lang="en-NZ"` locale
 - Font preloads
+- Title tags are server-rendered (Astro static output — no client-side JS required)
 
 ### Actions Required
 

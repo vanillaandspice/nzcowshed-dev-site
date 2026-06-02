@@ -28,10 +28,27 @@ const jsonLd = {
   url: siteUrl,
   telephone: '+6427474775',
   email: 'info@cowshedgroovers.co.nz',
-  areaServed: { '@type': 'Country', name: 'New Zealand' },
+  logo: `${siteUrl}/assets/brand/banner-logo.webp`,
+  image: `${siteUrl}/assets/brand/banner-logo.webp`,
   description: 'Concrete grooving for cowsheds, yards, car parks and boat ramps across New Zealand. 100% lifetime guarantee.',
   priceRange: '$16–$48 per m²',
+  areaServed: { '@type': 'Country', name: 'New Zealand' },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'NZ',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '17:00',
+    },
+  ],
   founder: { '@type': 'Person', name: 'Neil Taylor' },
+  sameAs: [
+    'https://www.nzcowshedgroovers.co.nz',
+  ],
 };
 ---
 
@@ -44,7 +61,6 @@ const jsonLd = {
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <meta name="author" content="NZ Cowshed Groovers" />
-  <meta name="robots" content="index, follow" />
   <link rel="canonical" href={canonicalUrl} />
 
   <meta property="og:type" content="website" />
