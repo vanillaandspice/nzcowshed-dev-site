@@ -223,11 +223,10 @@ export default function EnquiryForm() {
         }
       `}</style>
 
-      <StepBar />
-
       {/* ── STEP 1 ─────────────────────────────────────────── */}
       {step === 1 && (
         <form onSubmit={handleStep1} className="eq-step" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <StepBar />
           <Heading
             title="Let's get started"
             sub="Let me know your name and number — so I can get back to you."
@@ -277,6 +276,7 @@ export default function EnquiryForm() {
       {/* ── STEP 2 ─────────────────────────────────────────── */}
       {step === 2 && (
         <form onSubmit={handleStep2} className="eq-step" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <StepBar />
           <Heading
             title="A bit more"
             sub="Optional — helps us prepare a more accurate quote before we call."
@@ -331,6 +331,7 @@ export default function EnquiryForm() {
       {/* ── STEP 3 ─────────────────────────────────────────── */}
       {step === 3 && (
         <form onSubmit={handleStep3} className="eq-step" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <StepBar />
           <Heading
             title="Tell us about the job"
             sub="All optional — but the more you tell us, the better quote we can prepare."

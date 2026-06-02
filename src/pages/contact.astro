@@ -29,23 +29,23 @@ import EnquiryForm from '../components/EnquiryForm';
 
   <Section bg="surface">
     <div class="contact-grid">
-      <EnquiryForm client:load />
-      <div>
-        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">Or call</h3>
-        <a href="tel:+6427474775" style="font-family: var(--font-heading); font-size: 2rem; color: var(--safety-orange); text-decoration: none; letter-spacing: 0.02em; display: block; margin: 0 0 1.5rem;">0274 747 775</a>
+      <div class="contact-sidebar">
+        <p class="contact-sidebar__label">or call Scott on:</p>
+        <a href="tel:+6427474775" class="contact-sidebar__phone">0274 747 775</a>
 
-        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Email</h4>
-        <a href="mailto:info@cowshedgroovers.co.nz" style="font-family: var(--font-body); font-size: 1rem; color: var(--text-main); text-decoration: underline; display: block; margin: 0 0 1.5rem;">info@cowshedgroovers.co.nz</a>
+        <h4 class="contact-sidebar__heading">Email</h4>
+        <a href="mailto:info@cowshedgroovers.co.nz" class="contact-sidebar__email">info@cowshedgroovers.co.nz</a>
 
-        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Service area</h4>
-        <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0 0 1.5rem;">North Island, New Zealand — nationwide capability. We come to your farm.</p>
+        <h4 class="contact-sidebar__heading">Service area</h4>
+        <p class="contact-sidebar__body">North Island, New Zealand — nationwide capability. We come to your farm.</p>
 
-        <h4 style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--deep-purple); text-transform: uppercase; margin: 0 0 0.25rem;">Pricing</h4>
-        <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.5; margin: 0;">
+        <h4 class="contact-sidebar__heading">Pricing</h4>
+        <p class="contact-sidebar__body">
           <span style="color: var(--safety-orange);">Setup fee</span> plus per m² rate depending on access &amp; condition.<br /><br />
           <strong>100% lifetime guarantee included.</strong>
         </p>
       </div>
+      <EnquiryForm client:load />
     </div>
   </Section>
 </Layout>
@@ -55,10 +55,59 @@ import EnquiryForm from '../components/EnquiryForm';
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: var(--space-stack-lg);
     align-items: start;
   }
+
+  /* ── Sidebar ───────────────────────────────────────────── */
+  .contact-sidebar__label {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--deep-purple);
+    margin: 0 0 0.375rem;
+  }
+  .contact-sidebar__phone {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    color: var(--safety-orange);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    display: block;
+    margin: 0 0 1.75rem;
+    line-height: 1.1;
+    transition: color 0.18s ease;
+  }
+  .contact-sidebar__phone:hover { color: #f87d3a; }
+  .contact-sidebar__heading {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 0 0 0.3rem;
+  }
+  .contact-sidebar__email {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: block;
+    margin: 0 0 1.25rem;
+    transition: color 0.18s ease;
+  }
+  .contact-sidebar__email:hover { color: var(--teal); }
+  .contact-sidebar__body {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    color: var(--text-main);
+  }
+
   @media (max-width: 768px) {
     .contact-grid {
       grid-template-columns: 1fr;
