@@ -14,18 +14,45 @@ const slides = [
   { photo: '/assets/photos/cowshed-milking-yard.webp', line1: 'Cows flow through the shed much better', line2: 'Faster milking times from day one', name: 'Kelly & Tina Woollier', location: 'Dairy Farmers' },
   { photo: '/assets/photos/cowshed-2b.webp', line1: 'Water runs off, no algae build-up', line2: "Bulls that slipped every day — now they don't", name: 'Lance Pettigrew', location: 'Livestock Improvements' },
 ];
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Cowshed Concrete Grooving',
+  provider: { '@type': 'LocalBusiness', name: 'NZ Cowshed Groovers', url: siteUrl },
+  description: 'Wet-saw diamond blade crosshatch grooving for NZ cowshed floors, races, and yards. Stops cows slipping, 20–30 minutes faster milking. 100% lifetime guarantee.',
+  areaServed: 'New Zealand',
+  serviceType: 'Concrete Grooving',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Grooving Services', item: `${siteUrl}/concrete-grooving-services` },
+    { '@type': 'ListItem', position: 3, name: 'Cowshed Grooving', item: `${siteUrl}/concrete-grooving-services/cowshed-grooving` },
+  ],
+};
 ---
 
 <Layout
-  title="Cowshed Floor Grooving NZ — Non-Slip Concrete for Dairy Farms"
+  title="Cowshed Concrete Grooving NZ — Stop Cows Slipping | NZ Cowshed Groovers"
   description="Cowshed floor grooving by NZ Cowshed Groovers. Wet-saw diamond blade crosshatch grooves — no dust, no chip-out, 20–30 minutes faster milking. 100% lifetime guarantee."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <ServiceHero
-    breadcrumb="Services / Cowshed Grooving"
+    breadcrumb="Concrete Grooving Services / Cowshed Grooving"
     headline="Cowsheds that don't lose cows"
     lead="The job we do day-in, day-out. Cowshed floors, races, and yards grooved so cows walk in confidently and out faster."
     photo="/assets/photos/cowshed-grooving-hero.webp"
-    photoAlt="Grooved cowshed floor"
+    photoAlt="Diamond blade crosshatch grooves cut into a NZ cowshed concrete floor"
     ctaLabel="Request a quote"
   />
 

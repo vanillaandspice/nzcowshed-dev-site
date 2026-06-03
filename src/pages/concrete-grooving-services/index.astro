@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import ContactPanel from '../../components/ContactPanel.astro';
+import ServiceTile from '../../components/ServiceTile.astro';
+
+const services = [
+  { title: 'Cowshed Grooving', blurb: 'The job we do day-in, day-out. Cowshed floors, races, and yards grooved for cows that move confidently every morning.', href: '/concrete-grooving-services/cowshed-grooving', photo: '/assets/photos/cowshed-grooving-hero.webp' },
+  { title: 'Yards', blurb: 'Drafting yards, loading ramps, sale yards. Stock that slips costs you time and injury. Grooved yards fix that permanently.', href: '/concrete-grooving-services/yards', photo: '/assets/photos/yard-grooved.webp' },
+  { title: 'Car Parks', blurb: "Slippery concrete is a liability. We groove car parks, loading bays, and commercial floors so staff and vehicles grip in any condition.", href: '/concrete-grooving-services/car-parks', photo: '/assets/photos/cowshed-2b.webp' },
+  { title: 'Boat Ramps & Marine Docks', blurb: 'Crosshatch grooves stop algae build-up and slipping at the waterline.', href: '/concrete-grooving-services/boat-ramps-marine-docks', photo: '/assets/photos/boatramp-grooved.webp' },
+];
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Concrete Grooving Services',
+  provider: { '@type': 'LocalBusiness', name: 'NZ Cowshed Groovers', url: siteUrl },
+  description: 'Wet-saw diamond blade concrete grooving for cowsheds, yards, car parks, and boat ramps across New Zealand. 100% lifetime guarantee on every groove.',
+  areaServed: 'New Zealand',
+  serviceType: 'Concrete Grooving',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Grooving Services', item: `${siteUrl}/concrete-grooving-services` },
+  ],
+};
+---
+
+<Layout
+  title="Concrete Grooving Services NZ — Cowsheds, Yards, Car Parks & Marine | NZ Cowshed Groovers"
+  description="Concrete grooving for cowsheds, yards, car parks and boat ramps. One method — wet-saw diamond blade. Many surfaces. 100% lifetime guarantee across New Zealand."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <Section bg="deep-purple" narrow>
+    <div style="text-align: center;">
+      <p style="font-family: var(--font-heading); font-size: 1rem; letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase; margin: 0 0 0.75rem;">What we do</p>
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+        Concrete grooving services across New Zealand
+      </h1>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0;">
+        One method — wet-saw diamond blade. Many surfaces. Pick the one you need.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-gutter);">
+      {services.map(s => <ServiceTile {...s} />)}
+    </div>
+  </Section>
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      One method, every surface
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      We use a ride-on wet-saw with diamond blades to grind crosshatch grooves directly into your existing concrete. Dust-free. Chip-free. No chemicals, no new surface to lay, no major shutdown.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      The technique was developed by Neil Taylor over decades of on-farm work. The same wet-saw method that stops cows slipping in a cowshed works equally well in a car park, boat ramp, or loading bay — because concrete behaves the same regardless of what's standing on it.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1.5rem;">
+      Grooves last 10–12 years with zero maintenance. Every job — cowshed, yard, car park, boat ramp — carries our 100% lifetime guarantee. No competitor in New Zealand matches this.
+    </p>
+    <Button variant="primary" href="/contact">Get a Quote</Button>
+  </Section>
+
+  <Section bg="surface" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      Why grooving works
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+      {[
+        'Crosshatch pattern creates traction in every direction — not just forward and back.',
+        'Grooves channel water off the surface immediately. No pooling, no algae, no ice build-up.',
+        'No surface coating that can peel, crack, or be scrubbed away — the groove is in the concrete.',
+        'Done in a single day for most jobs. No extended shutdown or curing time.',
+        '100% lifetime guarantee on every groove, every surface, every time.',
+      ].map(line => (
+        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <ContactPanel />
+</Layout>

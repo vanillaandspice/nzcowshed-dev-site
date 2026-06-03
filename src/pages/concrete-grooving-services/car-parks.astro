@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Card from '../../components/Card.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import Slideshow from '../../components/Slideshow.astro';
+import ContactPanel from '../../components/ContactPanel.astro';
+
+const slides = [
+  { photo: '/assets/photos/cowshed-2b.webp', line1: 'Car park grooved and re-opened within 48 hours', line2: 'No disruption to business — solved permanently', name: 'Airways NZ', location: 'Christchurch Airport' },
+  { photo: '/assets/photos/frankton-sale-yards.webp', line1: 'Loading bay floor causing forklifts to slip', line2: 'Grooved and safe — problem solved the next day', name: 'Inghams Chickens', location: 'Waikato' },
+];
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Car Park Concrete Grooving',
+  provider: { '@type': 'LocalBusiness', name: 'NZ Cowshed Groovers', url: siteUrl },
+  description: 'Commercial concrete grooving for car parks, loading bays, school footpaths, and warehouse floors across New Zealand. OSH-compliant non-slip surface. Same-day response available.',
+  areaServed: 'New Zealand',
+  serviceType: 'Concrete Grooving',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Grooving Services', item: `${siteUrl}/concrete-grooving-services` },
+    { '@type': 'ListItem', position: 3, name: 'Car Park Grooving', item: `${siteUrl}/concrete-grooving-services/car-parks` },
+  ],
+};
+---
+
+<Layout
+  title="Car Park Grooving NZ — Non-Slip Commercial Concrete | NZ Cowshed Groovers"
+  description="Commercial car park concrete grooving NZ. OSH-compliant anti-slip solution — Airways NZ car park made safe within 48 hours. Same-day response. Free quote."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <ServiceHero
+    breadcrumb="Concrete Grooving Services / Car Parks"
+    headline="Car parks that grip"
+    lead="Wet concrete car parks, school footpaths, commercial loading bays. Grooved so people, vehicles, and forklifts keep their footing in every condition."
+    photo="/assets/photos/cowshed-2b.webp"
+    photoAlt="Non-slip grooved concrete surface in a commercial car park, showing crosshatch groove pattern"
+    photoCaption="Airways Car Park — Hamilton"
+    ctaLabel="Free Quote"
+  />
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      Where we work
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      {[
+        'Car parks — staff, visitor, and multi-storey',
+        'Loading bays and warehouse floors',
+        'School and institution footpaths',
+        'Commercial driveways and entrances',
+        'Any concrete surface with a slip risk',
+      ].map(line => (
+        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+        </li>
+      ))}
+    </ul>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0;">
+      Slippery commercial concrete is an OSH liability. One staff member down on a wet car park and the parking area gets closed — sometimes for weeks. Grooving solves it permanently. There's no resurfacing, no extended downtime, and no surface coating that wears off.
+    </p>
+  </Section>
+
+  <Section bg="concrete-white" narrow>
+    <p style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--safety-orange); text-transform: uppercase; margin: 0 0 0.5rem;">Case study</p>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem; line-height: 1.15;">
+      Airways NZ — slippery car park grooved &amp; re-opened within 48 hours of closure
+    </h2>
+    <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.5rem;">The problem</h3>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1.5rem;">
+      This national organisation, which is very OSH conscious, immediately closed the car park when a staff member slipped — and kept it closed until the slippery surface could be fixed.
+    </p>
+    <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.5rem;">The solution</h3>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1.5rem;">
+      NZ Cowshed Groovers were at the airport the next day to groove the car park. The same wet-saw diamond blade technique used on dairy farms works equally well on commercial concrete. Dust-free, no extended shutdown.
+    </p>
+    <p style="font-family: var(--font-heading); font-size: 1.75rem; letter-spacing: 0.02em; color: var(--safety-orange); text-transform: uppercase; margin: 1.5rem 0 0; border-top: 3px solid var(--teal); padding-top: 1rem;">
+      Re-opened with a new non-slip surface within 48 hours.
+    </p>
+  </Section>
+
+  <Section bg="surface" narrow>
+    <Card>
+      <TestimonialBlock
+        quote="Floor in the loading bay was causing forklifts to slip."
+        attribution="Inghams Chickens yard"
+        business="Waikato"
+      />
+    </Card>
+  </Section>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem; text-align: center;">
+      Jobs we've done
+    </h2>
+    <Slideshow slides={slides} />
+  </Section>
+
+  <ContactPanel />
+</Layout>

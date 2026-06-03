@@ -2,12 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import EnquiryForm from '../components/EnquiryForm';
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: `${siteUrl}/contact` },
+  ],
+};
 ---
 
 <Layout
   title="Get a Quote — Contact NZ Cowshed Groovers"
   description="Contact NZ Cowshed Groovers for a concrete grooving quote. Call Scott on 0274 747 775 or fill in the form. North Island specialists, nationwide capability."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <Section bg="deep-purple" narrow>
     <div style="text-align: center;">
       <img

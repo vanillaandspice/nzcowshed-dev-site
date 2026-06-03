@@ -2,12 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ZoomModal from '../components/ZoomModal';
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${siteUrl}/about` },
+  ],
+};
 ---
 
 <Layout
-  title="About NZ Cowshed Groovers — Neil Taylor, Founder"
+  title="About NZ Cowshed Groovers — Scott Coker, Concrete Grooving Specialist"
   description="NZ Cowshed Groovers was founded by Neil Taylor, who developed the concrete grooving technique. Now operated by Scott Coker. 100% lifetime guarantee on every groove."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <section style="background: var(--deep-purple); padding: var(--space-section) var(--space-grid-margin);">
     <div class="about-hero">
       <div class="about-hero__img" style="background: #000 center/cover url('/assets/brand/truck-scott.webp'); aspect-ratio: 4/3; border-radius: var(--radius);"></div>
@@ -50,6 +65,13 @@ import ZoomModal from '../components/ZoomModal';
     </p>
     <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0;">
       You'll still get the same wet-saw method, the same lifetime guarantee, and a 027 number that rings the operator. The voice on the other end is just Scott now.
+    </p>
+  </Section>
+
+  <Section bg="safety-orange" narrow>
+    <p style="font-family: var(--font-heading); font-size: 1.125rem; letter-spacing: 0.05em; color: var(--concrete-white); text-transform: uppercase; margin: 0 0 0.5rem;">100% lifetime guarantee</p>
+    <p style="font-family: var(--font-body); font-size: 1.25rem; line-height: 1.6; color: var(--concrete-white); margin: 0;">
+      The guarantee isn't a clause in fine print. It means if any groove we cut ever fails — for any reason — we come back and fix it at no charge. No competitor in New Zealand offers this.
     </p>
   </Section>
 

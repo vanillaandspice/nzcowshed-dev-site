@@ -4,6 +4,41 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import TestimonialBlock from '../components/TestimonialBlock.astro';
 
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'NZ Cowshed Groovers',
+  url: siteUrl,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    bestRating: '5',
+    ratingCount: '9',
+  },
+  review: [
+    { '@type': 'Review', reviewBody: 'We considered many other options before finding your website. No other option compared. Vast improvement — no slipping, stable footing, cattle settled, easy to handle.', author: { '@type': 'Person', name: 'Gordon Wright' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: 'Completely different herd to milk. Cows are flowing through the shed much better. No more slips and faster milking times.', author: { '@type': 'Person', name: 'Trevor' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: 'It instantly showed in the stock. They felt secure and were 100% more settled.', author: { '@type': 'Person', name: 'Kelly & Tina Woollier' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: 'Fitted in with our milking times. Good communication. Cows no longer slip on the yard — much easier to draft and handle.', author: { '@type': 'Person', name: 'Graham & Odele Wells' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: "Water runs off the surface better, no algae build up — we used to have bulls slip every day, but now they don't slip at all.", author: { '@type': 'Person', name: 'Lance Pettigrew' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: 'Cows were slipping when going through yards. Very pleased with the yard — prevented the cows from slipping over. It has been a 100% improvement.', author: { '@type': 'Person', name: 'John' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: "Cows don't slip easily, but even if they do start to slip, they catch themselves and stand again with no trouble.", author: { '@type': 'Person', name: 'John' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: "Thanks a lot Neil, has made a big difference — the flow is definitely a hell of a lot better.", author: { '@type': 'Person', name: 'Kevin' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+    { '@type': 'Review', reviewBody: 'I should have done the whole yard first off. Absolutely recommend.', author: { '@type': 'Person', name: 'Kelly & Tina Woollier' }, reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Testimonials', item: `${siteUrl}/testimonials` },
+  ],
+};
+
 const testimonials = [
   { quote: "Completely different herd to milk. Cows are flowing through the shed much better. No more slips and faster milking times.", name: "Trevor", biz: "Patetonga" },
   { quote: "It instantly showed in the stock. They felt secure and were 100% more settled.", name: "Kelly & Tina Woollier", biz: "Dairy Farmers" },
@@ -21,6 +56,11 @@ const testimonials = [
   title="What Farmers Say — Testimonials | NZ Cowshed Groovers"
   description="Real feedback from NZ farmers on concrete grooving. Cowsheds, yards, car parks and boat ramps. 100% lifetime guarantee from NZ Cowshed Groovers."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <Section bg="deep-purple" narrow>
     <div class="testimonials-hero">
       <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem;">

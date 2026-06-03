@@ -80,6 +80,7 @@ const jsonLd = {
   <link rel="preload" href="/fonts/LibreFranklin-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <slot name="head" />
 
   <!-- Development site — prevent indexing -->
   <meta name="robots" content="noindex, nofollow" />

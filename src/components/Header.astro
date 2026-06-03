@@ -8,20 +8,15 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: 'Cowshed Grooving', href: '/services/cowshed-grooving' },
-  { label: 'Yards', href: '/yards' },
-  { label: 'Car Parks', href: '/car-parks' },
-  { label: 'Boat Ramps', href: '/boat-ramps-marine-docks' },
+  { label: 'Cowshed Grooving', href: '/concrete-grooving-services/cowshed-grooving' },
+  { label: 'Yards', href: '/concrete-grooving-services/yards' },
+  { label: 'Car Parks', href: '/concrete-grooving-services/car-parks' },
+  { label: 'Boat Ramps', href: '/concrete-grooving-services/boat-ramps-marine-docks' },
 ];
 
 const currentPath = Astro.url.pathname;
 
-const isServicesActive =
-  currentPath === '/concrete-grooving-services' ||
-  currentPath.startsWith('/services/') ||
-  currentPath === '/yards' ||
-  currentPath === '/car-parks' ||
-  currentPath === '/boat-ramps-marine-docks';
+const isServicesActive = currentPath.startsWith('/concrete-grooving-services');
 ---
 
 <header class="site-header" data-services-active={isServicesActive ? 'true' : 'false'}>

@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import Slideshow from '../../components/Slideshow.astro';
+import ContactPanel from '../../components/ContactPanel.astro';
+
+const slides = [
+  { photo: '/assets/photos/boatramp-grooved.webp', line1: 'Crosshatch grooves at the waterline', line2: 'Grip when wet, grip when dry', name: 'Council Project', location: 'Bay of Plenty' },
+  { photo: '/assets/photos/boatramp-grooved.webp', line1: 'Stops algae and slime build-up on the surface', line2: 'Traction for trailer wheels and feet alike', name: 'Marina Operator', location: 'Northland' },
+];
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Boat Ramp and Marine Dock Concrete Grooving',
+  provider: { '@type': 'LocalBusiness', name: 'NZ Cowshed Groovers', url: siteUrl },
+  description: 'Concrete grooving for boat ramps, marine docks, and waterside concrete across New Zealand. Crosshatch grooves stop algae build-up and slipping at the waterline. 100% lifetime guarantee.',
+  areaServed: 'New Zealand',
+  serviceType: 'Concrete Grooving',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Grooving Services', item: `${siteUrl}/concrete-grooving-services` },
+    { '@type': 'ListItem', position: 3, name: 'Boat Ramp & Marine Dock Grooving', item: `${siteUrl}/concrete-grooving-services/boat-ramps-marine-docks` },
+  ],
+};
+---
+
+<Layout
+  title="Boat Ramp & Marine Dock Grooving NZ — Non-Slip Waterside Concrete | NZ Cowshed Groovers"
+  description="Concrete grooving for boat ramps and marine docks. Crosshatch grooves stop algae build-up and slipping at the waterline — permanent grip in all conditions. 100% lifetime guarantee."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <ServiceHero
+    breadcrumb="Concrete Grooving Services / Boat Ramps & Marine Docks"
+    headline="Safer boat ramps. Safer launches."
+    lead="Boat ramps can be dangerous. Grooving slippery boat-ramp surfaces prevents falls and makes it easier to gain traction when putting in and taking out boats."
+    photo="/assets/photos/boatramp-grooved.webp"
+    photoAlt="Crosshatch grooves cut into a concrete boat ramp at a NZ marina — traction at the waterline"
+    ctaLabel="Free Quote"
+  />
+
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      The marine environment is the hardest test
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      Tidal zones combine everything that makes concrete slippery: constant moisture, algae and biofilm growth, and people moving quickly while managing trailers and boats. A standard smooth concrete ramp becomes a hazard within months of construction.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      Crosshatch grooving is the right solution because the groove pattern works in all directions — trailer wheels rolling sideways down a slope, feet stepping across an algae-covered surface, and everything in between. Parallel grooves only help in one direction; crosshatch helps in all of them.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0;">
+      The grooves also interrupt the smooth surface algae needs to establish on. Less surface area for biofilm to grip means less slippery build-up between seasons.
+    </p>
+  </Section>
+
+  <Section bg="surface" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      Who we work with
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+      {[
+        'Local councils — public boat ramps and coastal access points',
+        'Yacht clubs and marina operators',
+        'DOC and regional recreation authorities',
+        'Private property owners with jetties and launch facilities',
+        'Commercial marine operators and ferry terminals',
+      ].map(line => (
+        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section bg="concrete-white" narrow>
+    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      What you get
+    </h3>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      {[
+        'Crosshatch grooves at the waterline — grip when wet, grip when dry',
+        'Stops algae and slime build-up on the ramp surface',
+        'Traction for trailer wheels and feet alike',
+        'Done in a day for most public ramps',
+        '100% lifetime guarantee — same as every other job',
+      ].map(line => (
+        <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+        </li>
+      ))}
+    </ul>
+    <Button variant="primary" href="/contact">Get a Quote</Button>
+  </Section>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem; text-align: center;">
+      Jobs we've done
+    </h2>
+    <Slideshow slides={slides} />
+  </Section>
+
+  <ContactPanel />
+</Layout>

@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import ContactPanel from '../../components/ContactPanel.astro';
+import Card from '../../components/Card.astro';
+import TestimonialBlock from '../../components/TestimonialBlock.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import Slideshow from '../../components/Slideshow.astro';
+
+const slides = [
+  { photo: '/assets/photos/yard-grooved.webp', line1: '15,000 cattle through this yard', line2: 'Not a single problem since grooving', name: 'Gordon Wright', location: 'Waikato' },
+  { photo: '/assets/photos/frankton-sale-yards.webp', line1: '186 m² of sale yard grooved', line2: 'Drafting drift completely eliminated', name: 'John', location: 'Frankton Sale Yards, Hamilton' },
+  { photo: '/assets/photos/livestock-improvements.webp', line1: 'Cows no longer slip in the yard', line2: 'Much easier to draft and handle', name: 'Graham & Odele Wells', location: 'Dairy Farmers' },
+];
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Yard Concrete Grooving',
+  provider: { '@type': 'LocalBusiness', name: 'NZ Cowshed Groovers', url: siteUrl },
+  description: 'Concrete grooving for dairy yards, drafting yards, feedpads, races, and sale yards across New Zealand. Stops stock slipping, safer handling. 100% lifetime guarantee.',
+  areaServed: 'New Zealand',
+  serviceType: 'Concrete Grooving',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Concrete Grooving Services', item: `${siteUrl}/concrete-grooving-services` },
+    { '@type': 'ListItem', position: 3, name: 'Yard Grooving', item: `${siteUrl}/concrete-grooving-services/yards` },
+  ],
+};
+---
+
+<Layout
+  title="Dairy Yard Concrete Grooving NZ — Feedpads, Races & Sale Yards | NZ Cowshed Groovers"
+  description="Concrete grooving for drafting yards, loading yards, sale yards and feedpads. Stop stock slipping — grooved yards mean safer handling and faster throughput. NZ Cowshed Groovers."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <ServiceHero
+    breadcrumb="Concrete Grooving Services / Yards"
+    headline="Yard grooving — feedpads, races & sale yards"
+    lead="Concrete grooving is the fastest, safest and most efficient way to turn your existing concrete into a long-lasting non-slip surface."
+    photo="/assets/photos/yard-grooved.webp"
+    photoAlt="Grooved concrete cattle yards at a NZ dairy farm — crosshatch pattern for all-direction traction"
+    ctaLabel="Free Quote"
+  />
+
+  <Section bg="concrete-white">
+    <div class="yards-intro">
+      <div class="yards-intro__text">
+        <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+          What we groove
+        </h2>
+        <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          {[
+            'Drafting yards — easier handling, less stress on stock',
+            'Loading yards — cows stay on their feet up the ramp',
+            'Sale yards — proven in commercial multi-truck environments',
+            'Feedpads, underpasses, races — anywhere concrete gets wet',
+          ].map(line => (
+            <li style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.5; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--teal); font-weight: 700;">—</span> {line}
+            </li>
+          ))}
+        </ul>
+        <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0;">
+          A slipping cow in a yard costs you more than time. Injury risk goes up, stock stress goes up, and throughput slows. The fix is permanent — and it costs less than one vet call per m².
+        </p>
+      </div>
+      <div class="yards-intro__art" aria-hidden="true">
+        <img
+          src="/assets/brand/cow-character.webp"
+          alt=""
+          class="yards-cow"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <style>
+    .yards-intro {
+      display: flex;
+      align-items: flex-end;
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .yards-intro__text { flex: 1; }
+    .yards-intro__art { flex-shrink: 0; }
+    .yards-cow {
+      width: clamp(140px, 18vw, 220px);
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(59,31,110,0.14));
+    }
+    @media (max-width: 560px) {
+      .yards-intro__art { display: none; }
+    }
+  </style>
+
+  <Section bg="surface" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+      Why grooved yards work better
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1rem;">
+      Gordon Wright has pushed 15,000 cattle through his grooved yard since the job was done. Not one slipping problem. That's not luck — it's what crosshatch grooving does. The pattern creates traction in every direction, so whether a cow is stepping sideways into a race or backing up a loading ramp, she finds her footing.
+    </p>
+    <p style="font-family: var(--font-body); font-size: 1.125rem; line-height: 1.6; margin: 0 0 1.5rem;">
+      Grooves also channel water off the surface rather than letting it pool. Less standing water means less algae build-up, which is another common cause of slipping in older yards. One job, two problems solved.
+    </p>
+    <div class="yards-testimonials" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-gutter);">
+      <Card>
+        <TestimonialBlock
+          quote="Cows were slipping when going through yards. Very pleased — prevented the cows from slipping over. It has been a 100% improvement."
+          attribution="John"
+          business="Frankton Sale Yards, Hamilton"
+        />
+      </Card>
+      <Card>
+        <TestimonialBlock
+          quote="Fitted in with our milking times. Good communication. Cows no longer slip on the yard — much easier to draft and handle."
+          attribution="Graham & Odele Wells"
+          business="Dairy Farmers"
+        />
+      </Card>
+    </div>
+  </Section>
+
+  <style>
+    @media (max-width: 640px) {
+      .yards-testimonials { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <Section bg="surface">
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem; text-align: center;">
+      Jobs we've done
+    </h2>
+    <Slideshow slides={slides} />
+  </Section>
+
+  <ContactPanel />
+</Layout>

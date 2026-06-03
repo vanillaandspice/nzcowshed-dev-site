@@ -3,26 +3,41 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ContactPanel from '../components/ContactPanel.astro';
 
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Our Work', item: `${siteUrl}/our-work` },
+  ],
+};
+
 const jobs = [
-  { photo: '/assets/photos/yard-grooved.webp', title: 'Cowshed yard', caption: 'Wet morning — grooves visible across the full pad.' },
-  { photo: '/assets/photos/frankton-sale-yards.webp', title: 'Frankton Sale Yards', caption: '186 m² of grooved sale yard, drafting drift gone.' },
-  { photo: '/assets/photos/livestock-improvements.webp', title: 'Livestock Improvements yard', caption: 'Bulls now stand instead of slipping. Water runs off.' },
-  { photo: '/assets/photos/cowshed-2b.webp', title: 'Commercial Car Park — Hamilton', caption: 'Commercial car park, Hamilton — grooved throughout for all-weather grip.' },
-  { photo: '/assets/photos/boatramp-grooved.webp', title: 'Boat ramp', caption: 'Crosshatch grooves, waterline grip.' },
+  { photo: '/assets/photos/yard-grooved.webp', title: 'Dairy yard — Waikato', caption: 'Crosshatch grooves across the full yard. Gordon Wright has pushed 15,000 cattle through since grooving — not a single problem.' },
+  { photo: '/assets/photos/frankton-sale-yards.webp', title: 'Frankton Sale Yards — Hamilton', caption: '186 m² of sale yard grooved in a single day. Drafting drift eliminated completely. "100% improvement." — John' },
+  { photo: '/assets/photos/livestock-improvements.webp', title: 'Livestock Improvements — Waikato', caption: 'Bulls that slipped every single day now stand firm. Water channels off the grooved surface, no algae build-up.' },
+  { photo: '/assets/photos/cowshed-2b.webp', title: 'Commercial car park — Hamilton', caption: 'Airways NZ car park: grooved and re-opened within 48 hours of OSH closure. Non-slip surface for staff and vehicles.' },
+  { photo: '/assets/photos/boatramp-grooved.webp', title: 'Boat ramp — Bay of Plenty', caption: 'Crosshatch grooves at the waterline. Grip for trailer wheels and feet alike, wet or dry. Council project.' },
 ];
 ---
 
 <Layout
-  title="Our Work — NZ Cowshed Groovers"
-  description="Real concrete grooving jobs on real NZ farms and businesses. Cowsheds, yards, car parks and boat ramps grooved by NZ Cowshed Groovers."
+  title="Completed Grooves — Our Work Across NZ | NZ Cowshed Groovers"
+  description="Concrete grooving jobs across NZ — dairy yards, cowsheds, car parks, sale yards and boat ramps. Real jobs, real results. NZ Cowshed Groovers."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <Section bg="deep-purple" narrow>
     <div style="text-align: center;">
       <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
-        Our work
+        Concrete grooving jobs across NZ
       </h1>
       <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0;">
-        Real jobs on real farms.
+        Cowsheds, yards, car parks, sale yards, and boat ramps — every one a permanent fix.
       </p>
     </div>
   </Section>
