@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import TestimonialBlock from '../components/TestimonialBlock.astro';
 import ContactPanel from '../components/ContactPanel.astro';
 
 const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
@@ -20,6 +22,18 @@ const jobs = [
   { photo: '/assets/photos/livestock-improvements.webp', title: 'Livestock Improvements — Waikato', caption: 'Bulls that slipped every single day now stand firm. Water channels off the grooved surface, no algae build-up.' },
   { photo: '/assets/photos/cowshed-2b.webp', title: 'Commercial car park — Hamilton', caption: 'Airways NZ car park: grooved and re-opened within 48 hours of OSH closure. Non-slip surface for staff and vehicles.' },
   { photo: '/assets/photos/boatramp-grooved.webp', title: 'Boat ramp — Bay of Plenty', caption: 'Crosshatch grooves at the waterline. Grip for trailer wheels and feet alike, wet or dry. Council project.' },
+];
+
+const testimonials = [
+  { quote: "Completely different herd to milk. Cows are flowing through the shed much better. No more slips and faster milking times.", name: "Trevor", biz: "Patetonga" },
+  { quote: "It instantly showed in the stock. They felt secure and were 100% more settled.", name: "Kelly & Tina Woollier", biz: "Dairy Farmers" },
+  { quote: "Fitted in with our milking times. Good communication. Cows no longer slip on the yard — much easier to draft and handle.", name: "Graham & Odele Wells", biz: "Dairy Farmers" },
+  { quote: "Water runs off the surface better, no algae build up — we used to have bulls slip every day, but now they don't slip at all.", name: "Lance Pettigrew", biz: "Livestock Improvements" },
+  { quote: "Floor in the loading bay was causing forklifts to slip.", name: "Inghams Chickens yard", biz: "Waikato" },
+  { quote: "Cows were slipping when going through yards. Very pleased with the yard — prevented the cows from slipping over. It has been a 100% improvement.", name: "John", biz: "Frankton Sale Yards, Hamilton" },
+  { quote: "Cows don't slip easily, but even if they do start to slip, they catch themselves and stand again with no trouble.", name: "John", biz: "Otorohanga" },
+  { quote: "Thanks a lot Neil, has made a big difference — the flow is definitely a hell of a lot better.", name: "Kevin", biz: "Patetonga" },
+  { quote: "I should have done the whole yard first off. Absolutely recommend.", name: "Kelly & Tina Woollier", biz: "Dairy Farmers" },
 ];
 ---
 
@@ -55,6 +69,58 @@ const jobs = [
       ))}
     </div>
   </Section>
+
+  <Section bg="deep-purple" narrow>
+    <div class="testimonials-hero">
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1.5rem;">
+        What farmers say
+      </h2>
+      <blockquote style="margin: 0;">
+        <p class="feature-quote">
+          "We considered many other options before finding your website. No other option compared. Vast improvement — no slipping, stable footing, cattle settled, easy to handle."
+        </p>
+        <cite style="font-family: var(--font-body); font-size: 1rem; color: var(--teal); font-style: normal; display: block;">— Gordon Wright</cite>
+      </blockquote>
+    </div>
+  </Section>
+
+  <style>
+    .testimonials-hero { text-align: center; }
+    .feature-quote {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--concrete-white);
+      margin: 0 0 1rem;
+    }
+    @media (max-width: 600px) {
+      .testimonials-hero { text-align: left; }
+    }
+  </style>
+
+  <Section bg="surface">
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <Card>
+          <TestimonialBlock quote={t.quote} attribution={t.name} business={t.biz} />
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <style>
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-gutter);
+    }
+    @media (max-width: 640px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 
   <ContactPanel />
 </Layout>
