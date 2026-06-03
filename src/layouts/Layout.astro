@@ -96,6 +96,24 @@ const jsonLd = {
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+
+  <!-- BugHerd — dev feedback tool. Remove before go-live (see go-live-checklist.md) -->
+  <script is:inline type="text/javascript">
+    (function (d, t) {
+      var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      bh.type = 'text/javascript';
+      bh.src = 'https://www.bugherd.com/sidebar.js?apikey=qmpf3wkekxvik8oleqwvwq';
+      s.parentNode.insertBefore(bh, s);
+    })(document, 'script');
+  </script>
+  <!-- BugHerd view-transitions compatibility patch -->
+  <script is:inline>
+    document.addEventListener('astro:after-swap', () => {
+      if (window.BugHerd && typeof window.BugHerd.refresh === 'function') {
+        window.BugHerd.refresh();
+      }
+    });
+  </script>
 </head>
 <body>
   <Header />
