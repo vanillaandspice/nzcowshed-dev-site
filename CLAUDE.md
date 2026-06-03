@@ -51,12 +51,12 @@ src/
     ZoomModal.tsx         ← React island, About page clipping
   pages/
     index.astro
-    concrete-grooving-services.astro
-    services/
+    concrete-grooving-services/
+      index.astro
       cowshed-grooving.astro
-    yards.astro
-    car-parks.astro
-    boat-ramps-marine-docks.astro
+      yards.astro
+      car-parks.astro
+      boat-ramps-marine-docks.astro
     our-work.astro
     testimonials.astro
     about.astro
@@ -94,11 +94,11 @@ public/
 | Page | URL | File |
 |------|-----|------|
 | Home | `/` | `src/pages/index.astro` |
-| Services hub | `/concrete-grooving-services` | `src/pages/concrete-grooving-services.astro` |
-| Cowshed Grooving | `/services/cowshed-grooving` | `src/pages/services/cowshed-grooving.astro` |
-| Yards | `/yards` | `src/pages/yards.astro` |
-| Car Parks | `/car-parks` | `src/pages/car-parks.astro` |
-| Boat Ramps | `/boat-ramps-marine-docks` | `src/pages/boat-ramps-marine-docks.astro` |
+| Services hub | `/concrete-grooving-services` | `src/pages/concrete-grooving-services/index.astro` |
+| Cowshed Grooving | `/concrete-grooving-services/cowshed-grooving` | `src/pages/concrete-grooving-services/cowshed-grooving.astro` |
+| Yards | `/concrete-grooving-services/yards` | `src/pages/concrete-grooving-services/yards.astro` |
+| Car Parks | `/concrete-grooving-services/car-parks` | `src/pages/concrete-grooving-services/car-parks.astro` |
+| Boat Ramps | `/concrete-grooving-services/boat-ramps-marine-docks` | `src/pages/concrete-grooving-services/boat-ramps-marine-docks.astro` |
 | Our Work | `/our-work` | `src/pages/our-work.astro` |
 | Testimonials | `/testimonials` | `src/pages/testimonials.astro` |
 | About | `/about` | `src/pages/about.astro` |
@@ -126,7 +126,7 @@ Both appear in `src/components/Footer.astro` and `src/pages/contact.astro`. Sear
 
 ### Update pricing
 Mentioned in `src/pages/services/cowshed-grooving.astro` (CTA section) and `src/pages/contact.astro` (sidebar). Also in `src/layouts/Layout.astro` (JSON-LD `priceRange`).
-- Note: the services hub page is now `src/pages/concrete-grooving-services.astro` (URL: `/concrete-grooving-services`).
+- Note: pricing also appears in `src/layouts/Layout.astro` (JSON-LD `priceRange`).
 
 ### Add a new page
 1. Create `src/pages/new-page.astro`
