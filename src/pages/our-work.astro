@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import TestimonialBlock from '../components/TestimonialBlock.astro';
+import Slideshow from '../components/Slideshow.astro';
 import ContactPanel from '../components/ContactPanel.astro';
 
 const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
@@ -57,17 +58,7 @@ const testimonials = [
   </Section>
 
   <Section bg="surface">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-gutter);">
-      {jobs.map(j => (
-        <div style="background: var(--concrete-white); border-top: 3px solid var(--teal);">
-          <div style={`aspect-ratio: 4/3; background: #000 center/cover url(${j.photo});`}></div>
-          <div style="padding: 1rem;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--deep-purple); margin: 0 0 0.5rem; letter-spacing: 0.02em;">{j.title}</h3>
-            <p style="font-family: var(--font-body); font-size: 0.95rem; color: var(--on-surface-variant); margin: 0;">{j.caption}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <Slideshow slides={jobs} />
   </Section>
 
   <Section bg="deep-purple" narrow>
