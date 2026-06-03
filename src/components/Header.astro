@@ -96,15 +96,7 @@ const isServicesActive = currentPath.startsWith('/concrete-grooving-services');
     toggle.setAttribute('aria-expanded', String(open));
   });
 
-  document.querySelectorAll('[data-submenu-trigger="services"]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      if (window.innerWidth >= 769) {
-        if (servicesPageActive) return;
-        e.preventDefault();
-        subnav?.classList.toggle('services-subnav--open');
-      }
-    });
-  });
+  // Grooving Services link navigates normally — subnav shown via CSS on active pages only
 
   document.querySelectorAll('.site-nav__link:not([data-submenu-trigger])').forEach(el => {
     el.addEventListener('click', () => {
