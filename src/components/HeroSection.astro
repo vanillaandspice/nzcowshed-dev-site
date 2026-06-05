@@ -145,9 +145,9 @@
   }
   .hero__trust-track {
     display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    animation: trustTicker 18s linear infinite;
   }
   .hero__trust-track span {
     font-family: var(--font-body);
@@ -156,23 +156,16 @@
     font-weight: 600;
     white-space: nowrap;
   }
-  /* Hide duplicate spans on desktop */
-  .hero__trust-track span:nth-child(n+5) { display: none; }
-
-  @media (max-width: 600px) {
-    .hero__trust-track {
-      flex-wrap: nowrap;
-      animation: trustTicker 14s linear infinite;
-    }
-    /* Show duplicates for seamless loop on mobile */
-    .hero__trust-track span:nth-child(n+5) { display: inline; }
-    @keyframes trustTicker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+  @keyframes trustTicker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
-  @media (max-width: 600px) and (prefers-reduced-motion: reduce) {
-    .hero__trust-track { animation: none; flex-wrap: wrap; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__trust-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .hero__trust-track span:nth-child(n+5) { display: none; }
     .hero__trust { mask-image: none; -webkit-mask-image: none; }
   }
