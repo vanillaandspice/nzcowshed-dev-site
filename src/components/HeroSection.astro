@@ -13,10 +13,12 @@
     <div class="hero__trust" aria-label="Key facts">
       <div class="hero__trust-track">
         <span>✓ 100% lifetime guarantee</span>
+        <span>✓ NZ's Original Concrete Groovers</span>
         <span>✓ North Island specialists</span>
         <span>✓ Same-week quotes</span>
         <!-- duplicated for seamless loop on mobile -->
         <span aria-hidden="true">✓ 100% lifetime guarantee</span>
+        <span aria-hidden="true">✓ NZ's Original Concrete Groovers</span>
         <span aria-hidden="true">✓ North Island specialists</span>
         <span aria-hidden="true">✓ Same-week quotes</span>
       </div>
@@ -155,7 +157,7 @@
     white-space: nowrap;
   }
   /* Hide duplicate spans on desktop */
-  .hero__trust-track span:nth-child(n+4) { display: none; }
+  .hero__trust-track span:nth-child(n+5) { display: none; }
 
   @media (max-width: 600px) {
     .hero__trust-track {
@@ -163,7 +165,7 @@
       animation: trustTicker 14s linear infinite;
     }
     /* Show duplicates for seamless loop on mobile */
-    .hero__trust-track span:nth-child(n+4) { display: inline; }
+    .hero__trust-track span:nth-child(n+5) { display: inline; }
     @keyframes trustTicker {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -171,7 +173,7 @@
   }
   @media (max-width: 600px) and (prefers-reduced-motion: reduce) {
     .hero__trust-track { animation: none; flex-wrap: wrap; }
-    .hero__trust-track span:nth-child(n+4) { display: none; }
+    .hero__trust-track span:nth-child(n+5) { display: none; }
     .hero__trust { mask-image: none; -webkit-mask-image: none; }
   }
   .hero__cow {
