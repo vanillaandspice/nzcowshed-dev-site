@@ -40,6 +40,7 @@ const year = new Date().getFullYear();
       <a href="tel:+6427474775" class="site-footer__phone">0274 747 775</a>
       <a href="mailto:info@cowshedgroovers.co.nz" class="site-footer__email">info@cowshedgroovers.co.nz</a>
       <p class="site-footer__area">North Island, New Zealand<br />Nationwide capability</p>
+      <a href="/contact" class="site-footer__cta">Get a Quote</a>
     </div>
     <!-- Cow mascot — visible on mobile only, sits right of nav columns -->
     <div class="site-footer__cow-wrap" aria-hidden="true">
@@ -179,6 +180,20 @@ const year = new Date().getFullYear();
     line-height: 1.5;
     margin: 0.25rem 0 0;
   }
+  .site-footer__cta {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--concrete-white);
+    background: var(--safety-orange);
+    text-decoration: none;
+    padding: 0.625rem 1.25rem;
+    transition: filter 0.18s ease;
+  }
+  .site-footer__cta:hover { filter: brightness(0.9); }
 
   /* Cow — hidden on desktop, shown on mobile beside nav columns */
   .site-footer__cow-wrap {
