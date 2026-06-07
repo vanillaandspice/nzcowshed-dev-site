@@ -1,0 +1,96 @@
+---
+interface Props {
+  items: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+---
+
+<div class="faq-accordion">
+  {items.map((item, i) => (
+    <details class="faq-item" id={`faq-${i}`}>
+      <summary class="faq-question">
+        <span>{item.q}</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </summary>
+      <div class="faq-answer">
+        <p set:html={item.a} />
+      </div>
+    </details>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach(el => {
+    el.addEventListener('toggle', () => {
+      if (el.open) {
+        document.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach(other => {
+          if (other !== el) other.open = false;
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-item {
+    border-top: 3px solid var(--teal);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    transition: color var(--duration-base, 200ms);
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    position: relative;
+    color: var(--teal);
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .faq-icon::before { width: 100%; height: 2px; top: 50%; transform: translateY(-50%); }
+  .faq-icon::after  { width: 2px; height: 100%; left: 50%; transform: translateX(-50%); }
+
+  details[open] .faq-icon::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+  }
+
+  .faq-answer {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .faq-answer p { margin: 0; }
+</style>

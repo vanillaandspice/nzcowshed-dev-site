@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import Button from '../components/Button.astro';
+import ContactPanel from '../components/ContactPanel.astro';
+import { faqs } from '../data/faqs.ts';
+
+const siteUrl = 'https://www.nzcowshedgroovers.co.nz';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${siteUrl}/faq` },
+  ],
+};
+
+const faqPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a.replace(/<br><br>/g, ' ').replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
+---
+
+<Layout
+  title="Concrete Grooving FAQ — Common Questions Answered | NZ Cowshed Groovers"
+  description="Everything you need to know about concrete grooving — how long it lasts, what it costs, mess, downtime, guarantee. Straight answers from NZ Cowshed Groovers."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
+  </Fragment>
+
+  <Section bg="deep-purple" narrow>
+    <div style="text-align: center;">
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem,5vw,3.5rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+        Frequently asked questions
+      </h1>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0 0 1.5rem;">
+        Straight answers to the questions we get asked most often.
+      </p>
+      <p style="font-family: var(--font-body); font-size: 1rem; color: rgba(255,255,255,0.7); margin: 0;">
+        Still have a question? <a href="/contact" style="color: var(--teal); text-decoration: none;">Get in touch →</a>
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="surface">
+    <FAQAccordion items={faqs} />
+  </Section>
+
+  <!-- What to Expect section — DRAFT, needs Scott's sign-off before go-live -->
+  <Section bg="concrete-white" narrow>
+    <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); color: var(--deep-purple); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 0.5rem;">
+      What to expect when we arrive
+    </h2>
+    <p style="font-family: var(--font-body); font-size: 1.1rem; color: var(--on-surface-variant); margin: 0 0 2.5rem; line-height: 1.6;">
+      Here's exactly what happens from the time you confirm the job to the moment we pack up and leave.
+    </p>
+
+    <div class="expect-steps">
+
+      <div class="expect-step">
+        <div class="expect-step__num">1</div>
+        <div>
+          <h3 class="expect-step__title">Before we arrive</h3>
+          <p class="expect-step__body">Have the area completely cleaned and washed down — no mud, effluent, or debris on the surface. All stock, vehicles, and people need to be clear of the work zone. Scott will call you the day before to confirm timing and run through anything specific to your site.</p>
+        </div>
+      </div>
+
+      <div class="expect-step">
+        <div class="expect-step__num">2</div>
+        <div>
+          <h3 class="expect-step__title">On arrival</h3>
+          <p class="expect-step__body">Scott and his crew bring everything needed: the wet-saw cutting machine, generator, water supply, and all safety gear. You don't need to supply anything. We'll walk the area with you first to confirm the groove pattern and direction relative to your yard's slope and drainage.</p>
+        </div>
+      </div>
+
+      <div class="expect-step">
+        <div class="expect-step__num">3</div>
+        <div>
+          <h3 class="expect-step__title">During the job</h3>
+          <p class="expect-step__body">The wet-saw cuts precise grooves into the surface. You'll hear the machine running, but because it's wet-cutting there is zero dust and no airborne debris. A slurry of water and fine concrete will form on the surface — this is completely normal and clears easily with a washdown. Access to the area must remain clear while we're cutting — no foot traffic or livestock.</p>
+        </div>
+      </div>
+
+      <div class="expect-step">
+        <div class="expect-step__num">4</div>
+        <div>
+          <h3 class="expect-step__title">Once we're done</h3>
+          <p class="expect-step__body">We walk the finished job with you. You wash the yard down using your normal procedure to clear the slurry. That's it — the surface is ready for immediate use. No curing time, no waiting period, no follow-up needed.</p>
+        </div>
+      </div>
+
+      <div class="expect-step">
+        <div class="expect-step__num">5</div>
+        <div>
+          <h3 class="expect-step__title">After the job</h3>
+          <p class="expect-step__body">The grooves are permanent. There's nothing to coat, seal, or maintain. Your normal washdown routine is all it takes to keep the surface performing. If you ever have any concern about the quality of the cuts, call Scott directly — every job is backed by our workmanship guarantee.</p>
+        </div>
+      </div>
+
+    </div>
+  </Section>
+
+  <Section bg="deep-purple" narrow>
+    <div style="text-align: center;">
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem,4vw,3rem); color: var(--concrete-white); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 1rem;">
+        Ready to get started?
+      </h2>
+      <p style="font-family: var(--font-body); font-size: 1.25rem; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem; line-height: 1.6;">
+        Call Scott on <a href="tel:+6427474775" style="color: var(--safety-orange); font-weight: 700; text-decoration: none;">0274 747 775</a> or fill in our enquiry form.
+      </p>
+      <Button variant="primary" href="/contact">Get a Free Quote</Button>
+    </div>
+  </Section>
+
+  <ContactPanel />
+</Layout>
+
+<style>
+  .expect-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .expect-step {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .expect-step__num {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--safety-orange);
+    letter-spacing: 0.02em;
+    padding-top: 0.1rem;
+  }
+
+  .expect-step__title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--deep-purple);
+    margin: 0 0 0.5rem;
+  }
+
+  .expect-step__body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .expect-step {
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.75rem;
+    }
+    .expect-step__num { font-size: 2rem; }
+  }
+</style>
